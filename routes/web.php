@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\MainController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\HomeController;
+// use App\Http\Controllers\MainController;
+// use App\Http\Controllers\UserController;
+// use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,17 +21,23 @@ Route::get('/', function () {
     return view('welcome');
 });
 */
-Route::get('/', [MainController::class, 'home']);
+// Route::get('/', [MainController::class, 'home']);
 
-Route::get('welcome', function () {
-    return view('welcome');
+// Route::get('welcome', function () {
+//     return view('welcome');
+// });
+
+// Route::get('home', [HomeController::class, 'index']);
+
+
+// Route::get('test', function () {
+//     return view('test');
+// });
+
+// Route::get('/user/{id}', [UserController::class, 'show']);
+
+
+Route::get('/posts', function () {
+    return view('posts.index');
 });
 
-Route::get('home', [HomeController::class, 'index']);
-
-
-Route::get('test', function () {
-    return view('test');
-});
-
-Route::get('/user/{id}', [UserController::class, 'show']);
