@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Support\Facades\Route;
 // use App\Http\Controllers\MainController;
 // use App\Http\Controllers\UserController;
@@ -36,6 +37,8 @@ Route::get('/', function () {
 
 // Route::get('/user/{id}', [UserController::class, 'show']);
 
+
+Route::get('register', [RegisterController::class, 'index']);
 
 Route::get('/posts', function () {
     return view('posts.index');
