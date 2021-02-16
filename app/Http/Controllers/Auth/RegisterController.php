@@ -18,7 +18,7 @@ class RegisterController extends Controller
         //Die Dump for test:
         //dd($request->email);
 
-        //Validate or throw exception:
+        //Form validation:
         $this->validate($request, [
             'name' => 'required|max:255',
             'username' => 'required|max:255',
@@ -26,12 +26,20 @@ class RegisterController extends Controller
             'password' => 'required|confirmed',
         ]);
 
+        //Create user:
         User::create([
             'name' => $request->name,
             'username' => $request->username,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
+
+
+        //Sign in:
+        auth()->attempt($request->only('email', 'password'));
+
+        //Redirect:
+        return redirect()->route('dashboard');
 
     }
 }
