@@ -9,6 +9,12 @@ use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
 {
+    
+    //If already login, redirect to home(change redirection at app\Providers\RouteServiceProvider.php):
+    public function __construct(){
+        $this->middleware(['guest']);
+    }
+    
     public function index() {
         return view('auth.register');
     }
