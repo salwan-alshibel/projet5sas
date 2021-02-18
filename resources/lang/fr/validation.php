@@ -190,5 +190,7 @@ return [
         'time'                  => 'heure',
         'available'             => 'disponible',
         'size'                  => 'taille',
+        'body'                  => 'corps',
+        'text_area'             => 'zone de texte',
     ],
 ];
