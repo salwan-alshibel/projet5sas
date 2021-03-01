@@ -24,6 +24,11 @@ class Post extends Model
         return $this->likes->contains('user_id', $user->id);
     }
 
+    //Returns a boolean if the user is the creator of the post:
+    // public function ownedBy(User $user) {
+    //     return $user->id === $this->user_id;
+    // }
+
     public function user(){
         return $this->belongsTo(User::class);
     }
