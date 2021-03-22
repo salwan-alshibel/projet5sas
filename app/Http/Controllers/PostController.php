@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+   public function __construct()
+   {
+      $this->middleware(['auth'])->only(['store', 'destroy']);
+   }
+
    public function index(){
       //Used of eager loading:
       //orderBy('created_at', 'desc') or latest()
@@ -19,7 +24,7 @@ class PostController extends Controller
          'post' => $post
       ]);
    }
-
+   
    public function store(Request $request){
       $this->validate($request, ['body' => 'required']);
 
