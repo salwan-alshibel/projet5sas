@@ -9,12 +9,12 @@ class HomeController extends Controller
 {
     public function index(){
 
-        $messages = Message::all();
+        //$messages = Message::all();
 
-        
+        // return view('home', [
+        //     'messages' => $messages
+        // ]);
 
-        return view('home', [
-            'messages' => $messages
-        ]);
+        return view('home');
     }
 }
