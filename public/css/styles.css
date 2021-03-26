@@ -1,3 +1,85 @@
+/*Font*/
+@font-face { font-family: formal436bt; src: url('../fonts/FRML436N.TTF'); } 
+
+.formal436bt {
+    font-family: formal436bt , sans-serif;
+    font-size: 22px;
+}
+
+.work-sans {
+    font-family: 'Work Sans', sans-serif;
+}
+
+.parisienne {
+    font-family: 'Parisienne', cursive;
+    font-size: 31px;
+}
+
+#logo-img {
+    left: 40%;
+}
+
+#menu-toggle:checked + #menu {
+    display: block;
+}
+
+
+
+
+
+
+
+.hover\:grow {
+    transition: all 0.3s;
+    transform: scale(1);
+}
+
+.hover\:grow:hover {
+    transform: scale(1.02);
+}
+
 .nav_link_text {
     display: none;
 }
+
+#slides img {
+    width: 100%;
+    height: auto;
+    max-height: 450px;
+    object-fit: cover;
+}
+
+.carousel-control-previous {
+    left: 0px;
+}
+.carousel-control-next, .carousel-control-previous {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    z-index: 1;
+    width: 15%;
+    transition: opacity 0.15s ease 0s;
+    background-color: rgba(21, 23, 23, 0.02);
+    padding: 50px 0px;
+    margin: 50px 0px;
+}
+
+.carousel-control-next-icon, .carousel-control-prev-icon {
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+    background-repeat: no-repeat;
+    background-position: 50% center;
+    background-size: 100% 100%;
+}
+
+.carousel-control-previous {
+    border-radius: 0% 50% 50% 0%; 
+}
+
+.carousel-control-next {
+    border-radius: 50% 0% 0% 50%; 
+}
+
+
+
