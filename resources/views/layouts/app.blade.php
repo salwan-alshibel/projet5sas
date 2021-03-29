@@ -131,7 +131,8 @@
         </div>
     </nav>
     @yield('content')
-    <script src="{{asset('js/app.js')}}"></script>
     <script src="{{asset('js/carousel.js')}}"></script>
+    <script src="{{asset('js/app.js')}}"></script>
+    <script src="{{asset('js/custom.js')}}"></script>
 </body>
 </html>

@@ -8,6 +8,7 @@
 //Tous les slides ont un z-index de 1, sauf le slide apparant (.showing) qui à un z-index de 2
 
 
+
 class Carousel {
 
     constructor(containerId) {
@@ -16,9 +17,9 @@ class Carousel {
         this.container = document.getElementById(containerId);
         this.slides = this.container.querySelectorAll('#slides .slide');
         this.controls = document.querySelectorAll('.controls');
-        this.nextBtn = this.container.querySelector('.next');
-        this.previousBtn = this.container.querySelector('.previous');
-        this.pauseBtn = this.container.querySelector('.pause');
+        this.nextBtn = this.container.querySelector('.carousel-control-next');
+        this.previousBtn = this.container.querySelector('.carousel-control-previous');
+        this.pauseBtn = this.container.querySelector('.carousel-control-pause');
 
         //Valeurs de départ du Carousel:
         this.currentSlide = 0;
@@ -52,7 +53,7 @@ class Carousel {
 
     //Défilement automatique:
     startScrolling() {
-        this.pauseBtn.innerHTML = 'Appuyer pour arreter le diaporama';
+        //this.pauseBtn.innerHTML = 'Appuyer pour arreter le diaporama';
         this.playing = true; //Changement du statut du défilement automatique.
 
         //Interval de défilement automatique:
@@ -64,7 +65,7 @@ class Carousel {
 
     //Arret du défilement automatique:
     stopScrolling() {
-        this.pauseBtn.innerHTML = 'Diaporama en pause. Appuyer pour lancer';
+        //this.pauseBtn.innerHTML = 'Diaporama en pause.';
         this.playing = false;
 
         //Arret du défilement automatique:
@@ -144,3 +145,6 @@ class Carousel {
         }, false);
     }
 }
+
+
+const Carousel1 = new Carousel("carousel");

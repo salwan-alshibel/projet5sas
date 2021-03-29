@@ -1,0 +1,1 @@
+console.log('test : customElements.js');

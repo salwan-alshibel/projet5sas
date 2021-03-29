@@ -22,9 +22,9 @@ var Carousel = /*#__PURE__*/function () {
     this.container = document.getElementById(containerId);
     this.slides = this.container.querySelectorAll('#slides .slide');
     this.controls = document.querySelectorAll('.controls');
-    this.nextBtn = this.container.querySelector('.next');
-    this.previousBtn = this.container.querySelector('.previous');
-    this.pauseBtn = this.container.querySelector('.pause'); //Valeurs de départ du Carousel:
+    this.nextBtn = this.container.querySelector('.carousel-control-next');
+    this.previousBtn = this.container.querySelector('.carousel-control-previous');
+    this.pauseBtn = this.container.querySelector('.carousel-control-pause'); //Valeurs de départ du Carousel:
 
     this.currentSlide = 0;
     this.playing = true; //Statut du défilement automatique
@@ -62,7 +62,7 @@ var Carousel = /*#__PURE__*/function () {
   }, {
     key: "startScrolling",
     value: function startScrolling() {
-      this.pauseBtn.innerHTML = 'Appuyer pour arreter le diaporama';
+      //this.pauseBtn.innerHTML = 'Appuyer pour arreter le diaporama';
       this.playing = true; //Changement du statut du défilement automatique.
       //Interval de défilement automatique:
 
@@ -75,7 +75,7 @@ var Carousel = /*#__PURE__*/function () {
   }, {
     key: "stopScrolling",
     value: function stopScrolling() {
-      this.pauseBtn.innerHTML = 'Diaporama en pause. Appuyer pour lancer';
+      //this.pauseBtn.innerHTML = 'Diaporama en pause.';
       this.playing = false; //Arret du défilement automatique:
 
       clearTimeout(this.autoSlideChange);
@@ -169,5 +169,7 @@ var Carousel = /*#__PURE__*/function () {
 
   return Carousel;
 }();
+
+var Carousel1 = new Carousel("carousel");
 /******/ })()
 ;

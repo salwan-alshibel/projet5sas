@@ -32,20 +32,20 @@
     <section id="carousel" class="relative">
         <ul id="slides">
             <li class="slide showing">
-                <a href="{{ route('paints') }}" class="p-3"><img src="{{url('/images/GW-New-To-40K-2020-11-14-Portal-All-bmm.jpg')}}" alt="Peintures"/>
+                <a href="{{ route('paints') }}" class=""><img src="{{url('/images/GW-New-To-40K-2020-11-14-Portal-All-bmm.jpg')}}" alt="Peintures"/>
                 <span class="nav_link_text">Peintures</span></a>
             </li>
             <li class="slide">
-                <a href="{{ route('paints') }}" class="p-3"><img src="{{url('/images/StarbloodStalkers-2021-03-20-ShortPortal-All-bma_.webp')}}" alt="Peintures"/>
+                <a href="{{ route('paints') }}" class=""><img src="{{url('/images/StarbloodStalkers-2021-03-20-ShortPortal-All-bma_.webp')}}" alt="Peintures"/>
                 <span class="nav_link_text">Peintures</span></a>
             </li>
             <li class="slide">
-                <a href="{{ route('paints') }}" class="p-3"><img src="{{url('/images/GW-Warzone-Ultramar-2020-26-09-LPMulticol-All-bm_.webp')}}" alt="Peintures"/>
+                <a href="{{ route('paints') }}" class=""><img src="{{url('/images/GW-Warzone-Ultramar-2020-26-09-LPMulticol-All-bm_.webp')}}" alt="Peintures"/>
                 <span class="nav_link_text">Peintures</span></a>
             </li>
         </ul>
         <!-- Carousel buttons -->
-        <div class="slider-controlls absolute top-0 left-0 w-full h-full" id="controlls-list">
+        <div class="slider-controls absolute top-0 left-0 w-full h-full z-10" id="controls-list">
             <button class="carousel-control-previous">
                 <span class="carousel-control-prev-icon"><i class="fas fa-arrow-circle-left"></i></span>
                 <span class="visually-hidden">Précédent</span>
