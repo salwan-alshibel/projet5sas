@@ -1,32 +1,21 @@
-//-----------DIAPORAMA-------------//
-
-//-----------------------//
-//--- Carousel Objet ---//
-//-----------------------//
-
-//Logique générale : on change la class HTML du slide que l'on veut afficher.
-//Tous les slides ont un z-index de 1, sauf le slide apparant (.showing) qui à un z-index de 2
-
-
-
 class Carousel {
 
     constructor(containerId) {
 
-        //Eléments du DOM:
+        //DOM:
         this.container = document.getElementById(containerId);
         this.slides = this.container.querySelectorAll('#slides .slide');
-        this.controls = document.querySelectorAll('.controls');
+        //this.controls = document.querySelectorAll('.controls');
         this.nextBtn = this.container.querySelector('.carousel-control-next');
         this.previousBtn = this.container.querySelector('.carousel-control-previous');
         this.pauseBtn = this.container.querySelector('.carousel-control-pause');
 
-        //Valeurs de départ du Carousel:
+        //Starting values:
         this.currentSlide = 0;
-        this.playing = true; //Statut du défilement automatique
+        this.playing = true;
         this.autoSlideChange = null;
 
-        //Appel des méthodes:
+        //Calling methods:
         this.startScrolling();
         this.ifNoContainer();
         this.keyboardControls();
@@ -36,7 +25,7 @@ class Carousel {
         this.jsCheckForSlides();
     }
 
-    //Positionement des slides si JS est bien chargé :
+    //If JS is load :
     jsCheckForSlides() {
         const selfThis = this;
         for (var i = 0; i < this.slides.length; i++) {
@@ -44,52 +33,51 @@ class Carousel {
         }
     }
 
-    // Méthode si aucun ID n'est spécifié à la création d'un nouveau diaporama:
+    //If no "id" is specify when creating the object:
     ifNoContainer() {
         if (this.container == false) {
             console.log("Veuillez sélectionner un containerId en paramètre lors de la construction de votre diaporama");
         }
     }
 
-    //Défilement automatique:
+
     startScrolling() {
         //this.pauseBtn.innerHTML = 'Appuyer pour arreter le diaporama';
         this.playing = true; //Changement du statut du défilement automatique.
 
-        //Interval de défilement automatique:
+        //Interval:
         const selfThis = this;
         this.autoSlideChange = setInterval(function () {
             selfThis.nextSlide()
         }, 5000);
     }
 
-    //Arret du défilement automatique:
+
     stopScrolling() {
         //this.pauseBtn.innerHTML = 'Diaporama en pause.';
         this.playing = false;
 
-        //Arret du défilement automatique:
         clearTimeout(this.autoSlideChange);
     }
 
-    //Méthode principale de changement de slide:
+
     goToSlide(n) {
         this.slides[this.currentSlide].className = 'slide';
         this.currentSlide = (n + this.slides.length) % this.slides.length;
         this.slides[this.currentSlide].className = 'slide showing';
     }
 
-    //Méthode pour avancer d'un slide:
+
     nextSlide() {
         this.goToSlide(this.currentSlide + 1);
     }
 
-    //Méthode pour reculer d'un slide:
+
     previousSlide() {
         this.goToSlide(this.currentSlide - 1);
     }
 
-    //Methode lors du clic sur bouton avancer
+
     clicBtnNext() {
         const selfThis = this;
         this.nextBtn.onclick = () => {
@@ -98,7 +86,7 @@ class Carousel {
         };
     }
 
-    //Methode lors du clic sur bouton reculer
+
     clicBtnPrev() {
         const selfThis = this;
         this.previousBtn.onclick = () => {
@@ -107,7 +95,7 @@ class Carousel {
         };
     }
 
-    //Méthode lors du clic sur le bouton pause
+
     clickBtnPause() {
         const selfThis = this;
         this.pauseBtn.onclick = () => {

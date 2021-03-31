@@ -8,28 +8,21 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-//-----------DIAPORAMA-------------//
-//-----------------------//
-//--- Carousel Objet ---//
-//-----------------------//
-//Logique générale : on change la class HTML du slide que l'on veut afficher.
-//Tous les slides ont un z-index de 1, sauf le slide apparant (.showing) qui à un z-index de 2
 var Carousel = /*#__PURE__*/function () {
   function Carousel(containerId) {
     _classCallCheck(this, Carousel);
 
-    //Eléments du DOM:
+    //DOM:
     this.container = document.getElementById(containerId);
-    this.slides = this.container.querySelectorAll('#slides .slide');
-    this.controls = document.querySelectorAll('.controls');
+    this.slides = this.container.querySelectorAll('#slides .slide'); //this.controls = document.querySelectorAll('.controls');
+
     this.nextBtn = this.container.querySelector('.carousel-control-next');
     this.previousBtn = this.container.querySelector('.carousel-control-previous');
-    this.pauseBtn = this.container.querySelector('.carousel-control-pause'); //Valeurs de départ du Carousel:
+    this.pauseBtn = this.container.querySelector('.carousel-control-pause'); //Starting values:
 
     this.currentSlide = 0;
-    this.playing = true; //Statut du défilement automatique
-
-    this.autoSlideChange = null; //Appel des méthodes:
+    this.playing = true;
+    this.autoSlideChange = null; //Calling methods:
 
     this.startScrolling();
     this.ifNoContainer();
@@ -38,7 +31,7 @@ var Carousel = /*#__PURE__*/function () {
     this.clicBtnPrev();
     this.clickBtnPause();
     this.jsCheckForSlides();
-  } //Positionement des slides si JS est bien chargé :
+  } //If JS is load :
 
 
   _createClass(Carousel, [{
@@ -49,7 +42,7 @@ var Carousel = /*#__PURE__*/function () {
       for (var i = 0; i < this.slides.length; i++) {
         selfThis.slides[i].style.position = 'absolute';
       }
-    } // Méthode si aucun ID n'est spécifié à la création d'un nouveau diaporama:
+    } //If no "id" is specify when creating the object:
 
   }, {
     key: "ifNoContainer",
@@ -57,50 +50,43 @@ var Carousel = /*#__PURE__*/function () {
       if (this.container == false) {
         console.log("Veuillez sélectionner un containerId en paramètre lors de la construction de votre diaporama");
       }
-    } //Défilement automatique:
-
+    }
   }, {
     key: "startScrolling",
     value: function startScrolling() {
       //this.pauseBtn.innerHTML = 'Appuyer pour arreter le diaporama';
       this.playing = true; //Changement du statut du défilement automatique.
-      //Interval de défilement automatique:
+      //Interval:
 
       var selfThis = this;
       this.autoSlideChange = setInterval(function () {
         selfThis.nextSlide();
       }, 5000);
-    } //Arret du défilement automatique:
-
+    }
   }, {
     key: "stopScrolling",
     value: function stopScrolling() {
       //this.pauseBtn.innerHTML = 'Diaporama en pause.';
-      this.playing = false; //Arret du défilement automatique:
-
+      this.playing = false;
       clearTimeout(this.autoSlideChange);
-    } //Méthode principale de changement de slide:
-
+    }
   }, {
     key: "goToSlide",
     value: function goToSlide(n) {
       this.slides[this.currentSlide].className = 'slide';
       this.currentSlide = (n + this.slides.length) % this.slides.length;
       this.slides[this.currentSlide].className = 'slide showing';
-    } //Méthode pour avancer d'un slide:
-
+    }
   }, {
     key: "nextSlide",
     value: function nextSlide() {
       this.goToSlide(this.currentSlide + 1);
-    } //Méthode pour reculer d'un slide:
-
+    }
   }, {
     key: "previousSlide",
     value: function previousSlide() {
       this.goToSlide(this.currentSlide - 1);
-    } //Methode lors du clic sur bouton avancer
-
+    }
   }, {
     key: "clicBtnNext",
     value: function clicBtnNext() {
@@ -110,8 +96,7 @@ var Carousel = /*#__PURE__*/function () {
         selfThis.stopScrolling();
         selfThis.nextSlide();
       };
-    } //Methode lors du clic sur bouton reculer
-
+    }
   }, {
     key: "clicBtnPrev",
     value: function clicBtnPrev() {
@@ -121,8 +106,7 @@ var Carousel = /*#__PURE__*/function () {
         selfThis.stopScrolling();
         selfThis.previousSlide();
       };
-    } //Méthode lors du clic sur le bouton pause
-
+    }
   }, {
     key: "clickBtnPause",
     value: function clickBtnPause() {

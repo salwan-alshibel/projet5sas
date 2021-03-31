@@ -6,6 +6,18 @@ module.exports = {
       colors: {
         'custom-dark': '#0f0f0f',
         'custom-grey': '#2b2b2b',
+
+        '00DP': '#121212',
+        '01DP': '#1e1e1e',
+        '02DP': '#232323',
+        '03DP': '#252525',
+        '04DP': '#272727',
+        '06DP': '#2c2c2c',
+        '08DP': '#2e2e2e',
+        '12DP': '#333333',
+        '16DP': '#363636',
+        '24DP': '#383838',
+
         'mine-shaft': {
           DEFAULT: '#2B2B2B',
           '50': '#9E9E9E',

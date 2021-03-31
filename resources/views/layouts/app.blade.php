@@ -10,8 +10,8 @@
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:200,400&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet"> 
 </head>
-<body class="bg-custom-grey work-sans max-w-screen-2xl m-auto">
-    <nav class="pt-8 sd:pt-2 bg-white z-50 flex flex-col justify-between mb-6 fixed w-full max-w-screen-2xl">
+<body class="bg-00DP work-sans max-w-screen-2xl m-auto">
+    <nav class="pt-8 sd:pt-2 text-white bg-04DP z-50 flex flex-col justify-between mb-6 fixed w-full max-w-screen-2xl">
         <div class="w-full container mx-auto flex items-center justify-between border-b-2 border-solid border-black">
 
             <label for="menu-toggle" class="cursor-pointer md:hidden block">
@@ -104,15 +104,7 @@
                 </li>
             </ul>
         </div>
-
-
-
-
-
-
-
-
-
+        
         <div class="flex justify-center max-h-16">
             <ul class="flex items-center">
                 <li class="px-5">

@@ -48,11 +48,9 @@ Route::get('/', function () {
 
 
 //Home:
-Route::get('/', function () {
-    return view('home');
-})->name('home');
-Route::get('Accueil', [HomeController::class, 'index'])->name('home');
+Route::get('/', function () {return view('home');})->name('home');
 
+Route::get('Accueil', [HomeController::class, 'index'])->name('home');
 
 Route::get('/dashboard', [DashboardController::class, 'index'])
     ->name('dashboard');
