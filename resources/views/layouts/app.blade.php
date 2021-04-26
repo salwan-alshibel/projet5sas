@@ -10,8 +10,8 @@
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:200,400&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet"> 
 </head>
-<body class="bg-00DP work-sans max-w-screen-2xl m-auto">
-    <nav class="pt-8 sd:pt-2 text-white bg-04DP z-50 flex flex-col justify-between mb-6 fixed w-full max-w-screen-2xl">
+<body class="bg-mine-shaft-500 dark:bg-00DP work-sans max-w-screen-2xl m-auto">
+    <nav class="pt-8 sd:pt-2 bg-white dark:text-white dark:bg-04DP z-50 flex flex-col justify-between mb-6 fixed w-full max-w-screen-2xl">
         <div class="w-full container mx-auto flex items-center justify-between border-b-2 border-solid border-black">
 
             <label for="menu-toggle" class="cursor-pointer md:hidden block">
@@ -122,7 +122,30 @@
             </ul>
         </div>
     </nav>
+
+
     @yield('content')
+
+
+    <footer class="bg-01DP py-16">
+        <div class="container flex justify-around text-white m-auto">
+            <div>
+                <p class="text-2xl pb-4">Infos pratiques</p>
+                <ul>
+                    <li><a class="hover:underline" href="{{ route('info_safe_payment') }}">Paiement sécurisé</a></li>
+                    <li><a class="hover:underline" href="{{ route('info_sales_conditions') }}">Conditions de vente</a></li>
+                </ul>
+            </div>
+            <div>
+                <p class="text-2xl pb-4">Coordonnées</p>
+                <ul>
+                    <li>01 23 45 67 89</li>
+                    <li>Email</li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
     <script src="{{asset('js/carousel.js')}}"></script>
     <script src="{{asset('js/app.js')}}"></script>
     <script src="{{asset('js/custom.js')}}"></script>

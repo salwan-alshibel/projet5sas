@@ -9,6 +9,8 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\PostLikeController;
 use App\Http\Controllers\UserPostController;
 use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\InfoController;
+
 
 use Illuminate\Support\Facades\Route;
 // use App\Http\Controllers\MainController;
@@ -47,7 +49,6 @@ Route::get('/', function () {
 // Route::get('/user/{id}', [UserController::class, 'show']);
 
 
-//Home:
 Route::get('/', function () {return view('home');})->name('home');
 
 Route::get('Accueil', [HomeController::class, 'index'])->name('home');
@@ -78,3 +79,7 @@ Route::get('/users/{user:username}/posts', [UserPostController::class, 'index'])
 Route::get('Warhammer-Age-of-Sigmar', [ProductsController::class, 'waos'])->name('waos');
 Route::get('Warhammer-40-000', [ProductsController::class, 'w40k'])->name('w40k');
 Route::get('Peintures', [ProductsController::class, 'paints'])->name('paints');
+
+
+Route::get('info-paiement-sécurisé', [InfoController::class, 'info_safe_payment'])->name('info_safe_payment');
+Route::get('conditions-de-ventes', [InfoController::class, 'info_sales_conditions'])->name('info_sales_conditions');

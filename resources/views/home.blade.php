@@ -25,9 +25,9 @@
 
 @section('content')
 
-    <section id="carousel_section" class="bg-01DP">
+    <section id="carousel_section" class="bg-dusty-gray-100 dark:bg-01DP pb-20">
         <div class="flex justify-center">
-            <div class="w-full p-6 rounded-lg text-white mt-40 md:mt-40 text-center">
+            <div class="w-full p-6 rounded-lg dark:text-white mt-40 md:mt-40 text-center">
                 Nouveautés
             </div>
         </div>
@@ -56,8 +56,8 @@
                     <span class="carousel-control-pause-icon"><i class="fas fa-pause-circle"></i></span>
                     <span class="visually-hidden">Pause</span></button>
                 <button class="carousel-control-next right-0">
-                    <span class="carousel-control-next-icon"><i class="fas fa-arrow-circle-right"></i></span>
                     <span class="visually-hidden">Suivant</span>
+                    <span class="carousel-control-next-icon"><i class="fas fa-arrow-circle-right"></i></span>
                 </button>
             </div>
         </div>
@@ -65,9 +65,9 @@
 
     
 
-    <section id="new-products" class="mt-20 flex flex-col items-center justify-center">
+    <section id="new-products" class="bg-dusty-gray-200 flex flex-col items-center justify-center pt-10 pb-16">
         <div class="flex justify-center">
-            <div class="w-full p-6 text-white rounded-lg text-center">
+            <div class="w-full p-6 dark:text-white rounded-lg text-center">
                 En promo
             </div>
         </div>
@@ -112,7 +112,20 @@
         </a> --}}
     </section>
 
-    <section id="presentations" class="my-20 min-h-screen">
-Presentations ici
+    <section id="presentations" class="">
+        <div class="bg-white">
+            <div class="md:flex">
+                <div class="flex flex-row items-center md:flex-shrink-0 bg-04DP">
+                    <img class="m-8" src="{{url('/images/Figurines and co 2021-03-31.jpg')}}" alt="Nouveauté en magasin">
+                </div>
+                <div class="md:p-20">
+                    <div class="uppercase tracking-wide text-sm text-black font-semibold">Figurines&Co</div>
+                    <div class="block mt-1 text-lg leading-tight font-medium text-black">Figurine titre</div>
+                    <p class="mt-2 p-4 sm:p-0 text-gray-500">Présentation.Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima tenetur quas, maxime corporis expedita quo, doloremque dignissimos, ad eum cupiditate tempore soluta dolore doloribus officia amet. Tenetur obcaecati similique placeat. 
+                    Présentation.Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima tenetur quas, maxime corporis expedita quo, doloremque dignissimos, ad eum cupiditate tempore soluta dolore doloribus officia amet. Tenetur obcaecati similique placeat.
+                    </p>
+                </div>
+            </div>
+        </div>
     </section>
 @endsection
