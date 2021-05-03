@@ -50,17 +50,24 @@ Route::get('/', function () {
 
 
 Route::get('/', function () {return view('home');})->name('home');
+Route::redirect('/', '/accueil');
 
-Route::get('Accueil', [HomeController::class, 'index'])->name('home');
+Route::get('accueil', [HomeController::class, 'index'])->name('home');
+//Route::get('accueil', [HomeController::class, 'allProducts']);
+// Route::get('Accueil', [ProductsController::class, 'allProducts']);
+
 
 Route::get('/dashboard', [DashboardController::class, 'index'])
     ->name('dashboard');
     //->middleware('auth');
 
+
 Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
+
 
 Route::get('login', [LoginController::class, 'index'])->name('login');
 Route::post('login', [LoginController::class, 'store']);
+
 
 Route::get('register', [RegisterController::class, 'index'])->name('register');
 Route::post('register', [RegisterController::class, 'store']);
@@ -73,7 +80,9 @@ Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.
 Route::post('/posts/{post}/likes', [PostLikeController::class, 'store'])->name('posts.likes');
 Route::delete('/posts/{post}/likes', [PostLikeController::class, 'destroy'])->name('posts.likes');
 
+
 Route::get('/users/{user:username}/posts', [UserPostController::class, 'index'])->name('users.posts');
+
 
 //Products Pages:
 Route::get('Warhammer-Age-of-Sigmar', [ProductsController::class, 'waos'])->name('waos');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Message;
+use App\Models\Product;
 
 class HomeController extends Controller
 {
@@ -15,6 +16,17 @@ class HomeController extends Controller
         //     'messages' => $messages
         // ]);
 
-        return view('home');
+        $products = Product::all();
+        //dd($products);
+        return view('home', ['products' => $products]);
+    }
+
+    public function allProducts() {
+        // SELECT * FROM Products
+        
+        $products = Product::all();
+        dd($products);
+        return $products
+        ;
     }
 }
