@@ -95,6 +95,11 @@
             @include('products.cards')
         </div>
 
+        <div class="grid grid-cols-1 xl:grid-cols-2 gap-4">
+            @include('products.home_page_products')
+        </div>
+
+
         
         {{-- <a href="">
             <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl hover:underline">
