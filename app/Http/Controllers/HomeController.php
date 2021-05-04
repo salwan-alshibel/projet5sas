@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Message;
 use App\Models\Product;
+use App\Models\Products_image;
+
 
 class HomeController extends Controller
 {
@@ -18,15 +20,17 @@ class HomeController extends Controller
 
         $products = Product::all();
         //dd($products);
-        return view('home', ['products' => $products]);
+        $productsImages = Products_image::all();
+        //dd($productsImages);
+        return view('home', ['products' => $products], ['productsImages' => $productsImages]);
     }
 
-    public function allProducts() {
-        // SELECT * FROM Products
+    // public function allProducts() {
+    //     // SELECT * FROM Products
         
-        $products = Product::all();
-        dd($products);
-        return $products
-        ;
-    }
+    //     $products = Product::all();
+    //     dd($products);
+    //     return $products
+    //     ;
+    // }
 }
