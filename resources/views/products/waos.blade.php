@@ -2,7 +2,7 @@
 
 
 @section('content')
-    <div class="container pt-36 md:flex">
+    <div class="container md:flex">
         <div class="w-full md:w-1/5">
             <div>
                 <input type="search" id="myInput" onkeyup="window.search()" placeholder="Rechercher..." >

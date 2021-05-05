@@ -27,7 +27,7 @@
 
     <section id="carousel_section" class="bg-dusty-gray-100 dark:bg-01DP pb-20">
         <div class="flex justify-center">
-            <div class="w-full p-6 rounded-lg dark:text-white mt-40 md:mt-40 text-center">
+            <div class="w-full p-6 rounded-lg dark:text-white text-center">
                 Nouveautés
             </div>
         </div>
