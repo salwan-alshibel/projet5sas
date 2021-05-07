@@ -151,7 +151,7 @@
 
 
 /************************************************
----------------------Sidebar---------------------
+-----------------Dahsboard Sidebar---------------
 ************************************************/
 
 .sidebar-item {
@@ -163,7 +163,44 @@
     color: #fff;
 }
 
-.sidebar-link {
+.sidebar-nav p {
+    display: inline;
+}
+
+.sidebar-nav a {
+    display: block;
+    position: relative;
+}
+
+.sidebar-nav .nav-icon{
+    width: 1.6rem;
+    margin-left: .05rem;
+    font-size: 1.2rem;
+    margin-right: .2rem;
+    text-align: center;
+}
+
+.sidebar-nav-link {
+    padding: 0.5rem 1rem;
+    color: #c2c7d0;
+    margin-bottom: 0.2rem;
+    border-radius: 0.25rem;
+}
+
+.sidebar-nav-link p i.right.fas {
+    position: absolute;
+    right: 1rem;
+    top: .7rem;
+}
+
+.sidebar-nav-treeview {
+    display: none;
+}
+
+.show {
     display: block;
 }
 
+.rotateArrow {
+    transform: rotate(-90deg);
+}
