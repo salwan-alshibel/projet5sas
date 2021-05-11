@@ -1,8 +1,4 @@
-@extends('layouts.app')
-
-
-@section('content')
-<aside class="sidebar-container absolute text-outer-space-100 bg-outer-space-500 w-60 ">
+<aside class="sidebar-container absolute text-outer-space-100 bg-outer-space-500 w-60 h-full ">
 
     <!-- Sidebar -->
     <div class="sidebar px-2 my-4">
@@ -28,22 +24,22 @@
                 <!-- Add icons to the links using the .nav-icon class
                  with font-awesome or any other icon font library -->
                 <li class="sidebar-nav-item">
-                    <a href="#"  class="drop sidebar-nav-link">
+                    <a href="#" id="myProfileBtn" class="drop sidebar-nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Mon profil
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
-                    <ul id="myDropdown" class="sidebar-nav-treeview">
+                    <ul class="sidebar-nav-treeview">
                         <li class="sidebar-nav-item">
-                            <a href="./index.html" class="sidebar-nav-link">
+                            <a href="{{ route('dashboard.modifier-profil') }}" id="modifier-profil" class="sidebar-nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Mes infos</p>
                             </a>
                         </li>
                         <li class="sidebar-nav-item">
-                            <a href="./index2.html" class="sidebar-nav-link">
+                            <a href="/dashboard" class="sidebar-nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Infos de Connexion</p>
                             </a>
@@ -65,7 +61,7 @@
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
-                    <ul id="myorder" class="sidebar-nav-treeview">
+                    <ul class="sidebar-nav-treeview">
                         <li class="sidebar-nav-item">
                             <a href="pages/layout/top-nav.html" class="sidebar-nav-link">
                                 <i class="far fa-circle nav-icon"></i>
@@ -112,36 +108,3 @@
     </div>
     <!-- /.sidebar -->
 </aside>
-
-
-<div class="flex justify-center">
-    <div class="w-8/12 bg-white p-6 rounded-lg">
-        Dashboard
-    </div>
-</div>
-
-
-
-<script>
-    const testElement = document.getElementsByClassName('right fas fa-angle-left');
-    console.log(testElement);
-
-    document.querySelectorAll('.drop').forEach(item => {
-        item.addEventListener('click', event => {
-            item.nextElementSibling.classList.toggle("show");
-            const iElement = item.querySelectorAll('i');
-            
-            for (let i = 0; i < iElement.length; ++i) {
-                if(iElement[i].classList.contains('fa-angle-left')){
-                    iElement[i].classList.toggle("rotateArrow");
-                }
-            }
-        })
-    })
-
-// window.onclick = e => {
-//     console.log(e.target);  // to get the element
-//     console.log(e.target.tagName);  // to get the element tag name alone
-// }
-</script>
-@endsection

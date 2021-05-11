@@ -57,9 +57,10 @@ Route::get('accueil', [HomeController::class, 'index'])->name('home');
 // Route::get('Accueil', [ProductsController::class, 'allProducts']);
 
 
-Route::get('/dashboard', [DashboardController::class, 'index'])
-    ->name('dashboard');
+Route::get('/mon-profil', [DashboardController::class, 'index'])->name('dashboard');
     //->middleware('auth');
+Route::get('/dashboard/modifier-profil', [DashboardController::class, 'updateProfile'])->name('dashboard.modifier-profil');
+
 
 
 Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
