@@ -42,9 +42,11 @@ document.querySelectorAll('.drop').forEach(item => {
     const thisURL = window.location.pathname;
 	const lastSegment = thisURL.split("/").pop();
 
+	console.log(thisURL);
+
     //If last part of the URL match a link in the sidebar,
-	//we simulate a click to open the corresponding section
-    if (lastSegment == "modifier-profil") {
+	//simulate a click to open the corresponding section :
+    if (lastSegment == "modifier-profil" || lastSegment == "changer-mot-de-passe" || lastSegment == "mes-commentaires") {
     	document.getElementById('myProfileBtn').click();
     }
 

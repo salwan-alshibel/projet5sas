@@ -13,11 +13,18 @@ class DashboardController extends Controller
     
     public function index() {
         //dd(auth()->user()->posts);
-        return view('dashboard.homeDashboard');
+        return view('dashboard.dashboard_home');
     }
 
     public function updateProfile() {
-        //dd(auth()->user()->posts);
-        return view('dashboard.updateProfile');
+        return view('dashboard.dashboard_profile');
+    }
+
+    public function updatePassword() {
+        return view('dashboard.dashboard_password');
+    }
+
+    public function myPosts() {
+        return view('dashboard.dashboard_posts');
     }
 }

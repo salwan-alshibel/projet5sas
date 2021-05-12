@@ -3,7 +3,9 @@
     <!-- Sidebar -->
     <div class="sidebar px-2 my-4">
         <div class="sidebar-item border-b border-outer-space-400 py-3 text-center">
-            <a href="{{ route('dashboard') }}" class="block">Mon espace</a>
+            <a href="{{ route('dashboard') }}" class="block">
+                <i class="fas fa-arrow-left"></i>
+                Mon espace</a>
         </div>
 
         <!-- SidebarSearch Form -->
@@ -27,27 +29,27 @@
                     <a href="#" id="myProfileBtn" class="drop sidebar-nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
-                            Mon profil
+                            Profil
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
                     <ul class="sidebar-nav-treeview">
                         <li class="sidebar-nav-item">
                             <a href="{{ route('dashboard.modifier-profil') }}" id="modifier-profil" class="sidebar-nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Mes infos</p>
+                                <i class="fas fa-arrow-right nav-icon"></i>
+                                <p>Nom, adresse...</p>
                             </a>
                         </li>
                         <li class="sidebar-nav-item">
-                            <a href="/dashboard" class="sidebar-nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Infos de Connexion</p>
+                            <a href="{{ route('updatePassword') }}" id="changer-mot-de-passe" class="sidebar-nav-link">
+                                <i class="fas fa-arrow-right nav-icon"></i>
+                                <p>Mot de passe</p>
                             </a>
                         </li>
                         <li class="sidebar-nav-item">
-                            <a href="./index3.html" class="sidebar-nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Mes commentaires</p>
+                            <a href="{{ route('myPosts', auth()->user()) }}" id="mes-commentaires" class="sidebar-nav-link">
+                                <i class="fas fa-arrow-right nav-icon"></i>
+                                <p>Commentaires</p>
                             </a>
                         </li>
                     </ul>
@@ -57,20 +59,20 @@
                     <a href="#myorder" class="drop sidebar-nav-link">
                         <i class="nav-icon fas fa-copy"></i>
                         <p>
-                            Mes commandes
+                            Commandes
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
                     <ul class="sidebar-nav-treeview">
                         <li class="sidebar-nav-item">
                             <a href="pages/layout/top-nav.html" class="sidebar-nav-link">
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="fas fa-arrow-right nav-icon"></i>
                                 <p>En cours</p>
                             </a>
                         </li>
                         <li class="sidebar-nav-item">
                             <a href="pages/layout/top-nav-sidebar.html" class="sidebar-nav-link">
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="fas fa-arrow-right nav-icon"></i>
                                 <p>Historique</p>
                             </a>
                         </li>
@@ -80,7 +82,7 @@
                 <li class="nav-header">Espace administration</li>
                 <li class="sidebar-nav-item">
                     <a href="pages/calendar.html" class="sidebar-nav-link">
-                        <i class="far fa-circle nav-icon"></i>
+                        <i class="fas fa-arrow-right nav-icon"></i>
                         <p>
                             Ajouter un produit
                         </p>
@@ -88,7 +90,7 @@
                 </li>
                 <li class="sidebar-nav-item">
                     <a href="pages/calendar.html" class="sidebar-nav-link">
-                        <i class="far fa-circle nav-icon"></i>
+                        <i class="fas fa-arrow-right nav-icon"></i>
                         <p>
                             Commandes en cours
                         </p>
@@ -96,7 +98,7 @@
                 </li>
                 <li class="sidebar-nav-item">
                     <a href="pages/calendar.html" class="sidebar-nav-link">
-                        <i class="far fa-circle nav-icon"></i>
+                        <i class="fas fa-arrow-right nav-icon"></i>
                         <p>
                             Commandes envoyées
                         </p>

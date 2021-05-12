@@ -1,4 +1,4 @@
-<nav class="pt-8 sd:pt-2 bg-white dark:text-white dark:bg-04DP z-50 flex flex-col justify-between mb-6 fixed w-full max-w-screen-2xl">
+<nav class="pt-8 sd:pt-2 bg-white dark:text-white dark:bg-04DP z-50 flex flex-col justify-between mb-6 fixed w-full">
     <div class="w-full container mx-auto flex items-center justify-between border-b-2 border-solid border-black">
 
         <label for="menu-toggle" class="cursor-pointer md:hidden block">

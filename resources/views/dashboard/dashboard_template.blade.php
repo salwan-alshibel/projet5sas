@@ -1,8 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-    @include('dashboard.asideNavbar')
-
+    {{-- @include('dashboard.asideNavbar') --}}
+    @include('dashboard.dashboard_aside_nav')
+    
     <section class="dashboard-content">
         @yield('dashboard-content')
     </section>

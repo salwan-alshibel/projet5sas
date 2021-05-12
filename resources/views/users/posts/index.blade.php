@@ -17,6 +17,7 @@
                     @endforeach
 
                     {{ $posts->links() }}
+                    {{ $posts }}
                 @else
                     <p>{{ $user->name }} n'a pas écrit de commentaires.</p>
                 @endif

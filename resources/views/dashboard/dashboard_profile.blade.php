@@ -1,61 +1,123 @@
-@extends('dashboard.dashboard')
-
+{{-- @extends('dashboard.dashboard') --}}
+@extends('dashboard.dashboard_template')
 
 @section('dashboard-content')
 
 
+<div class="min-h-screen bg-outer-space-700 p-0 md:p-12 text-white">
 
-    {{-- <div class="w-8/12 bg-white p-6 rounded-lg">
-        Modifier profil
-        <div>Modifier votre nom :
-            <form action="" method="post" name="changeNameForm" class="default-form">
-                <div class="form-group">
-                    <label for="changeName">Nom</label>
-                    <input type="hidden" name="id" value="" />
-                    <input type="hidden" name="modifyType" value="modifyName" />
-                    <input type="text" name="newName" class="form-control" id="changeName" placeholder="" required>
-                </div>
-                <button type="submit" name="submit" class="btn btn-primary">Valider</button>
-            </form>
-        </div>
-    </div> --}}
+	<div class="max-h-96 mx-auto md:max-w-md px-6 py-12 relative w-full">
+		<h1 class="text-2xl font-bold mb-8">Nom - Prénom</h1>
+		<form novalidate>
+			<div class="relative z-0 w-full mb-5">
+				<input
+				type="text"
+				name="name"
+				placeholder=" "
+				required
+				class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
+				/>
 
-<style>
-	.-z-1 {
-		z-index: -1;
-	}
+				<label for="name" class="absolute duration-300 top-3 -z-1 origin-0">Nom</label>
+				<span class="text-sm text-red-600 hidden" id="error">Un nom est obligatoire</span>
+			</div>
+	
+			<div class="relative z-0 w-full mb-5">
+				<input
+				type="text"
+				name="name"
+				placeholder=" "
+				required
+				class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
+				/>
 
-	.origin-0 {
-		transform-origin: 0%;
-	}
+				<label for="name" class="absolute duration-300 top-3 -z-1 origin-0">Prénom</label>
+				<span class="text-sm text-red-600 hidden" id="error">Un prénom est obligatoire</span>
+			</div>
+			<button
+			id="button"
+			type="button"
+			class="w-full px-6 py-3 mt-3 text-lg text-white transition-all duration-150 ease-linear rounded-lg shadow outline-none bg-blue-500 hover:bg-blue-600 hover:shadow-lg focus:outline-none"
+			>
+			Valider
+			</button>
+		</form>
+	</div>
+	
+	<div class="max-h-96 mx-auto md:max-w-md px-6 py-12  relative w-full">
+			<h1 class="text-2xl font-bold mb-8">Adresse</h1>
+			<form novalidate>
+				<div class="relative z-0 w-full mb-5">
+					<input
+					type="text"
+					name="adress"
+					placeholder=" "
+					required
+					class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
+					/>
+					<label for="name" class="absolute duration-300 top-3 -z-1 origin-0">N° et rue</label>
+					<span class="text-sm text-red-600 hidden" id="error">Une adresse est obligatoire</span>
+				</div>
+				<div class="relative z-0 w-full mb-5">
+					<input
+					type="text"
+					name="adress"
+					placeholder=" "
+					required
+					class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
+					/>
+					<label for="name" class="absolute duration-300 top-3 -z-1 origin-0">Code postal et Ville</label>
+					<span class="text-sm text-red-600 hidden" id="error">Une adresse est obligatoire</span>
+				</div>
+				<button
+				type="button"
+				class="w-full px-6 py-3 mt-3 text-lg text-white transition-all duration-150 ease-linear rounded-lg shadow outline-none bg-blue-500 hover:bg-blue-600 hover:shadow-lg focus:outline-none"
+				>
+				Valider
+				</button>
+			</form>
+	</div>
 
-	input:focus ~ label,
-	input:not(:placeholder-shown) ~ label,
-	textarea:focus ~ label,
-	textarea:not(:placeholder-shown) ~ label,
-	select:focus ~ label,
-	select:not([value='']):valid ~ label {
-		/* @apply transform; scale-75; -translate-y-6; */
-		--tw-translate-x: 0;
-		--tw-translate-y: 0;
-		--tw-rotate: 0;
-		--tw-skew-x: 0;
-		--tw-skew-y: 0;
-		transform: translateX(var(--tw-translate-x)) translateY(var(--tw-translate-y)) rotate(var(--tw-rotate))
-		skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-		--tw-scale-x: 0.75;
-		--tw-scale-y: 0.75;
-		--tw-translate-y: -1.5rem;
-	}
+	<div class="max-h-96 mx-auto md:max-w-md px-6 py-12 relative w-full">
+		<h1 class="text-2xl font-bold mb-8">Email</h1>
+		<form novalidate>
+			<div class="relative z-0 w-full mb-5">
+				<input
+				type="email"
+				name="email"
+				placeholder=" "
+				class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
+				/>
+				<label for="email" class="absolute duration-300 top-3 -z-1 origin-0">Email</label>
+				<span class="text-sm text-red-600 hidden" id="error">L'email est obligatoire</span>
+			</div>
+			<div class="relative z-0 w-full mb-5">
+				<input
+				type="email"
+				name="email"
+				placeholder=" "
+				class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
+				/>
+				<label for="email" class="absolute duration-300 top-3 -z-1 origin-0">Confirmer Email</label>
+				<span class="text-sm text-red-600 hidden" id="error">L'email est obligatoire</span>
+			</div>
+			<button
+			type="button"
+			class="w-full px-6 py-3 mt-3 text-lg text-white transition-all duration-150 ease-linear rounded-lg shadow outline-none bg-blue-500 hover:bg-blue-600 hover:shadow-lg focus:outline-none"
+			>
+			Valider
+			</button>
+		</form>
+	</div>
 
-	input:focus ~ label,
-	select:focus ~ label {
-		/* @apply text-black; left-0; */
-		--tw-text-opacity: 1;
-		color: rgba(0, 0, 0, var(--tw-text-opacity));
-		left: 0px;
-	}
-</style>
+
+
+
+{{-- 
+
+
+
+
 
 <div class="min-h-screen bg-outer-space-700 p-0 md:p-12 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-px md:gap-6">
 
@@ -123,7 +185,6 @@
 					<span class="text-sm text-red-600 hidden" id="error">Une adresse est obligatoire</span>
 				</div>
 				<button
-				id="button"
 				type="button"
 				class="w-full px-6 py-3 mt-3 text-lg text-white transition-all duration-150 ease-linear rounded-lg shadow outline-none bg-blue-500 hover:bg-blue-600 hover:shadow-lg focus:outline-none"
 				>
@@ -156,14 +217,13 @@
 				<span class="text-sm text-red-600 hidden" id="error">L'email est obligatoire</span>
 			</div>
 			<button
-			id="button"
 			type="button"
 			class="w-full px-6 py-3 mt-3 text-lg text-white transition-all duration-150 ease-linear rounded-lg shadow outline-none bg-blue-500 hover:bg-blue-600 hover:shadow-lg focus:outline-none"
 			>
 			Valider
 			</button>
 		</form>
-	</div>
+	</div> --}}
 
 
 
@@ -337,7 +397,9 @@
   </div>
 </div> --}}
 
-<script>
+{{-- <script>
+
+    //Toggle error:
 	'use strict'
 
 	document.getElementById('button').addEventListener('click', toggleError)
@@ -359,7 +421,7 @@
 		el.classList.toggle('text-red-600')
 		})
 	}
-</script>
+</script> --}}
 
 
 @endsection

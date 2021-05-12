@@ -16,4 +16,10 @@ class UserPostController extends Controller
             'posts' => $posts
         ]);
     }
+
+    // public function myPosts(User $user){
+
+
+    //     return view('dashboard.dashboard_posts');
+    // }
 }

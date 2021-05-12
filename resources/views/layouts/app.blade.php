@@ -14,7 +14,7 @@
     </head>
 
 
-    <body class="bg-mine-shaft-500 dark:bg-00DP work-sans max-w-screen-2xl m-auto">
+    <body class="bg-mine-shaft-500 dark:bg-00DP work-sans m-auto">
 
         <div id="main-container">
             @include('layouts.nav')
@@ -26,7 +26,7 @@
             @include('layouts.footer') 
         </div>
 
-        <script src="{{asset('js/carousel.js')}}"></script>
+        {{-- <script src="{{asset('js/carousel.js')}}"></script> --}}
         <script src="{{asset('js/app.js')}}"></script>
         <script src="{{asset('js/custom.js')}}"></script>
 
