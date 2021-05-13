@@ -41,13 +41,12 @@ document.querySelectorAll('.drop').forEach(function (item) {
 //Drop down menu stay open on current page :
 
 var thisURL = window.location.pathname;
-var lastSegment = thisURL.split("/").pop();
-console.log(thisURL); //If last part of the URL match a link in the sidebar,
+var lastSegment = thisURL.split("/").pop(); //console.log(thisURL);
+//If last part of the URL match a link in the sidebar,
 //simulate a click to open the corresponding section :
-
-if (lastSegment == "modifier-profil" || lastSegment == "changer-mot-de-passe" || lastSegment == "mes-commentaires") {
-  document.getElementById('myProfileBtn').click();
-}
+// if (lastSegment == "modifier-profil" || lastSegment == "changer-mot-de-passe" || lastSegment == "mes-commentaires") {
+// 	document.getElementById('myProfileBtn').click();
+// }
 
 var aElements = document.querySelectorAll('a');
 
@@ -55,6 +54,8 @@ for (var i = 0; i < aElements.length; ++i) {
   if (aElements[i].id == lastSegment) {
     aElements[i].style.backgroundColor = 'rgba(255,255,255,.9)';
     aElements[i].style.color = '#343a40';
+    var iElement = aElements[i].closest(".parentlist");
+    iElement.querySelector(".drop").click();
   }
 } //Filter on search:
 /******/ })()

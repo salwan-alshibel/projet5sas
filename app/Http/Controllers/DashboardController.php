@@ -28,8 +28,28 @@ class DashboardController extends Controller
         return view('dashboard.dashboard_posts');
     }
 
+    public function myActualOrders() {
+        return view('dashboard.dashboard_myactualorders');
+    }
+
+    public function myOldOrders() {
+        return view('dashboard.dashboard_myoldorders');
+    }
+
+
+
+    //DASHBOARD ADMIN
     public function addProduct() {
         return view('dashboard.admin.dashboard_products_admin');
     }
+
+    public function oldOrders() {
+        return view('dashboard.admin.dashboard_oldorders_admin');
+    }
+
+    public function newOrders() {
+        return view('dashboard.admin.dashboard_neworders_admin');
+    }
+
 
 }

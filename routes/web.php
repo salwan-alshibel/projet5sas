@@ -57,13 +57,19 @@ Route::get('accueil', [HomeController::class, 'index'])->name('home');
 //Route::get('Accueil', [ProductsController::class, 'allProducts']);
 
 
-//DASHBOARD
+//DASHBOARD USERS
 Route::get('/mon-profil', [DashboardController::class, 'index'])->name('dashboard');
     //->middleware('auth');
 Route::get('/dashboard/modifier-profil', [DashboardController::class, 'updateProfile'])->name('dashboard.modifier-profil');
 Route::get('/dashboard/changer-mot-de-passe', [DashboardController::class, 'updatePassword'])->name('updatePassword');
 Route::get('/dashboard/mes-commentaires', [DashboardController::class, 'myPosts'])->name('myPosts');
+Route::get('/dashboard/commandes-en-cours', [DashboardController::class, 'myActualOrders'])->name('myActualOrders');
+Route::get('/dashboard/historique-commandes', [DashboardController::class, 'myOldOrders'])->name('myOldOrders');
+
+//DASHBOARD ADMIN
 Route::get('/dashboard/ajouter-un-produit', [DashboardController::class, 'addProduct'])->name('addProduct');
+Route::get('/dashboard/nouvelles-commandes', [DashboardController::class, 'newOrders'])->name('newOrders');
+Route::get('/dashboard/anciennes-commandes', [DashboardController::class, 'oldOrders'])->name('oldOrders');
 
 
 

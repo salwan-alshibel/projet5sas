@@ -42,13 +42,14 @@ document.querySelectorAll('.drop').forEach(item => {
     const thisURL = window.location.pathname;
 	const lastSegment = thisURL.split("/").pop();
 
-	console.log(thisURL);
+	//console.log(thisURL);
 
     //If last part of the URL match a link in the sidebar,
 	//simulate a click to open the corresponding section :
-    if (lastSegment == "modifier-profil" || lastSegment == "changer-mot-de-passe" || lastSegment == "mes-commentaires") {
-    	document.getElementById('myProfileBtn').click();
-    }
+
+    // if (lastSegment == "modifier-profil" || lastSegment == "changer-mot-de-passe" || lastSegment == "mes-commentaires") {
+    // 	document.getElementById('myProfileBtn').click();
+    // }
 
 	const aElements = document.querySelectorAll('a');
 
@@ -56,7 +57,8 @@ document.querySelectorAll('.drop').forEach(item => {
 		if (aElements[i].id == lastSegment ) {
 			aElements[i].style.backgroundColor = 'rgba(255,255,255,.9)';
 			aElements[i].style.color = '#343a40';
-
+			let iElement = aElements[i].closest(".parentlist");
+			iElement.querySelector(".drop").click();
 		}
 	}
 

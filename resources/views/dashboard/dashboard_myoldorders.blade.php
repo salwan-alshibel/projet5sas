@@ -3,8 +3,8 @@
 @section('dashboard-content')
 
 
-<div class="min-h-screen bg-outer-space-700 p-0 md:p-12 text-white">
-
+<div class="min-h-screen bg-outer-space-700 p-0 md:p-12">
 </div>
+    
 
 @endsection
