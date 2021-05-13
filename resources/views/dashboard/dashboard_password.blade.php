@@ -8,7 +8,7 @@
 
     <div class="max-h-96 mx-auto md:max-w-md px-6 py-12 relative w-full text-white">
 		<h1 class="text-2xl font-bold mb-8">Mot de passe</h1>
-		<form novalidate>
+		<form class="dashboardForm">
 			<div class="relative z-0 w-full mb-5">
 				<input
 				type="text"

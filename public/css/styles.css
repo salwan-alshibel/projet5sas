@@ -234,12 +234,12 @@
     transform-origin: 0%;
 }
 
-input:focus ~ label,
-input:not(:placeholder-shown) ~ label,
-textarea:focus ~ label,
-textarea:not(:placeholder-shown) ~ label,
-select:focus ~ label,
-select:not([value='']):valid ~ label {
+.dashboardForm input:focus ~ label,
+.dashboardForm input:not(:placeholder-shown) ~ label,
+.dashboardForm textarea:focus ~ label,
+.dashboardForm textarea:not(:placeholder-shown) ~ label,
+.dashboardForm select:focus ~ label,
+.dashboardForm select:not([value='']):valid ~ label {
     /* @apply transform; scale-75; -translate-y-6; */
     --tw-translate-x: 0;
     --tw-translate-y: 0;

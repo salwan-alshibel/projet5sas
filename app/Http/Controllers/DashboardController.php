@@ -27,4 +27,9 @@ class DashboardController extends Controller
     public function myPosts() {
         return view('dashboard.dashboard_posts');
     }
+
+    public function addProduct() {
+        return view('dashboard.admin.dashboard_products_admin');
+    }
+
 }

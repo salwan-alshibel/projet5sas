@@ -4,7 +4,7 @@
 @section('content')
 <div class="relative min-h-screen">
     <div class="flex justify-center absolute w-full top-1/4 ">
-        <div class="w-4/12 bg-white p-6 rounded-lg">
+        <div class="w-full md:bg-white p-6 md:rounded-lg max-w-lg">
 
             @if (session('status'))
             <div class="bg-red-500 p-4 rounded-lg mb-6 text-white text-center">
@@ -42,9 +42,9 @@
                 </div>
 
                 <div class="mb-4">
-                    <div class="flex items-center">
-                        <input type="checkbox" name="remember" id="remember" class="mr-2">
-                        <label for="remember">Remember me</label>
+                    <div class="text-black">
+                        <input type="checkbox" name="remember" id="remember" class="mr-2 text-black">
+                        <label for="remember" class="text-black">Remember me</label>
                     </div>
                 </div>
 

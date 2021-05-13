@@ -79,7 +79,44 @@
                     </ul>
                 </li>
 
-                <li class="nav-header">Espace administration</li>
+                @if (auth()->user()->admin === 1)
+
+
+                <li class="sidebar-nav-item">
+                    <a href="#" id="" class="drop sidebar-nav-link">
+                        <i class="fas fa-store nav-icon"></i>
+                        <p>
+                            Espace administration
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="sidebar-nav-treeview">
+                        <li class="sidebar-nav-item">
+                            <a href="{{ route('addProduct')}}" id="" class="sidebar-nav-link">
+                                <i class="fas fa-arrow-right nav-icon"></i>
+                                <p>Ajouter un produit</p>
+                            </a>
+                        </li>
+                        <li class="sidebar-nav-item">
+                            <a href="#" id="" class="sidebar-nav-link">
+                                <i class="fas fa-arrow-right nav-icon"></i>
+                                <p>Commandes en cours</p>
+                            </a>
+                        </li>
+                        <li class="sidebar-nav-item">
+                            <a href="#" id="" class="sidebar-nav-link">
+                                <i class="fas fa-arrow-right nav-icon"></i>
+                                <p>Commandes envoyées</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+
+
+
+                    
+                {{-- <li class="nav-header">Espace administration</li>
                 <li class="sidebar-nav-item">
                     <a href="pages/calendar.html" class="sidebar-nav-link">
                         <i class="fas fa-arrow-right nav-icon"></i>
@@ -103,7 +140,8 @@
                             Commandes envoyées
                         </p>
                     </a>
-                </li>
+                </li> --}}
+                @endif
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

@@ -63,6 +63,9 @@ Route::get('/mon-profil', [DashboardController::class, 'index'])->name('dashboar
 Route::get('/dashboard/modifier-profil', [DashboardController::class, 'updateProfile'])->name('dashboard.modifier-profil');
 Route::get('/dashboard/changer-mot-de-passe', [DashboardController::class, 'updatePassword'])->name('updatePassword');
 Route::get('/dashboard/mes-commentaires', [DashboardController::class, 'myPosts'])->name('myPosts');
+Route::get('/dashboard/ajouter-un-produit', [DashboardController::class, 'addProduct'])->name('addProduct');
+
+
 
 
 //LOGIN LOGOUT REGISTER

@@ -8,7 +8,7 @@
 
 	<div class="max-h-96 mx-auto md:max-w-md px-6 py-12 relative w-full">
 		<h1 class="text-2xl font-bold mb-8">Nom - Prénom</h1>
-		<form novalidate>
+		<form class="dashboardForm">
 			<div class="relative z-0 w-full mb-5">
 				<input
 				type="text"
@@ -46,7 +46,7 @@
 	
 	<div class="max-h-96 mx-auto md:max-w-md px-6 py-12  relative w-full">
 			<h1 class="text-2xl font-bold mb-8">Adresse</h1>
-			<form novalidate>
+			<form class="dashboardForm">
 				<div class="relative z-0 w-full mb-5">
 					<input
 					type="text"
@@ -80,7 +80,7 @@
 
 	<div class="max-h-96 mx-auto md:max-w-md px-6 py-12 relative w-full">
 		<h1 class="text-2xl font-bold mb-8">Email</h1>
-		<form novalidate>
+		<form class="dashboardForm">
 			<div class="relative z-0 w-full mb-5">
 				<input
 				type="email"
