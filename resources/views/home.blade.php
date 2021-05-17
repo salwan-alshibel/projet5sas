@@ -27,8 +27,8 @@
 
     <section id="carousel_section" class="bg-dusty-gray-100 dark:bg-01DP pb-20">
         <div class="flex justify-center">
-            <div class="w-full p-6 rounded-lg dark:text-white text-center">
-                Nouveautés
+            <div class="w-full p-6 rounded-lg dark:text-white text-center text-2xl">
+                A la une
             </div>
         </div>
         <div id="carousel" class="relative">
@@ -67,8 +67,8 @@
 
     <section id="new-products" class="bg-dusty-gray-200 flex flex-col items-center justify-center pt-10 pb-16">
         <div class="flex justify-center">
-            <div class="w-full p-6 dark:text-white rounded-lg text-center">
-                En promo
+            <div class="w-full p-6 dark:text-white rounded-lg text-center text-2xl">
+                Nouveautés
             </div>
         </div>
     
@@ -84,7 +84,7 @@
             <a href="" class="bg-white p-3 rounded">9</a>
         </div> --}}
 
-        <div class="grid grid-cols-1 xl:grid-cols-2 gap-4">
+        {{-- <div class="grid grid-cols-1 xl:grid-cols-2 gap-4">
             @include('products.cards')
             @include('products.cards')
             @include('products.cards')
@@ -93,7 +93,7 @@
             @include('products.cards')
             @include('products.cards')
             @include('products.cards')
-        </div>
+        </div> --}}
 
         <div class="grid grid-cols-1 xl:grid-cols-2 gap-4">
             @include('products.home_page_products')
