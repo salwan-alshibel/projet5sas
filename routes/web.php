@@ -99,6 +99,7 @@ Route::get('/users/{user:username}/posts', [UserPostController::class, 'index'])
 Route::get('Warhammer-Age-of-Sigmar', [ProductsController::class, 'waos'])->name('waos');
 Route::get('Warhammer-40-000', [ProductsController::class, 'w40k'])->name('w40k');
 Route::get('Peintures', [ProductsController::class, 'paints'])->name('paints');
+Route::get('product/{id}/{slug}', [ProductsController::class, 'product'])->name('product');
 
 
 //SALES CONDITIONS

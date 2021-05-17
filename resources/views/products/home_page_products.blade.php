@@ -12,7 +12,7 @@
 
 
     @foreach ($products as $product)
-    <a href="#">
+    <a href="{{ route('product', [$product->id, $product->slug]) }}">
         <div class="max-w-md h-72 mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl hover:underline">
             <div class="md:flex">
                 <div class="md:flex-shrink-0">
