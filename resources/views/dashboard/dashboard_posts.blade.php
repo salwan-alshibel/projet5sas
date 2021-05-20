@@ -17,7 +17,7 @@
                 <div class="p-6 rounded-lg">
                     @if (auth()->user())
 
-                        @foreach (auth()->user()->posts as $post)
+                        @foreach ($posts as $post)
                             <div class="border-white border-solid border-t">
                                <x-post :post="$post" /> 
                             </div>

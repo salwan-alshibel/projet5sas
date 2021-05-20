@@ -25,8 +25,12 @@ class DashboardController extends Controller
     }
 
     public function myPosts() {
-        return view('dashboard.dashboard_posts');
+        return view('dashboard.dashboard_posts')->with([
+            'posts'=>auth()->user()->posts
+        ]);
     }
+
+
 
     public function myActualOrders() {
         return view('dashboard.dashboard_myactualorders');
