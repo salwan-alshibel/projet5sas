@@ -101,6 +101,8 @@ Route::get('Warhammer-40-000', [ProductsController::class, 'w40k'])->name('w40k'
 Route::get('Peintures', [ProductsController::class, 'paints'])->name('paints');
 Route::get('product/{id}/{slug}', [ProductsController::class, 'product'])->name('product');
 
+Route::get('product', [ProductsController::class, 'viewByCategory'])->name('viewByCategory');
+
 
 //SALES CONDITIONS
 Route::get('info-paiement-sécurisé', [InfoController::class, 'info_safe_payment'])->name('info_safe_payment');

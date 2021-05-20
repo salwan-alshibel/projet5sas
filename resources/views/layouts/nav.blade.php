@@ -92,7 +92,7 @@
         </ul>
     </div>
     
-    <div class="flex justify-center max-h-16">
+    {{-- <div class="flex justify-center max-h-16">
         <ul class="flex items-center">
             <li class="px-5">
                 <a href="{{ route('waos') }}" class="p-3"><img src="{{url('/images/New_AOS_Logo.webp')}}" alt="Warhammer Age of Sigmar"/>
@@ -106,6 +106,18 @@
                 <a href="{{ route('paints') }}" class="p-3"><img src="{{url('/images/peintures.jpg')}}" alt="Peintures"/>
                 <span class="nav_link_text">Peintures</span></a>
             </li>
+        </ul>
+    </div> --}}
+
+
+    <div class="flex justify-center max-h-16">
+        <ul class="flex items-center">
+            @foreach ($categories as $item)
+                <li class="px-5">
+                    <a href="{{ route('viewByCategory') }}" class="p-3"><img src="{{ asset('images/categories_images/'. $item->image) }}" alt= {{$item->name}} />
+                    <span class="nav_link_text">{{$item->name}}</span></a>
+                </li>
+            @endforeach
         </ul>
     </div>
 </nav>
