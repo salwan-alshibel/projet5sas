@@ -5,11 +5,12 @@
 <div class="flex justify-center">
 
     <div class="m-16 flex flex-row items-center justify-evenly">
-        <div class="bg-white rounded-lg"> 
-            <img class="h-72 w-full md:w-48 object-contain" src="{{ asset('images/products_images/'. $productImages->{'1st_img'}) }}" alt="product image"> 
+        <div class="bg-white rounded-lg">
+            {{-- <img class="h-72 w-full md:w-48 object-contain" src="{{ asset('images/products_images/'. $productImages->first_img) }}" alt="product image"> --}}
+            <img class="h-72 w-full md:w-48 object-contain" src="{{ asset('images/products_images/'. $product->products_image->first_img) }}" alt={{ $product->products_image->first_img }}>
         </div>
         <div class="p-8 w-1/2">
-            <div class="uppercase tracking-wide text-sm text-black font-semibold"> Catégorie du produit ... à définir
+            <div class="uppercase tracking-wide text-sm text-black font-semibold"> {{ $product->category->name }}
             </div>
             <div class="block mt-1 text-lg leading-tight font-medium text-black">{{$product->title}}</div>
             <div class="text-gray-500 ">

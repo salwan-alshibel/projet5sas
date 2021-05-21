@@ -19,10 +19,12 @@ class HomeController extends Controller
         // ]);
 
         $products = Product::all();
-        //dd($products);
-        $productsImages = Products_image::all();
-        //dd($productsImages);
-        return view('home', ['products' => $products], ['productsImages' => $productsImages]);
+        
+        //Replaced by OneToOne method:
+        //$productsImages = Products_image::all();
+        // return view('home', ['products' => $products], ['productsImages' => $productsImages]);
+
+        return view('home', ['products' => $products]);
     }
 
     // public function allProducts() {

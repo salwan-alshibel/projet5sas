@@ -16,12 +16,12 @@ class CreateProductsImages extends Migration
         Schema::create('products_images', function (Blueprint $table) {
             $table->id();
             $table->foreignId('product_id')->constrained('products');
-            $table->string('1st_img')->nullable();
-            $table->string('2nd_img')->nullable();
-            $table->string('3rd_img')->nullable();
-            $table->string('4th_img')->nullable();
-            $table->string('5th_img')->nullable();
-            $table->string('6th_img')->nullable();
+            $table->string('first_img')->nullable();
+            $table->string('second_img')->nullable();
+            $table->string('third_img')->nullable();
+            $table->string('fourth_img')->nullable();
+            $table->string('fifth_img')->nullable();
+            $table->string('sixth_img')->nullable();
         });
     }
 
