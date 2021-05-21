@@ -20,16 +20,16 @@ class CreateProductsTable extends Migration
             $table->string('metaTitle', 100);
             $table->string('slug', 100);
             $table->text('summary');
-            $table->smallInteger('type');
+            $table->smallInteger('type')->nullable();
             $table->string('sku', 100);
             $table->decimal('price')->default(0);
             $table->decimal('discount')->default(0);
             $table->smallInteger('quantity')->default(0);
-            $table->tinyInteger('shop')->default(0);
+            $table->tinyInteger('shop')->nullable()->default(0);
             $table->timestamps();
-            $table->timestamp('published_at');
-            $table->timestamp('starts_at');
-            $table->timestamp('ends_at');
+            $table->timestamp('published_at')->nullable();
+            $table->timestamp('starts_at')->nullable();
+            $table->timestamp('ends_at')->nullable();
             $table->text('content');
             $table->smallInteger('sellQuantity')->default(0);
 
