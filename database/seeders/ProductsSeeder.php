@@ -33,6 +33,7 @@ class ProductsSeeder extends Seeder
             'ends_at' => NULL,
             'content' => 'content test',
             'sellQuantity' => 0,
+            'category_id' => 1,
         ]);
     }
 }

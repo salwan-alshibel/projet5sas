@@ -112,10 +112,10 @@
 
     <div class="flex justify-center max-h-16">
         <ul class="flex items-center">
-            @foreach ($categories as $item)
+            @foreach ($categories as $categorie)
                 <li class="px-5">
-                    <a href="{{ route('viewByCategory') }}" class="p-3"><img src="{{ asset('images/categories_images/'. $item->image) }}" alt= {{$item->name}} />
-                    <span class="nav_link_text">{{$item->name}}</span></a>
+                    <a href="{{ route('viewByCategory', ['id'=>$categorie->id]) }}" class="p-3"><img src="{{ asset('images/categories_images/'. $categorie->image) }}" alt= {{$categorie->name}} />
+                    <span class="nav_link_text">{{$categorie->name}}</span></a>
                 </li>
             @endforeach
         </ul>

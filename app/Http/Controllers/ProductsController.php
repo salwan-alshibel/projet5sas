@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Products_image;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -23,11 +24,24 @@ class ProductsController extends Controller
         return view('products.paints');
     }
 
-    public function viewByCategory() {
+    public function viewByCategory(Request $request) {
         //$categories = Category::where('online', 1)->get();
-
         //return view('products.mainShop', compact('categories'));
-        return view('products.mainShop');
+
+        $products = Product::where('category_id', $request->id)->get();
+        //$productsImages = Products_image::all();
+        $productsImages = [];
+        //dd($productsImages);
+        foreach ($products as $product) {
+            array_push($productsImages, Products_image::where('product_id', $product->id)->first());
+        }
+        //dd($productsImages);
+        //$productsImages = Products_image::where('product_id', $products->id)->first();
+
+        return view('products.mainShop', [
+            'products' => $products,
+            'productsImages' => $productsImages
+        ]);
     }
 
 
