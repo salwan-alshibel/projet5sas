@@ -29,7 +29,8 @@ class ProductsController extends Controller
         //return view('products.mainShop', compact('categories'));
 
         $products = Product::where('category_id', $request->id)->get();
-
+        $category = Category::find($request->id);
+        
         // Method replace by Eloquant Relationship OneToOne:
         // $productsImages = [];
         // //dd($productsImages);
@@ -42,7 +43,7 @@ class ProductsController extends Controller
         //     'productsImages' => $productsImages
         // ]);
 
-        return view('products.mainShop', compact('products'));
+        return view('products.mainShop', compact('products', 'category'));
     }
 
 

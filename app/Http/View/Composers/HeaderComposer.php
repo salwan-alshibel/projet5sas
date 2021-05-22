@@ -13,8 +13,11 @@ class HeaderComposer
      * @param  \Illuminate\View\View  $view
      * @return void
      */
+
+    //Call this with other views:
     public function compose(View $view)
     {
-        $view->with('categories', Category::where('online', 1)->get());
+        $conditions = ['online'=>1, 'parent_id'=>null];
+        $view->with('categories', Category::where($conditions)->get());
     }
 }

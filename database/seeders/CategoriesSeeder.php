@@ -32,9 +32,90 @@ class CategoriesSeeder extends Seeder
             ],
 
             [
-                'name' => "Peintures",
+                'name' => "Peintures et Accesoires",
                 'image' => "peintures_logo.jpg",
                 'online' => 1,
+                'created_at' => date(now()),
+                'updated_at' => date(now()),
+            ]
+
+            [
+                'name' => "Order",
+                'image' => NULL,
+                'online' => 1,
+                'parent_id' => 1,
+                'created_at' => date(now()),
+                'updated_at' => date(now()),
+            ],
+
+            [
+                'name' => "Chaos",
+                'image' => NULL,
+                'online' => 1,
+                'parent_id' => 1,
+                'created_at' => date(now()),
+                'updated_at' => date(now()),
+            ],
+
+            [
+                'name' => "Death",
+                'image' => NULL,
+                'online' => 1,
+                'parent_id' => 1,
+                'created_at' => date(now()),
+                'updated_at' => date(now()),
+            ],
+
+            [
+                'name' => "Space Marines",
+                'image' => NULL,
+                'online' => 1,
+                'parent_id' => 2,
+                'created_at' => date(now()),
+                'updated_at' => date(now()),
+            ],
+
+            [
+                'name' => "Imperium",
+                'image' => NULL,
+                'online' => 1,
+                'parent_id' => 2,
+                'created_at' => date(now()),
+                'updated_at' => date(now()),
+            ],
+
+            [
+                'name' => "Chaos Armies",
+                'image' => NULL,
+                'online' => 1,
+                'parent_id' => 2,
+                'created_at' => date(now()),
+                'updated_at' => date(now()),
+            ],
+
+            [
+                'name' => "Peintures",
+                'image' => NULL,
+                'online' => 1,
+                'parent_id' => 3,
+                'created_at' => date(now()),
+                'updated_at' => date(now()),
+            ],
+
+            [
+                'name' => "Pinceaux",
+                'image' => NULL,
+                'online' => 1,
+                'parent_id' => 3,
+                'created_at' => date(now()),
+                'updated_at' => date(now()),
+            ],
+
+            [
+                'name' => "Accessoires",
+                'image' => NULL,
+                'online' => 1,
+                'parent_id' => 3,
                 'created_at' => date(now()),
                 'updated_at' => date(now()),
             ]

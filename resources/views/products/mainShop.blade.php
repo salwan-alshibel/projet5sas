@@ -8,13 +8,22 @@
                 <input type="search" id="myInput" onkeyup="window.search()" placeholder="Rechercher..." >
             
                 <ul id="myUL" class="text-white">
-                    <li><a href="#">Squelettes</a></li>
-                    <li><a href="#">Lord of sigmar</a></li>
-                    <li><a href="#">test</a></li>
-                    <li><a href="#">age of sigmar</a></li>
-                    <li><a href="#">chaos</a></li>
-                    <li><a href="#">vampires</a></li>
-                    <li><a href="#">chevalier</a></li>
+                    {{-- A revoir...récupérer toutes les catégories dans le controller ? --}}
+                    @if ($category->parent_id !== null)
+                    <a href="{{ route('viewByCategory', ['id'=>$category->parent->id]) }}">{{ $category->parent->name }}</a>
+
+                    @foreach ($category->parent->children as $children)
+                        <li><a href="{{ route('viewByCategory', ['id'=>$children->id]) }}">{{ $children->name }}</a></li>
+                    @endforeach
+            
+                    @else 
+                    <a href="{{ route('viewByCategory', ['id'=>$category->id]) }}">{{ $category->name }}</a>
+
+                    @foreach ($category->children as $children)
+                        <li><a href="{{ route('viewByCategory', ['id'=>$children->id]) }}">{{ $children->name }}</a></li>
+                    @endforeach
+
+                    @endif
                 </ul>
             </div>  
         </div>
@@ -34,7 +43,7 @@
                             <img class="h-72 w-full md:w-48 object-contain" src="{{ asset('images/products_images/'. $product->products_image->first_img) }}" alt={{ $product->products_image->first_img }}>
                         </div>
                         <div class="p-8">
-                            <div class="uppercase tracking-wide text-sm text-black font-semibold"> {{ $product->category->name }}  </div>
+                            <div class="inline-flex items-center justify-center px-2 py-1 uppercase tracking-wide text-xs font-semibold text-indigo-100 bg-indigo-700 rounded">{{ $product->category->name }}</div>
                             <div class="block mt-1 text-lg leading-tight font-medium text-black">{{$product->title}}</div>
                             <div class="text-gray-500 ">
                              <p class="mt-2 max-h-36 text-gray-500 overflow-hidden">{{ $product->content }}</p>
@@ -45,11 +54,6 @@
                 </div>
             </a>
             @endforeach
-        </div>
-    </div>
-    <div class="flex justify-center">
-        <div class="w-8/12 bg-white p-6 rounded-lg">
-            {{ $product->category->name }}  products
         </div>
     </div>
 

@@ -10,8 +10,7 @@
             <img class="h-72 w-full md:w-48 object-contain" src="{{ asset('images/products_images/'. $product->products_image->first_img) }}" alt={{ $product->products_image->first_img }}>
         </div>
         <div class="p-8 w-1/2">
-            <div class="uppercase tracking-wide text-sm text-black font-semibold"> {{ $product->category->name }}
-            </div>
+            <div class="inline-flex items-center justify-center px-2 py-1 uppercase tracking-wide text-xs font-semibold text-indigo-100 bg-indigo-700 rounded">{{ $product->category->name }}</div>
             <div class="block mt-1 text-lg leading-tight font-medium text-black">{{$product->title}}</div>
             <div class="text-gray-500 ">
                 <p class="mt-2 text-gray-500 overflow-hidden">{{ $product->content }}</p>
