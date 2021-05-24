@@ -8,7 +8,7 @@
                 <input type="search" id="myInput" onkeyup="window.search()" placeholder="Rechercher..." >
             
                 <ul id="myUL" class="text-white">
-                    {{-- A revoir...récupérer toutes les catégories dans le controller ? --}}
+                    {{-- Take categories (parent and childrens) and show names --}}
                     @if ($category->parent_id !== null)
                     <a href="{{ route('viewByCategory', ['id'=>$category->parent->id]) }}">{{ $category->parent->name }}</a>
 

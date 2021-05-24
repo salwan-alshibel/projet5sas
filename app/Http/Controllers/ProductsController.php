@@ -28,10 +28,11 @@ class ProductsController extends Controller
         //$categories = Category::where('online', 1)->get();
         //return view('products.mainShop', compact('categories'));
 
-        $products = Product::where('category_id', $request->id)->get();
+        //$products = Product::where('category_id', $request->id)->get();
         $category = Category::find($request->id);
+        $products = $category->productsViaAll();
         
-        // Method replace by Eloquant Relationship OneToOne:
+        // Method replaced by Eloquant Relationship OneToOne:
         // $productsImages = [];
         // //dd($productsImages);
         // foreach ($products as $product) {

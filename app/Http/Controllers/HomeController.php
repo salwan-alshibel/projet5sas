@@ -18,7 +18,8 @@ class HomeController extends Controller
         //     'messages' => $messages
         // ]);
 
-        $products = Product::all();
+        //Take all products with categories and images using eager loading:
+        $products = Product::with(['category', 'products_image'])->get();
         
         //Replaced by OneToOne method:
         //$productsImages = Products_image::all();

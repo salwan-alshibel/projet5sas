@@ -13,7 +13,7 @@
 
     @foreach ($products as $product)
     <a href="{{ route('product', [$product->id, $product->slug]) }}">
-        <div class="max-w-md h-72 mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl hover:underline">
+        <div class="max-w-md h-72 mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
             <div class="md:flex">
                 <div class="md:flex-shrink-0">
                     {{-- @foreach ($productsImages as $productsImage)
@@ -25,11 +25,20 @@
                 </div>
                 <div class="p-8">
                     {{-- <div class="uppercase tracking-wide text-sm text-black font-semibold"> {{ $product->category->name }} </div> --}}
-                    <div class="inline-flex items-center justify-center px-2 py-1 uppercase tracking-wide text-xs font-semibold text-indigo-100 bg-indigo-700 rounded">{{ $product->category->name }}</div>
-                    <div class="block mt-1 text-lg leading-tight font-medium text-black">{{$product->title}}</div>
-                    <div class="text-gray-500 ">
-                     <p class="mt-2 max-h-36 text-gray-500 overflow-hidden">{{ $product->content }}</p>
-                     <p> [...] </p> 
+                    <div>
+                        {{-- <div class="inline-flex items-center justify-center px-2 py-1 uppercase tracking-wide text-xs font-semibold text-grey-700 bg-yellow-500 rounded">{{ $product->categoryParent->name }}
+                        </div> --}}
+                        <div class="inline-flex items-center justify-center px-2 py-1 uppercase tracking-wide text-xs font-semibold text-indigo-100 bg-indigo-700 rounded">{{ $product->category->name }}
+                        </div>
+                    </div>
+
+                    <div class="hover:underline">
+                        <div class="block mt-1 text-lg leading-tight font-medium text-black">{{$product->title}}
+                        </div>
+                        <div class="text-gray-500 ">
+                            <p class="mt-2 max-h-36 text-gray-500 overflow-hidden">{{ $product->content }}</p>
+                            <p> [...] </p> 
+                        </div>
                     </div>
                 </div>
             </div>
