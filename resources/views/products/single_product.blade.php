@@ -19,9 +19,30 @@
         </div>
         <div> 
             <p>{{ $product->price }} € </p>
-            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            <form id="formCart" action="{{route('addToCart', ['id'=>$product->id])}}" method="POST">
+            @csrf
+            <label for="quantity">Quantité : </label>
+                <select id="quantity" name="quantity">
+                    @for ($i = 1; $i < 11; $i++)
+                        <option value="{{$i}}">{{$i}}</option>
+                    @endfor
+                </select>
+            </form>
+            <button type="submit" form="formCart" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                 Ajouter au panier
-              </button>
+            </button>
+            @if (session('message'))
+            <a href="{{ route('cart') }}">
+                <div class="bg-green-400 p-1 font-bold rounded my-1 text-white text-center">
+                    <i class="fas fa-check"></i> {{ session('message') }}
+                </div>
+                <div>
+                    <p class="bg-blue-500 p-1 font-bold rounded m-auto text-white text-center w-max">
+                      <i class="fas fa-arrow-right"></i> <i class="fas fa-shopping-cart"></i>   
+                    </p>
+                </div>
+            </a>
+            @endif
          </div>
     </div>
 

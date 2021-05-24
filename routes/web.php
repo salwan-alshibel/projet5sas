@@ -4,6 +4,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\PostLikeController;
@@ -100,8 +101,12 @@ Route::get('Warhammer-Age-of-Sigmar', [ProductsController::class, 'waos'])->name
 Route::get('Warhammer-40-000', [ProductsController::class, 'w40k'])->name('w40k');
 Route::get('Peintures', [ProductsController::class, 'paints'])->name('paints');
 Route::get('product/{id}/{slug}', [ProductsController::class, 'product'])->name('product');
-
 Route::get('categorie/{id}', [ProductsController::class, 'viewByCategory'])->name('viewByCategory');
+
+
+//SHOPPING CART
+Route::get('panier', [CartController::class, 'index'])->name('cart');
+Route::post('panier/add/{id}', [CartController::class, 'addToCart'])->name('addToCart');
 
 
 //SALES CONDITIONS
