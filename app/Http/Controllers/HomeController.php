@@ -12,14 +12,14 @@ class HomeController extends Controller
 {
     public function index(){
 
-        //$messages = Message::all();
-
-        // return view('home', [
-        //     'messages' => $messages
-        // ]);
-
         //Take all products with categories and images using eager loading:
         $products = Product::with(['category', 'products_image'])->get();
+        
+        
+        // foreach($products as $product) {
+        //     ; var_dump($product); echo
+        // };
+
         
         //Replaced by OneToOne method:
         //$productsImages = Products_image::all();
@@ -27,13 +27,4 @@ class HomeController extends Controller
 
         return view('home', ['products' => $products]);
     }
-
-    // public function allProducts() {
-    //     // SELECT * FROM Products
-        
-    //     $products = Product::all();
-    //     dd($products);
-    //     return $products
-    //     ;
-    // }
 }

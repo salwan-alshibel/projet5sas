@@ -9,6 +9,8 @@ class Product extends Model
 {
     use HasFactory;
 
+    private static $tauxTVAplein = 1.2;
+
     public function category() {
         return $this->belongsTo(Category::class);
     }
@@ -20,4 +22,9 @@ class Product extends Model
     // public function categoryParent() {
     //     return $this->belongsTo(Category::class, 'parent_id');
     // }
+
+    public function prixTTC() {
+        $prixTTC = $this->price * self::$tauxTVAplein;
+        return number_format($prixTTC, 2);
+    }
 }

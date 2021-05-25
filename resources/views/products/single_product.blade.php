@@ -6,7 +6,6 @@
 
     <div class="m-16 flex flex-row items-center justify-evenly">
         <div class="bg-white rounded-lg">
-            {{-- <img class="h-72 w-full md:w-48 object-contain" src="{{ asset('images/products_images/'. $productImages->first_img) }}" alt="product image"> --}}
             <img class="h-72 w-full md:w-48 object-contain" src="{{ asset('images/products_images/'. $product->products_image->first_img) }}" alt={{ $product->products_image->first_img }}>
         </div>
         <div class="p-8 w-1/2">
@@ -18,7 +17,7 @@
             </div>
         </div>
         <div> 
-            <p>{{ $product->price }} € </p>
+            <p>{{ $product->prixTTC() }} € </p>
             <form id="formCart" action="{{route('addToCart', ['id'=>$product->id])}}" method="POST">
             @csrf
             <label for="quantity">Quantité : </label>

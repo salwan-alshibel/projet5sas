@@ -47,7 +47,8 @@
                             <div class="block mt-1 text-lg leading-tight font-medium text-black">{{$product->title}}</div>
                             <div class="text-gray-500 ">
                              <p class="mt-2 max-h-36 text-gray-500 overflow-hidden">{{ $product->content }}</p>
-                             <p> [...] </p> 
+                             <p> [...] </p>
+                             <div>{{$product->prixTTC()}} €</div>
                             </div>
                         </div>
                     </div>

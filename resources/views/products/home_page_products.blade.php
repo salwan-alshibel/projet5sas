@@ -39,6 +39,7 @@
                             <p class="mt-2 max-h-36 text-gray-500 overflow-hidden">{{ $product->content }}</p>
                             <p> [...] </p> 
                         </div>
+                        <div>{{$product->prixTTC()}} €</div>
                     </div>
                 </div>
             </div>

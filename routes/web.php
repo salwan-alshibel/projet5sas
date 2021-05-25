@@ -107,6 +107,8 @@ Route::get('categorie/{id}', [ProductsController::class, 'viewByCategory'])->nam
 //SHOPPING CART
 Route::get('panier', [CartController::class, 'index'])->name('cart');
 Route::post('panier/add/{id}', [CartController::class, 'addToCart'])->name('addToCart');
+Route::get('panier/remove/{product}', [CartController::class, 'remove'])->name('cart.remove');
+Route::get('panier/empty', [CartController::class, 'empty'])->name('cart.empty');
 
 
 //SALES CONDITIONS

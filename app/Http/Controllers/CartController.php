@@ -11,9 +11,8 @@ class CartController extends Controller
 
         //Envoyer les informations du panier à la page panier:
         
-
-
-        return view('checkout.cart');
+            
+        return view('cart.cart');
     }
 
     public function addToCart(Request $request) {
