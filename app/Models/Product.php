@@ -28,11 +28,4 @@ class Product extends Model
         return number_format($prixTTC, 2);
     }
 
-    public function anothertest() {
-        $anotherTest = 'un autre test perso';
-    }
-    
-    public function test() {
-       $test = 'on fait un test';
-    }
 }
