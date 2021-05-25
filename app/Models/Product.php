@@ -31,4 +31,8 @@ class Product extends Model
     public function anothertest() {
         $anotherTest = 'un autre test perso';
     }
+    
+    public function test() {
+       $test = 'on fait un test';
+    }
 }
