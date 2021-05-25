@@ -27,4 +27,8 @@ class Product extends Model
         $prixTTC = $this->price * self::$tauxTVAplein;
         return number_format($prixTTC, 2);
     }
+
+    public function anothertest() {
+        $anotherTest = 'un autre test perso';
+    }
 }
