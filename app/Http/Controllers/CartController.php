@@ -31,7 +31,7 @@ class CartController extends Controller
         $cart->add($product, $product->id, $quantity);
 
         $request->session()->put('cart', $cart);
-        dd($request->session()->get('cart'));
+        //dd($request->session()->get('cart'));
 
         //dd($_POST, $product, $request->quantity);
         return back()->with('message', 'Produit ajouté');

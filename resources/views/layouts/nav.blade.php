@@ -87,6 +87,10 @@
                         <circle cx="10.5" cy="18.5" r="1.5" />
                         <circle cx="17.5" cy="18.5" r="1.5" />
                     </svg>
+                    @if (Session::has('cart')) 
+                        <span class="inline-flex items-center justify-center px-2 py-1 mr-2 text-xs font-bold leading-none text-red-100 bg-red-600 rounded-full">{{ Session::get('cart')->totalQty}}</span>
+                    @endif
+                    {{-- <span class="inline-flex items-center justify-center px-2 py-1 mr-2 text-xs font-bold leading-none text-red-100 bg-red-600 rounded-full"> {{ Session::has('cart') ? Session::get('cart')->totalQty : ''}}</span> --}}
                 </a>
             </li>
         </ul>
