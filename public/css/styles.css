@@ -1,5 +1,7 @@
 /*Font*/
 @font-face { font-family: formal436bt; src: url('../fonts/FRML436N.TTF'); } 
+@font-face { font-family: antiqueQuestSt; src: url('../fonts/antiquequest.ttf'); }
+
 
 .formal436bt {
     font-family: formal436bt , sans-serif;
@@ -15,10 +17,34 @@
     font-size: 31px;
 }
 
-#logo-img {
-    left: 40%;
+.antiqueQuestSt {
+    font-family: 'antiqueQuestSt', cursive;
+    font-size: 1.6rem;
 }
 
+
+#logo-img {
+    left: 110px;
+    transform: rotate(90deg);
+    top: -75px;
+}
+
+.logoand {
+    position: absolute;
+    top: -15px;
+    left: 185px;
+    font-size: 1.3rem;
+    font-style: italic;
+    transform : rotate(10deg);
+}
+
+.logosubtxt {
+    position: absolute;
+    font-size: 12px;
+    top: 34px;
+    left: 3rem;
+    font-style: italic;
+}
 
 /************************************************
 ---------------------Dark mode-------------------
