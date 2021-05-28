@@ -54,7 +54,6 @@ var Carousel = /*#__PURE__*/function () {
   }, {
     key: "startScrolling",
     value: function startScrolling() {
-      //this.pauseBtn.innerHTML = 'Appuyer pour arreter le diaporama';
       this.pauseBtn.querySelector('.play').style.display = 'none';
       this.pauseBtn.querySelector('.pause').style.display = 'block';
       this.playing = true; //Interval:

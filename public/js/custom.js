@@ -2,12 +2,55 @@
 /*!********************************!*\
   !*** ./resources/js/custom.js ***!
   \********************************/
-//Nav bar button toggle in responsive:
+//Nav bar button in responsive:
 document.getElementById('nav-toggle').onclick = function () {
   var nav = document.querySelectorAll('.nav-content');
 
   for (var i = 0; i < nav.length; i++) {
     nav[i].classList.toggle("hidden");
+  }
+}; //Dark mode on load and on click:
+
+
+window.onload = function checkIfDarkMode() {
+  if (sessionStorage.getItem('darkMode') == 'active') {
+    window.activateDarkMode();
+  } else if (sessionStorage.getItem('darkMode') == 'inactive') {
+    window.removeDarkMode();
+  }
+};
+
+window.activateDarkMode = function () {
+  sessionStorage.setItem('darkMode', 'active');
+  var darkableElements = document.querySelectorAll('.darkable');
+
+  for (var i = 0; i < darkableElements.length; ++i) {
+    if (darkableElements[i].classList.contains("dark-mode") == false) {
+      darkableElements[i].classList.add("dark-mode");
+    }
+  }
+
+  document.getElementById('darkModBtn').checked = true;
+};
+
+window.removeDarkMode = function () {
+  sessionStorage.setItem('darkMode', 'inactive');
+  var darkableElements = document.querySelectorAll('.darkable');
+
+  for (var i = 0; i < darkableElements.length; ++i) {
+    if (darkableElements[i].classList.contains("dark-mode") == true) {
+      darkableElements[i].classList.remove("dark-mode");
+    }
+  }
+
+  document.getElementById('darkModBtn').checked = false;
+};
+
+window.toggleDark = function () {
+  if (sessionStorage.getItem('darkMode') == 'active') {
+    window.removeDarkMode();
+  } else {
+    window.activateDarkMode();
   }
 }; // Sidebar search for products pages:
 

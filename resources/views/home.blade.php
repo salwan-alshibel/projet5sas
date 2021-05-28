@@ -2,12 +2,15 @@
 
 @section('content')
 
-    <section id="carousel_section" class="bg-dusty-gray-100 dark:bg-01DP pb-20">
+
+
+    <section id="carousel_section" class="bg-dusty-gray-100 dark:bg-01DP pb-20 darkable">
         <div class="flex justify-center">
             <div class="w-full p-6 rounded-lg dark:text-white text-center text-2xl">
                 A la une
             </div>
         </div>
+        
         <div id="carousel" class="relative">
             <ul id="slides" class="z-10">
 
@@ -57,7 +60,7 @@
     </section>
 
 
-    <section id="new-products" class="bg-dusty-gray-200 flex flex-col items-center justify-center pt-10 pb-16">
+    <section id="new-products" class="bg-dusty-gray-200 flex flex-col items-center justify-center pt-10 pb-16 darkable">
         <div class="flex justify-center">
             <div class="w-full p-6 dark:text-white rounded-lg text-center text-2xl">
                 Nouveautés

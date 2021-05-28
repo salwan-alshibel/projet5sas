@@ -1,6 +1,14 @@
-<nav class="pt-8 md:pt-12 sd:pt-2 bg-white dark:text-white dark:bg-04DP z-50 flex flex-col justify-between mb-6 fixed w-full">
-    <div class="w-full container mx-auto flex flex-wrap md:flex-nowrap items-center justify-between border-b-2 border-solid border-black text-sm lg:text-base">
-
+<nav class="pt-8 md:pt-12 sd:pt-2 bg-white dark:text-white dark:bg-04DP z-50 flex flex-col justify-between mb-6 fixed w-full darkable">
+    <div class="w-full container mx-auto flex flex-wrap md:flex-nowrap items-center justify-between border-b-2 border-solid border-black text-sm lg:text-base relative">
+        
+        <div class="darkModContainer absolute right-0 -top-7">
+            <div><i class="fas fa-sun"></i></div>
+            <label class="switch">
+                <input type="checkbox" id="darkModBtn" onclick="window.toggleDark()">
+                <span class="slider round"></span>
+            </label>
+            <div><i class="fas fa-moon"></i></div>
+        </div>
        
         <div class="block md:hidden order-1">
             <button id="nav-toggle" class="flex items-center px-3 py-2 border-2 rounded text-gray-900 border-gray-700 hover:text-black hover:border-black">
@@ -88,6 +96,7 @@
         </div>
     </div>
 
+    {{-- Lower part of the nav bar: --}}
     <div>
         <ul class="flex items-center justify-center">
             @foreach ($categories as $categorie)
