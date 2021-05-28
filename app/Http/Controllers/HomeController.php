@@ -14,7 +14,7 @@ class HomeController extends Controller
 
         //Take all products with categories and images using eager loading:
         $products = Product::with(['category', 'products_image'])->get();
-        
+        //dd($products->first->category);
         
         // foreach($products as $product) {
         //     ; var_dump($product); echo

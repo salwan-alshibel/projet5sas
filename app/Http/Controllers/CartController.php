@@ -11,10 +11,15 @@ class CartController extends Controller
 {
     public function index() {
 
-        //Envoyer les informations du panier à la page panier:
-        
+        if (Session::has('cart')) {
+            $cart = Session::get('cart');
+            //dd(Session::get('cart'));
+            return view('cart.cart', ['products' => $cart->products, 'totalPrice' => $cart->totalPrice]);
             
-        return view('cart.cart');
+
+        } else {
+            return view('cart.cart')->with('emptyCart', 'Votre panier est vide');
+        }
     }
 
     public function addToCart(Request $request) {
@@ -36,4 +41,34 @@ class CartController extends Controller
         //dd($_POST, $product, $request->quantity);
         return back()->with('message', 'Produit ajouté');
     }
+
+    public function updateCart(Request $request){
+        $oldCart = Session::has(('cart')) ? Session::get('cart') : null;
+        $cart = new Cart($oldCart);
+        $cart->updateQty($request->id);
+
+        if (count($cart->products) > 0) {
+            Session::put('cart', $cart);
+        } else {
+            Session::forget('cart');
+        }
+
+        return redirect()->route('cart');
+    }
+
+    public function removeProductFromCart(Request $request){
+        $oldCart = Session::has(('cart')) ? Session::get('cart') : null;
+        $cart = new Cart($oldCart);
+        $cart->remove($request->id);
+
+        if (count($cart->products) > 0) {
+            Session::put('cart', $cart);
+        } else {
+            Session::forget('cart');
+        }
+        
+
+        return redirect()->route('cart');
+    }
+
 }

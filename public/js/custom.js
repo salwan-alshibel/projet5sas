@@ -2,7 +2,16 @@
 /*!********************************!*\
   !*** ./resources/js/custom.js ***!
   \********************************/
-// Sidebar search for products pages:
+//Nav bar button toggle in responsive:
+document.getElementById('nav-toggle').onclick = function () {
+  var nav = document.querySelectorAll('.nav-content');
+
+  for (var i = 0; i < nav.length; i++) {
+    nav[i].classList.toggle("hidden");
+  }
+}; // Sidebar search for products pages:
+
+
 window.search = function () {
   var input, filter, ul, li, a, i, txtValue;
   input = document.getElementById('myInput');

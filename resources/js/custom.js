@@ -1,3 +1,15 @@
+ //Nav bar button toggle in responsive:
+ document.getElementById('nav-toggle').onclick = function(){
+	const nav = document.querySelectorAll('.nav-content');
+	
+	for (let i = 0; i < nav.length; i++) {
+		nav[i].classList.toggle("hidden");
+	}
+}
+
+
+
+
 // Sidebar search for products pages:
 window.search = function () {
     var input, filter, ul, li, a, i, txtValue;

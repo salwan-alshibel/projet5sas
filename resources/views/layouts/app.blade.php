@@ -19,7 +19,7 @@
         <div id="main-container">
             @include('layouts.nav')
 
-            <section id="main-content" class="pt-36">
+            <section id="main-content" class="pt-24 sm:pt-32 md:pt-36">
                 @yield('content')
             </section>
 

@@ -19,25 +19,37 @@
     left: 40%;
 }
 
-#menu-toggle:checked + #menu {
+
+
+/************************************************
+---------------------Navbar-------------------
+************************************************/
+
+/* #menu-toggle:checked + #menu {
     display: block;
-}
+} */
 
 /*A vérifier*/
-.hover\:grow {
+/* .hover\:grow {
     transition: all 0.3s;
     transform: scale(1);
 }
 
 .hover\:grow:hover {
     transform: scale(1.02);
-}
+} */
 
 .nav_link_text {
     display: none;
 }
 /*Fin A vérifier*/
 
+
+@media (max-width: 767px) {
+    #login-icon, #register-icon, #logout-icon {
+        display: none;
+    }
+  }
 
 
 

@@ -19,7 +19,7 @@ class Cart
 
     //Add a new product:
     public function add($product, $id, $quantity) {
-        //Store product infos in an array:
+        //Store product infos into an array:
         $storedProduct = ['qty' => $quantity, 'price' => $product->price, 'product' => $product];
         //If the same product already exist in the cart, only add qty to it :
         if ($this->products) {
@@ -29,11 +29,19 @@ class Cart
             }
         }
 
-        $storedProduct['totalprice'] = $product->price * $storedProduct['qty'];
+        $storedProduct['priceXqty'] = $product->price * $storedProduct['qty'];
 
         $this->products[$id] = $storedProduct;
-        $this->totalQty = $storedProduct['qty'];
-        $this->totalPrice = $storedProduct['totalprice'];
+        $this->totalQty += $storedProduct['qty'];
+        $this->totalPrice += $storedProduct['priceXqty'];
+    }
+
+    public function updateQty() {
+
+    }
+
+    public function remove() {
+
     }
 
 }
