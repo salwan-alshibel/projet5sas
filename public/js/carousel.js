@@ -55,8 +55,9 @@ var Carousel = /*#__PURE__*/function () {
     key: "startScrolling",
     value: function startScrolling() {
       //this.pauseBtn.innerHTML = 'Appuyer pour arreter le diaporama';
-      this.playing = true; //Changement du statut du défilement automatique.
-      //Interval:
+      this.pauseBtn.querySelector('.play').style.display = 'none';
+      this.pauseBtn.querySelector('.pause').style.display = 'block';
+      this.playing = true; //Interval:
 
       var selfThis = this;
       this.autoSlideChange = setInterval(function () {
@@ -66,7 +67,8 @@ var Carousel = /*#__PURE__*/function () {
   }, {
     key: "stopScrolling",
     value: function stopScrolling() {
-      //this.pauseBtn.innerHTML = 'Diaporama en pause.';
+      this.pauseBtn.querySelector('.pause').style.display = 'none';
+      this.pauseBtn.querySelector('.play').style.display = 'block';
       this.playing = false;
       clearTimeout(this.autoSlideChange);
     }

@@ -42,8 +42,9 @@ class Carousel {
 
 
     startScrolling() {
-        //this.pauseBtn.innerHTML = 'Appuyer pour arreter le diaporama';
-        this.playing = true; //Changement du statut du défilement automatique.
+        this.pauseBtn.querySelector('.play').style.display = 'none';
+        this.pauseBtn.querySelector('.pause').style.display = 'block';
+        this.playing = true;
 
         //Interval:
         const selfThis = this;
@@ -54,7 +55,8 @@ class Carousel {
 
 
     stopScrolling() {
-        //this.pauseBtn.innerHTML = 'Diaporama en pause.';
+        this.pauseBtn.querySelector('.pause').style.display = 'none';
+        this.pauseBtn.querySelector('.play').style.display = 'block';
         this.playing = false;
 
         clearTimeout(this.autoSlideChange);
