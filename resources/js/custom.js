@@ -40,7 +40,7 @@ window.removeDarkMode = function () {
 			darkableElements[i].classList.remove("dark-mode");
 		}
 	}
-	
+
 	document.getElementById('darkModBtn').checked = false;
 }
 
@@ -52,6 +52,35 @@ window.toggleDark = function () {
 		window.activateDarkMode();
 	}
 }
+
+
+
+
+/* When the user scrolls down, hide the navbar. When the user scrolls up, show the navbar */
+let prevScrollpos = window.pageYOffset;
+window.onscroll = function() {
+  let currentScrollPos = window.pageYOffset;
+  if (prevScrollpos > currentScrollPos) {
+    document.getElementById("lowerNavbar").style.height = "inherit";
+    document.getElementById("lowerNavbar").style.width = "inherit";
+
+  } else {
+	document.getElementById("lowerNavbar").style.height = "0";
+	document.getElementById("lowerNavbar").style.width = "0";
+
+
+  }
+  prevScrollpos = currentScrollPos;
+} 
+
+
+
+
+
+
+
+
+
 
 
 

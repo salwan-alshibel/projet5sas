@@ -103,7 +103,7 @@
     </div>
 
     {{-- Navbar links : lower part --}}
-    <div>
+    <div id="lowerNavbar" class="transition-all delay-100 ease-in duration-300">
         <ul class="flex items-center justify-center">
             @foreach ($categories as $categorie)
                 <li class="px-5">
