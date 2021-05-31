@@ -54,6 +54,11 @@
     color: white;
 }
 
+.less-dark-mode {
+    background-color: #272727 !important;
+    color: white;
+}
+
 
 /*************************************************
 -----------------DarkMod Button-------------------

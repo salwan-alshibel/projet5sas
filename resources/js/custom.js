@@ -20,6 +20,13 @@ window.onload = function checkIfDarkMode() {
 window.activateDarkMode = function () {
 	sessionStorage.setItem('darkMode', 'active');
 	const darkableElements = document.querySelectorAll('.darkable');
+	const lessDarkableElements = document.querySelectorAll('.lessDarkable');
+
+	for (var i = 0; i < lessDarkableElements.length; ++i) {
+		if (lessDarkableElements[i].classList.contains("less-dark-mode") == false) {
+			lessDarkableElements[i].classList.add("less-dark-mode");
+		}
+	}
 
 	for (let i = 0; i < darkableElements.length; ++i) {
 		if (darkableElements[i].classList.contains("dark-mode") == false) {
@@ -34,6 +41,13 @@ window.activateDarkMode = function () {
 window.removeDarkMode = function () {
 	sessionStorage.setItem('darkMode', 'inactive');
 	const darkableElements = document.querySelectorAll('.darkable');
+	const lessDarkableElements = document.querySelectorAll('.lessDarkable');
+
+	for (var i = 0; i < lessDarkableElements.length; ++i) {
+		if (lessDarkableElements[i].classList.contains("less-dark-mode") == true) {
+			lessDarkableElements[i].classList.remove("less-dark-mode");
+		}
+	}
 
 	for (let i = 0; i < darkableElements.length; ++i) {
 		if (darkableElements[i].classList.contains("dark-mode") == true) {

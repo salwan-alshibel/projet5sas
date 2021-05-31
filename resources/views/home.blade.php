@@ -6,11 +6,11 @@
 
     <section id="carousel_section" class="bg-dusty-gray-100 dark:bg-01DP pb-20 darkable">
         <div class="flex justify-center">
-            <div class="w-full p-6 rounded-lg dark:text-white text-center text-2xl">
+            <div class="w-full p-6 pt-12 rounded-lg dark:text-white text-center text-2xl">
                 A la une
             </div>
         </div>
-        
+
         <div id="carousel" class="relative">
             <ul id="slides" class="z-10">
 
@@ -77,12 +77,12 @@
         <div class="bg-white">
             <div class="md:flex">
                 <div class="flex flex-row items-center md:flex-shrink-0 bg-04DP">
-                    <img class="m-8" src="{{url('/images/Figurines and co 2021-03-31.jpg')}}" alt="Nouveauté en magasin">
+                    <img class="m-8" src="{{url('/images/logo2.png')}}" alt="Nouveauté en magasin">
                 </div>
-                <div class="md:p-20">
-                    <div class="uppercase tracking-wide text-sm text-black font-semibold">Figurines&Co</div>
-                    <div class="block mt-1 text-lg leading-tight font-medium text-black">Figurine titre</div>
-                    <p class="mt-2 p-4 sm:p-0 text-gray-500">Présentation.Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima tenetur quas, maxime corporis expedita quo, doloremque dignissimos, ad eum cupiditate tempore soluta dolore doloribus officia amet. Tenetur obcaecati similique placeat. 
+                <div class="md:px-20 md:py-16">
+                    <div class="uppercase tracking-wide text-2xl text-black font-semibold pb-5 border-b ">Figurines&Co</div>
+                    <div class="block mt-1 text-lg leading-tight font-medium text-black pb-4 pt-4 italic">Le lieu idéal pour trouver vos figurines warhammer !</div>
+                    <p class="mt-2 p-4 sm:p-0 text-black text-justify break-words">Présentation.Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima tenetur quas, maxime corporis expedita quo, doloremque dignissimos, ad eum cupiditate tempore soluta dolore doloribus officia amet. Tenetur obcaecati similique placeat. 
                     Présentation.Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima tenetur quas, maxime corporis expedita quo, doloremque dignissimos, ad eum cupiditate tempore soluta dolore doloribus officia amet. Tenetur obcaecati similique placeat.
                     </p>
                 </div>

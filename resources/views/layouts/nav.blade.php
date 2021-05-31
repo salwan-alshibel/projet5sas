@@ -1,5 +1,5 @@
 <nav class="pt-8 md:pt-12 sd:pt-2 bg-white dark:text-white dark:bg-04DP z-50 flex flex-col justify-between mb-6 fixed w-full darkable">
-    <div class="w-full container mx-auto flex flex-wrap md:flex-nowrap items-center justify-between border-b-2 border-solid border-black text-sm lg:text-base relative">
+    <div class="w-full pb-4 container mx-auto flex flex-wrap md:flex-nowrap items-center justify-between border-b-2 border-solid border-black text-sm lg:text-base relative">
         
         {{-- Darkmod button --}}
         <div class="darkModContainer absolute right-0 -top-7">
@@ -89,14 +89,14 @@
 
         {{-- Navbar cart logo --}}
         <div class="order-3 md:order-5">
-            <a class="inline-block flex no-underline hover:text-blue-400 hover:underline py-2 pr-4" href="{{ route('cart') }}">
+            <a class="inline-block flex no-underline hover:text-blue-400 hover:underline py-2 pr-4 relative" href="{{ route('cart') }}">
                 <svg id="basket-icon" class="fill-current hover:text-blue-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                     <path d="M21,7H7.462L5.91,3.586C5.748,3.229,5.392,3,5,3H2v2h2.356L9.09,15.414C9.252,15.771,9.608,16,10,16h8 c0.4,0,0.762-0.238,0.919-0.606l3-7c0.133-0.309,0.101-0.663-0.084-0.944C21.649,7.169,21.336,7,21,7z M17.341,14h-6.697L8.371,9 h11.112L17.341,14z" />
                     <circle cx="10.5" cy="18.5" r="1.5" />
                     <circle cx="17.5" cy="18.5" r="1.5" />
                 </svg>
                 @if (Session::has('cart')) 
-                    <span class="inline-flex items-center justify-center px-2 py-1 mr-2 text-xs font-bold leading-none text-red-100 bg-red-600 rounded-full">{{ Session::get('cart')->totalQty}}</span>
+                    <span class="inline-flex items-center justify-center px-2 py-1 mr-2 text-xs font-bold leading-none text-red-100 bg-red-600 rounded-full absolute -right-2 top-1 transform scale-75">{{ Session::get('cart')->totalQty}}</span>
                 @endif
             </a>
         </div>
