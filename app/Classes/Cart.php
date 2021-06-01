@@ -60,11 +60,13 @@ class Cart
         $this->products[$id]['qty'] = $quantity;
         $this->products[$id]['priceXqty'] = $this->products[$id]['price'] * $quantity;
 
-        $this-> calculateQtyAndPrice();
+        $this->calculateQtyAndPrice();
     }
 
-    public function remove() {
+    public function remove($id) {
+        unset($this->products[$id]);
 
+        $this->calculateQtyAndPrice();
     }
 
     public function calculateQtyAndPrice() {

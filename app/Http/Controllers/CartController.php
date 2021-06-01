@@ -25,7 +25,7 @@ class CartController extends Controller
     public function addToCart(Request $request) {
 
         //Récupérer le produit en fonction de son id:
-        $product = Product::find($request->id);
+        $product = Product::with('products_image')->find($request->id);
         $quantity = $request->quantity;
 
         //Ajouter le produit à une session Laravel:
