@@ -62,10 +62,14 @@ Route::get('accueil', [HomeController::class, 'index'])->name('home');
 Route::get('/mon-profil', [DashboardController::class, 'index'])->name('dashboard');
     //->middleware('auth');
 Route::get('/dashboard/modifier-profil', [DashboardController::class, 'updateProfile'])->name('dashboard.modifier-profil');
-Route::get('/dashboard/changer-mot-de-passe', [DashboardController::class, 'updatePassword'])->name('updatePassword');
-Route::get('/dashboard/mes-commentaires', [DashboardController::class, 'myPosts'])->name('myPosts');
-Route::get('/dashboard/commandes-en-cours', [DashboardController::class, 'myActualOrders'])->name('myActualOrders');
-Route::get('/dashboard/historique-commandes', [DashboardController::class, 'myOldOrders'])->name('myOldOrders');
+
+Route::get('/dashboard/changer-mot-de-passe', [DashboardController::class, 'updatePassword'])->name('dashboard.updatePassword');
+
+Route::get('/dashboard/mes-commentaires', [DashboardController::class, 'myPosts'])->name('dashboard.myPosts');
+
+Route::get('/dashboard/commandes-en-cours', [DashboardController::class, 'myActualOrders'])->name('dashboard.myActualOrders');
+
+Route::get('/dashboard/historique-commandes', [DashboardController::class, 'myOldOrders'])->name('dashboard.myOldOrders');
 
 //DASHBOARD ADMIN
 Route::get('/dashboard/ajouter-un-produit', [DashboardController::class, 'addProduct'])->name('addProduct');

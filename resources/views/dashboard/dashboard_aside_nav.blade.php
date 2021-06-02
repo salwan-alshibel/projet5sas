@@ -41,13 +41,13 @@
                             </a>
                         </li>
                         <li class="sidebar-nav-item">
-                            <a href="{{ route('updatePassword') }}" id="changer-mot-de-passe" class="sidebar-nav-link">
+                            <a href="{{ route('dashboard.updatePassword') }}" id="changer-mot-de-passe" class="sidebar-nav-link">
                                 <i class="fas fa-arrow-right nav-icon"></i>
                                 <p>Mot de passe</p>
                             </a>
                         </li>
                         <li class="sidebar-nav-item">
-                            <a href="{{ route('myPosts', auth()->user()) }}" id="mes-commentaires" class="sidebar-nav-link">
+                            <a href="{{ route('dashboard.myPosts', auth()->user()) }}" id="mes-commentaires" class="sidebar-nav-link">
                                 <i class="fas fa-arrow-right nav-icon"></i>
                                 <p>Commentaires</p>
                             </a>
@@ -65,13 +65,13 @@
                     </a>
                     <ul class="sidebar-nav-treeview">
                         <li class="sidebar-nav-item">
-                            <a href="{{ route('myActualOrders') }}" id="commandes-en-cours" class="sidebar-nav-link">
+                            <a href="{{ route('dashboard.myActualOrders') }}" id="commandes-en-cours" class="sidebar-nav-link">
                                 <i class="fas fa-arrow-right nav-icon"></i>
                                 <p>En cours</p>
                             </a>
                         </li>
                         <li class="sidebar-nav-item">
-                            <a href="{{ route('myOldOrders') }}" id="historique-commandes" class="sidebar-nav-link">
+                            <a href="{{ route('dashboard.myOldOrders') }}" id="historique-commandes" class="sidebar-nav-link">
                                 <i class="fas fa-arrow-right nav-icon"></i>
                                 <p>Historique</p>
                             </a>

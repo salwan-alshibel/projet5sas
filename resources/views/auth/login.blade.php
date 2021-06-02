@@ -2,20 +2,25 @@
 
 
 @section('content')
-<div class="relative min-h-screen">
-    <div class="flex justify-center absolute w-full top-1/4 ">
-        <div class="w-full md:bg-white p-6 md:rounded-lg max-w-lg">
+<div class="darkable relative min-h-screen bg-dusty-gray-200">
+    <div class="flex justify-center absolute w-full top-52 ">
+        
+        <div class="lessDarkable w-full md:bg-white p-6 md:rounded-lg max-w-lg">
 
             @if (session('status'))
-            <div class="bg-red-500 p-4 rounded-lg mb-6 text-white text-center">
+            <div class="bg-red-500 p-4 rounded-lg mb-6 text-center">
                 {{ session('status') }}
             </div>
             @endif
 
+            <div class="mb-12 text-xl font-bold">
+                Veuillez vous identifier :
+            </div>
+
             <form action="{{ route('login') }}" method="POST">
                 @csrf
-
-                <div class="mb-4">
+                
+                <div class="mb-4 text-black">
                     <label for="email" class="sr-only">Email</label>
                     <input type="email" name="email" id="email" placeholder="Email"
                         class="bg-gray-100 border-2 w-full p-4 rounded-lg @error('email') border-red-500 @enderror"
@@ -42,9 +47,9 @@
                 </div>
 
                 <div class="mb-4">
-                    <div class="text-black">
-                        <input type="checkbox" name="remember" id="remember" class="mr-2 text-black">
-                        <label for="remember" class="text-black">Remember me</label>
+                    <div class="">
+                        <input type="checkbox" name="remember" id="remember" class="mr-2 ">
+                        <label for="remember" class="">Se souvenir de moi</label>
                     </div>
                 </div>
 

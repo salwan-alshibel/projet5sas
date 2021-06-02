@@ -375,9 +375,7 @@ input:checked+.slider:before {
     margin-left: 240px;
 }
 
-.gridcontainer div {
-    min-height: 240px;
-}
+
 
 .gridcontainer a {
     min-height: inherit;
