@@ -103,7 +103,8 @@ return [
     'required_with_all'    => 'Le champ :attribute est obligatoire quand :values sont présents.',
     'required_without'     => "Le champ :attribute est obligatoire quand :values n'est pas présent.",
     'required_without_all' => "Le champ :attribute est requis quand aucun de :values n'est présent.",
-    'same'                 => 'Les champs :attribute et :other doivent être identiques.',
+    // 'same'                 => 'Les champs :attribute et :other doivent être identiques.',
+    'same'                 => 'Les champs doivent être identiques.',
     'size'                 => [
         'numeric' => 'La valeur de :attribute doit être :size.',
         'file'    => 'La taille du fichier de :attribute doit être de :size kilo-octets.',

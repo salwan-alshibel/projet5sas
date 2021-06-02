@@ -408,10 +408,10 @@ input:checked+.slider:before {
     --tw-translate-y: -1.5rem;
 }
 
-input:focus ~ label,
-select:focus ~ label {
+/* input:focus ~ label,
+select:focus ~ label { */
     /* @apply text-black; left-0; */
-    --tw-text-opacity: 1;
+    /* --tw-text-opacity: 1;
     color: rgba(255, 255, 255, var(--tw-text-opacity));
     left: 0px;
-}
+} */

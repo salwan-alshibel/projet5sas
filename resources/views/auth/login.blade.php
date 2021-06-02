@@ -33,7 +33,7 @@
                     @enderror
                 </div>
 
-                <div class="mb-4">
+                <div class="mb-4 text-black">
                     <label for="password" class="sr-only">Password</label>
                     <input type="password" name="password" id="password" placeholder="Mot de passe"
                         class="bg-gray-100 border-2 w-full p-4 rounded-lg @error('password') border-red-500 @enderror"

@@ -36,14 +36,14 @@
     <?php
         $link = '.myOldOrders';
         $title = 'Mes anciennes commandes';
-        $content = 'Voir anciennes commandes.';
+        $content = 'Voir mes anciennes commandes.';
         $icon = 'spellbook.png';
-        $other = 'filter sepia';
+        $other = 'filter hue-rotate-180';
     ?>
     <x-dashboardCard :link="$link" :title="$title" :content="$content" :icon="$icon" :other="$other"/>
 
     <?php
-        $link = '';
+        $link = '.myPosts';
         $title = 'Mes commentaires';
         $content = 'Voir mes commentaires.';
         $icon = 'writing.png';

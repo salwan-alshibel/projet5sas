@@ -59,11 +59,13 @@ Route::get('accueil', [HomeController::class, 'index'])->name('home');
 
 
 //DASHBOARD USERS
-Route::get('/mon-profil', [DashboardController::class, 'index'])->name('dashboard');
-    //->middleware('auth');
+Route::get('/mon-profil', [DashboardController::class, 'index'])->name('dashboard'); //->middleware('auth');
+
 Route::get('/dashboard/modifier-profil', [DashboardController::class, 'updateProfile'])->name('dashboard.modifier-profil');
+Route::post('/dashboard/modifier-profil', [DashboardController::class, 'updateProfile']);
 
 Route::get('/dashboard/changer-mot-de-passe', [DashboardController::class, 'updatePassword'])->name('dashboard.updatePassword');
+Route::post('/dashboard/changer-mot-de-passe', [DashboardController::class, 'updatePassword']);
 
 Route::get('/dashboard/mes-commentaires', [DashboardController::class, 'myPosts'])->name('dashboard.myPosts');
 
