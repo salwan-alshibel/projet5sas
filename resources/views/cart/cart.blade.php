@@ -106,6 +106,9 @@
                         Etape suivante
                     </button>
                 </div>
+
+                @else
+                <div class="text-center p-4 sm:p-16 text-2xl">Votre panier est vide.</div>
                 @endif
             </div>
         </div>

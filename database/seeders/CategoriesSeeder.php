@@ -37,7 +37,7 @@ class CategoriesSeeder extends Seeder
                 'online' => 1,
                 'created_at' => date(now()),
                 'updated_at' => date(now()),
-            ]
+            ],
 
             [
                 'name' => "Order",

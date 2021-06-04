@@ -4,12 +4,14 @@
     <div class="sidebar px-2 my-4">
         <div class="sidebar-item border-b border-outer-space-400 py-3 text-center">
             <a href="{{ route('dashboard') }}" class="block">
-                <i class="fas fa-arrow-left"></i>
+                @if ($_SERVER['REQUEST_URI'] !== '/mon-profil')
+                <i class="fas fa-arrow-left"></i>            
+                @endif
                 Mon espace</a>
         </div>
 
         <!-- SidebarSearch Form -->
-        <div class=" flex h-9 my-5">
+        {{-- <div class=" flex h-9 my-5">
             <input
                 class="text-outer-space-100 bg-04DP rounded border border-text-outer-space-100 border-solid placeholder-white px-3 min-w-0 "
                 type="search" placeholder="Rechercher">
@@ -18,7 +20,7 @@
                     <i class="fas fa-search fa-fw"></i>
                 </button>
             </div>
-        </div>
+        </div> --}}
 
         <!-- Sidebar Menu -->
         <nav class="sidebar-nav mt-2">
