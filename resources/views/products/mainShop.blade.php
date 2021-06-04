@@ -2,7 +2,7 @@
 
 
 @section('content')
-    <div class="container md:flex">
+    <div class="container md:flex pt-20">
         <div class="w-full md:w-1/5">
             <div>
                 <input type="search" id="myInput" onkeyup="window.search()" placeholder="Rechercher..." >
@@ -29,7 +29,7 @@
         </div>
         
         
-        <div class="grid grid-cols-1 xl:grid-cols-2 gap-4">
+        <div class="pl-8 grid grid-cols-1 xl:grid-cols-2 gap-4">
             @foreach ($products as $product)
             <a href="{{ route('product', [$product->id, $product->slug]) }}">
                 <div class="max-w-md h-72 mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl hover:underline">

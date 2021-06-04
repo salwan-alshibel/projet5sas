@@ -28,4 +28,8 @@ class Product extends Model
         return number_format($prixTTC, 2);
     }
 
+    public function tags() {
+        return $this->belongsToMany(Tag::class);
+    }
+
 }
