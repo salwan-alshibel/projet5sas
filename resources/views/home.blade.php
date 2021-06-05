@@ -14,30 +14,28 @@
         <div id="carousel" class="relative">
             <ul id="slides" class="z-10">
 
-                @foreach ($products as $product)
-                <li class="slide showing">
-                    <a href="{{ route('product', [$product->id, $product->slug]) }}" class=""><img class="h-72 w-full md:w-48 object-contain" src="{{ asset('images/products_images/'. $product->products_image->first_img) }}" alt={{ $product->products_image->first_img }}/>
-                    <span class="nav_link_text">{{$product->title}}</span></a>
-                </li>
+                @foreach ($allTagsWithProducts as $oneTagWithProducts)
+                 @if ($oneTagWithProducts->name == '#Carrousel')
+                    @foreach ($oneTagWithProducts->products as $product)
+                        <li class="slide showing">
+                            <a href="{{ route('product', [$product->id, $product->slug]) }}" class=""><img class="h-72 w-full md:w-48 object-contain" src="{{ asset('images/products_images/'. $product->products_image->first_img) }}" alt={{ $product->products_image->first_img }}/>
+                                <span class="nav_link_text">{{$product->title}}</span>
+                            </a>
+                        </li
+                    @endforeach
+                 @endif
                 @endforeach
 
 
 
-
-
-
-                {{-- <li class="slide showing">
-                    <a href="{{ route('paints') }}" class=""><img src="{{url('/images/GW-New-To-40K-2020-11-14-Portal-All-bmm.jpg')}}" alt="Peintures"/>
-                    <span class="nav_link_text">Peintures</span></a>
+                {{-- @foreach ($products as $product)
+                <li class="slide showing">
+                    <a href="{{ route('product', [$product->id, $product->slug]) }}" class=""><img class="h-72 w-full md:w-48 object-contain" src="{{ asset('images/products_images/'. $product->products_image->first_img) }}" alt={{ $product->products_image->first_img }}/>
+                    <span class="nav_link_text">{{$product->title}}</span></a>
                 </li>
-                <li class="slide">
-                    <a href="{{ route('paints') }}" class=""><img src="{{url('/images/StarbloodStalkers-2021-03-20-ShortPortal-All-bma_.webp')}}" alt="Peintures"/>
-                    <span class="nav_link_text">Peintures</span></a>
-                </li>
-                <li class="slide">
-                    <a href="{{ route('paints') }}" class=""><img src="{{url('/images/GW-Warzone-Ultramar-2020-26-09-LPMulticol-All-bm_.webp')}}" alt="Peintures"/>
-                    <span class="nav_link_text">Peintures</span></a>
-                </li> --}}
+                @endforeach --}}
+
+
             </ul>
             <!-- Carousel buttons -->
             <div class="slider-controls absolute top-0 left-0 w-full h-full" id="controls-list">

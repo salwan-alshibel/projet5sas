@@ -28,7 +28,12 @@ class Category extends Model
 
     //Return all products linked to a child category or a parent category:
     public function productsViaAll() {
-        $products = $this->productsViaParent()->with('category')->get()->merge($this->productsViaChild()->with('category')->get());
+        
+        if(isset($first)) {
+            $products = $this->productsViaParent()->with('category')->skip($first)->take($perPage)->get()->merge($this->productsViaChild()->with('category')->skip($first)->take($perPage)->get());
+        } else {
+            $products = $this->productsViaParent()->with('category')->get()->merge($this->productsViaChild()->with('category')->get());
+        }
         
         return $products;
     }

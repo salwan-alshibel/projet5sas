@@ -28,7 +28,6 @@
             </div>  
         </div>
         
-        
         <div class="pl-8 grid grid-cols-1 xl:grid-cols-2 gap-4">
             @foreach ($products as $product)
             <a href="{{ route('product', [$product->id, $product->slug]) }}">
@@ -55,6 +54,8 @@
                 </div>
             </a>
             @endforeach
+            
+            {{-- {{ $products->links() }} --}}
         </div>
     </div>
 

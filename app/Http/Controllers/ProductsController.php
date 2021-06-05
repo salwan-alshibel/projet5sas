@@ -31,7 +31,14 @@ class ProductsController extends Controller
         //$products = Product::where('category_id', $request->id)->get();
         $category = Category::find($request->id);
         $products = $category->productsViaAll();
+        // dd($category->parent());
+        //dd($products->links());
+        dd(count($products));
+        $this->pagination($products);
+
         
+
+
         // Method replaced by Eloquant Relationship OneToOne:
         // $productsImages = [];
         // //dd($productsImages);
@@ -67,5 +74,28 @@ class ProductsController extends Controller
         return view('products.single_product', [
             'product' => $product]);
 
-    } 
+    }
+
+    //Own pagination: 
+    public function pagination($products){
+        //Find actual page
+        if(isset($_GET['page']) && !empty($_GET['page'])){
+            $currentPage = (int) strip_tags($_GET['page']);
+        } else {
+            $currentPage = 1;
+        }
+
+        //Number of products
+        $numberOfProducts = count($products);
+
+        //Max products per page
+        $perPage = 6;
+
+        //Calcul of total page in result
+        $totalPages = ceil($numberOfProducts / $perPage);
+        
+        //1st article of the current page
+        $first = ($currentPage * $perPage) - $perPage;
+
+    }
 }

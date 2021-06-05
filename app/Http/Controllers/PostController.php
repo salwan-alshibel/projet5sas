@@ -14,7 +14,7 @@ class PostController extends Controller
 
    public function index(){
       //Eager loading orderBy('created_at', 'desc') or latest()
-      $posts = Post::orderBy('created_at', 'desc')->with(['user', 'likes'])->paginate(4);
+      $posts = Post::orderBy('created_at', 'desc')->with(['user', 'likes'])->paginate(3);
       return view('posts.index', ['posts' => $posts]); 
    }
 
