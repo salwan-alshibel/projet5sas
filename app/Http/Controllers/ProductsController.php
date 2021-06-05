@@ -33,10 +33,11 @@ class ProductsController extends Controller
         $products = $category->productsViaAll();
         // dd($category->parent());
         //dd($products->links());
-        dd(count($products));
-        $this->pagination($products);
+        //dd(count($products));
+        $productsWpagination = 2;
+        $products = $this->pagination($products, $category);
 
-        
+        //dd($products);
 
 
         // Method replaced by Eloquant Relationship OneToOne:
@@ -50,8 +51,9 @@ class ProductsController extends Controller
         //     'products' => $products,
         //     'productsImages' => $productsImages
         // ]);
-
         return view('products.mainShop', compact('products', 'category'));
+
+        // return view('products.mainShop', compact('products', 'category'));
     }
 
 
@@ -77,7 +79,7 @@ class ProductsController extends Controller
     }
 
     //Own pagination: 
-    public function pagination($products){
+    public function pagination($products, $category){
         //Find actual page
         if(isset($_GET['page']) && !empty($_GET['page'])){
             $currentPage = (int) strip_tags($_GET['page']);
@@ -94,8 +96,12 @@ class ProductsController extends Controller
         //Calcul of total page in result
         $totalPages = ceil($numberOfProducts / $perPage);
         
-        //1st article of the current page
+        //1st product of each page
         $first = ($currentPage * $perPage) - $perPage;
 
+        $productsWpagination = $category->productsWithPagination($first, $perPage);
+        //dd($productsWpagination);
+
+        return $productsWpagination;
     }
 }
