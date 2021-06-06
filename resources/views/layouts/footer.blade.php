@@ -1,4 +1,4 @@
-<footer class="bg-01DP py-16">
+<footer class="bg-01DP py-16 z-10 relative">
     <div class="container flex justify-around text-white m-auto">
         <div>
             <p class="text-2xl pb-4">Infos pratiques</p>

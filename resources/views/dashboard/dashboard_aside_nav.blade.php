@@ -1,4 +1,4 @@
-<aside class="sidebar-container absolute text-outer-space-100 bg-outer-space-500 w-60 pt-8 h-full ">
+<aside class="fixed sidebar-container text-outer-space-100 bg-outer-space-500 w-60 pt-8 h-full ">
 
     <!-- Sidebar -->
     <div class="sidebar px-2 my-4">

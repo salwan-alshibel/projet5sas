@@ -3,7 +3,7 @@
 
 @section('dashboard-content')
 
-
+<div class="h-screen">
 <div class="darkable gridcontainer bg-dusty-gray-200 p-0 md:p-12 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-px md:gap-6">
     
     <?php
@@ -50,7 +50,8 @@
         $other = '';
     ?>
     <x-dashboardCard :link="$link" :title="$title" :content="$content" :icon="$icon" :other="$other"/>
-
+</div>
+</div>
 {{-- 
     <div class="max-h-44 mx-auto md:max-w-md bg-white border-0 shadow-lg md:rounded-3xl relative w-full">
         <a href=" {{ route('dashboard.modifier-profil') }}" class="block hover:underline">

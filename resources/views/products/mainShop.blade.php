@@ -152,9 +152,9 @@
     }
 
     /* Filter search */
-    .container {
+    /* .container {
     overflow: hidden;
-    }
+    } */
 
     .filterDiv {
     float: left;

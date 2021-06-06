@@ -4,7 +4,7 @@
     {{-- @include('dashboard.asideNavbar') --}}
     @include('dashboard.dashboard_aside_nav')
     
-    <section class="dashboard-content">
+    <section class="dashboard-content bg-dusty-gray-200">
         @yield('dashboard-content')
     </section>
 

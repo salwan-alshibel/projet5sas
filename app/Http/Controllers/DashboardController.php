@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
+use App\Models\Products_image;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -87,16 +89,126 @@ class DashboardController extends Controller
     }
 
     //DASHBOARD ADMIN
-    public function addProduct() {
-        return view('dashboard.admin.dashboard_products_admin');
+    public function addProduct(Request $request){
+        
+        if($request->id) {
+            //Form validation:
+            $this->validate($request, [
+                'title' => 'required|unique:products|max:255',
+                'content' => 'required',
+                'summary' => 'required',
+                'slug' => 'required|unique:products|max:255',
+                'quantity' => 'required|integer|min:0|max:999',
+                'price' => 'required',
+                'shop' => 'required',
+                'category_id' => 'required',
+                'tag_id' => 'integer',
+                'first_img' => 'required|mimes:jpg, png, jpeg, webp|max:5048|unique:products_images',
+                'second_img' => 'mimes:jpg, png, jpeg, webp|max:5048|unique:products_images',
+                'third_img' => 'mimes:jpg, png, jpeg, webp|max:5048|unique:products_images',
+                'fourth_img' => 'mimes:jpg, png, jpeg, webp|max:5048|unique:products_images',
+                'fifth_img' => 'mimes:jpg, png, jpeg, webp|max:5048|unique:products_images',
+                'sixth_img' => 'mimes:jpg, png, jpeg, webp|max:5048|unique:products_images',
+            ]);
+
+            
+            $newImageName1 = $this->renameAndUploadImages($request->title, $request->first_img, 1);
+
+            if(isset($request->second_img)) {
+                $newImageName2 = $this->renameAndUploadImages($request->title, $request->second_img, 2);
+            } else {
+                $newImageName2 = NULL;
+            }
+            if(isset($request->third_img)) {
+                $newImageName3 = $this->renameAndUploadImages($request->title, $request->third_img, 3);
+            } else {
+                $newImageName3 = NULL;
+            }
+            if(isset($request->fourth_img)) {
+                $newImageName4 = $this->renameAndUploadImages($request->title, $request->fourth_img, 4);
+            } else {
+                $newImageName4 = NULL;
+            }
+            if(isset($request->fifth_img)) {
+                $newImageName5 = $this->renameAndUploadImages($request->title, $request->fifth_img, 5);
+            } else {
+                $newImageName5 = NULL;
+            }
+            if(isset($request->sixth_img)) {
+                $newImageName6 = $this->renameAndUploadImages($request->title, $request->sixth_img, 6);
+            } else {
+                $newImageName6 = NULL;
+            }
+            
+            // $newImageName1 = str_replace(' ', '_', $request->title) . '_' . '01' . '.' . $request->first_img->extension();
+
+            // $request->first_img->move(public_path('images\products_images'), $newImageName1);
+    
+            DB::table('products')->insert(
+                ['title' => $request->title,
+                'metaTitle' => $request->title,
+                'content' => $request->content,
+                'summary' => $request->summary,
+                'slug' => $request->slug,
+                'quantity' => $request->quantity,
+                'price' => $request->price,
+                'shop' => $request->shop,
+                'created_at' => date(now()),
+                'updated_at' => date(now()),
+                'published_at' => date(now()),
+                'category_id' => $request->category_id,
+                ]
+            );
+
+            $product = DB::table('products')->where('title', $request->title)->get();
+ 
+
+            DB::table('products_images')->insert(
+                ['first_img' => $newImageName1,
+                'second_img' => $newImageName2,
+                'third_img' => $newImageName3,
+                'fourth_img' => $newImageName4,
+                'fifth_img' => $newImageName5,
+                'sixth_img' => $newImageName6,
+                'product_id' => $product[0]->id,
+                ]
+            );
+
+            if(isset($request->tag_id)) {
+                DB::table('product_tag')->insert(
+                    [
+                    'tag_id' => $request->tag_id,
+                    'product_id' => $product[0]->id,
+                    ]
+                );
+            }
+            
+
+
+      
+            return back();
+        }
+
+            return view('dashboard.admin.dashboard_products_admin');
     }
+
 
     public function oldOrders() {
         return view('dashboard.admin.dashboard_oldorders_admin');
     }
 
+
     public function newOrders() {
         return view('dashboard.admin.dashboard_neworders_admin');
+    }
+
+
+    public function renameAndUploadImages($title, $image, $number) {
+        $newImageName = str_replace(' ', '_', $title) . '_' . 0 .$number . '.' . $image->extension();
+
+        $image->move(public_path('images\products_images'), $newImageName);
+
+        return $newImageName;
     }
 
 }
