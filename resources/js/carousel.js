@@ -36,7 +36,7 @@ class Carousel {
     //If no "id" is specify when creating the object:
     ifNoContainer() {
         if (this.container == false) {
-            console.log("Veuillez sélectionner un containerId en paramètre lors de la construction de votre diaporama");
+            console.log("Veuillez sélectionner un containerId en paramètre");
         }
     }
 

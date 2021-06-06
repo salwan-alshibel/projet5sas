@@ -15,15 +15,15 @@
             <ul id="slides" class="z-10">
 
                 @foreach ($allTagsWithProducts as $oneTagWithProducts)
-                 @if ($oneTagWithProducts->name == '#Carrousel')
-                    @foreach ($oneTagWithProducts->products as $product)
-                        <li class="slide showing">
-                            <a href="{{ route('product', [$product->id, $product->slug]) }}" class=""><img class="h-72 w-full md:w-48 object-contain" src="{{ asset('images/products_images/'. $product->products_image->first_img) }}" alt={{ $product->products_image->first_img }}/>
-                                <span class="nav_link_text">{{$product->title}}</span>
-                            </a>
-                        </li
-                    @endforeach
-                 @endif
+                    @if ($oneTagWithProducts->name == '#Carrousel')
+                        @foreach ($oneTagWithProducts->products as $product)
+                            <li class="slide showing">
+                                <a href="{{ route('product', [$product->id, $product->slug]) }}" class=""><img class="h-72 w-full md:w-48 object-contain" src="{{ asset('images/products_images/'. $product->products_image->first_img) }}" alt={{ $product->products_image->first_img }}/>
+                                    <span class="nav_link_text">{{$product->title}}</span>
+                                </a>
+                            </li>
+                        @endforeach
+                    @endif
                 @endforeach
 
 

@@ -7,6 +7,7 @@ use App\Models\Products_image;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Classes\Pagination;
 
 class ProductsController extends Controller
 {
@@ -31,13 +32,15 @@ class ProductsController extends Controller
         //$products = Product::where('category_id', $request->id)->get();
         $category = Category::find($request->id);
         $products = $category->productsViaAll();
-        // dd($category->parent());
-        //dd($products->links());
-        //dd(count($products));
-        $productsWpagination = 2;
+
+        //Take all products with pagination and create a pagination object
         $products = $this->pagination($products, $category);
 
-        //dd($products);
+        //Separate the collection of products and the object pagination
+        $pagination = array_pop($products);
+        $products = array_pop($products);
+
+        //dd($pagination);
 
 
         // Method replaced by Eloquant Relationship OneToOne:
@@ -51,7 +54,7 @@ class ProductsController extends Controller
         //     'products' => $products,
         //     'productsImages' => $productsImages
         // ]);
-        return view('products.mainShop', compact('products', 'category'));
+        return view('products.mainShop', compact('products', 'category', 'pagination'));
 
         // return view('products.mainShop', compact('products', 'category'));
     }
@@ -95,13 +98,15 @@ class ProductsController extends Controller
 
         //Calcul of total page in result
         $totalPages = ceil($numberOfProducts / $perPage);
-        
+
+        //Create a pagination object with infos needed to create dynamic pagination buttons
+        $pagination = new Pagination($currentPage, $totalPages);
+
         //1st product of each page
         $first = ($currentPage * $perPage) - $perPage;
 
         $productsWpagination = $category->productsWithPagination($first, $perPage);
-        //dd($productsWpagination);
-
-        return $productsWpagination;
+        
+        return [$productsWpagination, $pagination] ;
     }
 }
