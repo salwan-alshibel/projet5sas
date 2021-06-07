@@ -68,6 +68,9 @@ window.toggleDark = function () {
   }
 };
 /* When the user scrolls down, hide the navbar. When the user scrolls up, show the navbar */
+// if (window.matchMedia('(max-width: 600px)').matches) {
+// 	console.log('ksdjfsdjflsjdlfkjsdf');
+// }
 
 
 var prevScrollpos = window.pageYOffset;
@@ -136,8 +139,8 @@ var aElements = document.querySelectorAll('a');
 
 for (var i = 0; i < aElements.length; ++i) {
   if (aElements[i].id == lastSegment) {
-    aElements[i].style.backgroundColor = 'rgba(255,255,255,.9)';
-    aElements[i].style.color = '#343a40';
+    aElements[i].style.backgroundColor = '#3b82f6';
+    aElements[i].style.color = 'white';
     var iElement = aElements[i].closest(".parentlist");
     iElement.querySelector(".drop").click();
   }

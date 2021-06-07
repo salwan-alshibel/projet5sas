@@ -71,6 +71,12 @@ window.toggleDark = function () {
 
 
 /* When the user scrolls down, hide the navbar. When the user scrolls up, show the navbar */
+// if (window.matchMedia('(max-width: 600px)').matches) {
+// 	console.log('ksdjfsdjflsjdlfkjsdf');
+// }
+
+
+
 let prevScrollpos = window.pageYOffset;
 window.onscroll = function() {
   let currentScrollPos = window.pageYOffset;
@@ -155,8 +161,8 @@ document.querySelectorAll('.drop').forEach(item => {
 
 	for (let i = 0; i < aElements.length; ++i) {
 		if (aElements[i].id == lastSegment ) {
-			aElements[i].style.backgroundColor = 'rgba(255,255,255,.9)';
-			aElements[i].style.color = '#343a40';
+			aElements[i].style.backgroundColor = '#3b82f6';
+			aElements[i].style.color = 'white';
 			let iElement = aElements[i].closest(".parentlist");
 			iElement.querySelector(".drop").click();
 		}

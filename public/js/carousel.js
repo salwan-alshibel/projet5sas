@@ -48,7 +48,7 @@ var Carousel = /*#__PURE__*/function () {
     key: "ifNoContainer",
     value: function ifNoContainer() {
       if (this.container == false) {
-        console.log("Veuillez sélectionner un containerId en paramètre lors de la construction de votre diaporama");
+        console.log("Veuillez sélectionner un containerId en paramètre");
       }
     }
   }, {

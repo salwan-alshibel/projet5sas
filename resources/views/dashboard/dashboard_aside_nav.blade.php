@@ -1,13 +1,18 @@
-<aside class="fixed sidebar-container text-outer-space-100 bg-outer-space-500 w-60 pt-8 h-full ">
+<aside class="lessDarkable fixed sidebar-container text-outer-space-100  w-60 pt-8 h-full ">
 
     <!-- Sidebar -->
     <div class="sidebar px-2 my-4">
+        <div class="text-center text-xl">{{ auth()->user()->name }}</div>
         <div class="sidebar-item border-b border-outer-space-400 py-3 text-center">
             <a href="{{ route('dashboard') }}" class="block">
                 @if ($_SERVER['REQUEST_URI'] !== '/mon-profil')
-                <i class="fas fa-arrow-left"></i>            
-                @endif
-                Mon espace</a>
+                <i class="fas fa-arrow-left"></i>
+                Accueil mon profil
+                @else
+                <i class="fas fa-arrow-down"></i>
+                Mon espace
+                <i class="fas fa-arrow-down"></i>     
+                @endif</a>
         </div>
 
         <!-- SidebarSearch Form -->
@@ -39,7 +44,7 @@
                         <li class="sidebar-nav-item">
                             <a href="{{ route('dashboard.modifier-profil') }}" id="modifier-profil" class="sidebar-nav-link">
                                 <i class="fas fa-arrow-right nav-icon"></i>
-                                <p>Nom, adresse...</p>
+                                <p>Infos personnel</p>
                             </a>
                         </li>
                         <li class="sidebar-nav-item">

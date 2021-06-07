@@ -8,6 +8,8 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Classes\Pagination;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Resources\Json\JsonResource;
 
 class ProductsController extends Controller
 {
@@ -108,5 +110,17 @@ class ProductsController extends Controller
         $productsWpagination = $category->productsWithPagination($first, $perPage);
         
         return [$productsWpagination, $pagination] ;
+    }
+
+
+    public function search(Request $request): JsonResponse
+    {
+        $r = $request->input('searchValueForController');
+
+        $searchProducts = Product::where('title', 'like', '%' . $r . '%')->limit(10)->get();
+
+        return response()->json([
+            'searchProducts' => $searchProducts
+        ]);
     }
 }
