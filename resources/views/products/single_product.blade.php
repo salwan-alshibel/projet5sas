@@ -70,44 +70,149 @@
             <p class="mt-2  overflow-hidden">{{ $product->content }}</p>
         </div>
     </div>
-
-    {{-- <div class="w-8/12 bg-custom-dark text-white p-6 rounded-lg">
-
-        @if ($product->id) --}}
-
-
-    {{-- <a href="{{ route('product', [$product->id, $product->slug]) }}">
-    <div class="max-w-md h-72 mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl hover:underline">
-        <div class="md:flex">
-            <div class="md:flex-shrink-0">
-                <img class="h-72 w-full md:w-48 object-contain"
-                    src="{{ asset('images/products_images/'. $productImages->{'1st_img'}) }}" alt="product image">
-            </div>
-            <div class="p-8">
-                <div class="uppercase tracking-wide text-sm text-black font-semibold"> Catégorie du produit ... à
-                    définir </div>
-                <div class="block mt-1 text-lg leading-tight font-medium text-black">{{$product->title}}</div>
-                <div class="text-gray-500 ">
-                    <p class="mt-2 max-h-36 text-gray-500 overflow-hidden">{{ $product->content }}</p>
-                    <p> [...] </p>
-                </div>
-            </div>
-        </div>
-    </div>
-    </a> --}}
-
-    {{-- <div class="flex justify-center">
-            <div class="w-8/12 bg-white p-6 rounded-lg">
-                <x-product :product="$product" :productImages="$productImages" />
-            </div>
-        </div>
-
-        @else
-        <p>On a un problème... Produit introuvable !</p>
-        <a href="{{ route('home') }}"> Retour à l'accueil </a>
-    @endif
-</div> --}}
 </div>
+
+
+
+
+
+<div class="flex justify-center">
+    <div class="w-8/12 bg-custom-dark text-white p-6 rounded-lg">
+       
+        @guest
+        <div class="mb-4 text-center">Pour poster un commentaire, veuillez vous connecter.</div>
+        @endguest
+
+       @auth
+            <form id='comments-form' action="{{ route('posts', ['id'=>$product->id])}}" method="post" class="mb-4">
+            @csrf
+                <div class="mb-4">
+                    <label for="" class="sr-only">body</label>
+                    <textarea name="body" id="body" cols="30" rows="4" class="bg-gray-100 border-2 w-full p-4 rounded-lg @error('body') border-red-500 @enderror" placeholder="Ecrire ici..."></textarea>
+
+                    @error('body')
+                            <div class="text-red-500 mt-2 text-sm">
+                                {{ $message }}
+                            </div>
+                    @enderror
+                </div>
+
+                <div>
+                    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded font-medium">Valider</button>
+                </div>
+            </form>
+        @endauth
+
+        @if ($product->posts->count())
+            @foreach ($product->posts as $post)
+                <x-post :post="$post" />
+            @endforeach
+
+            {{-- {{ $posts->links() }} --}}
+        @else
+            <p>Il n'y pas de commentaires.</p>
+        @endif
+    </div>
+</div>
+
+
+
+
+{{-- 
+
+<div class="min-h-screen bg-outer-space-700 p-0 md:p-12 text-white">
+
+    @guest
+    <div class="mb-4 text-center">Pour poster un commentaire, veuillez vous connecter.</div>
+    @endguest
+
+   @auth
+        <form onsubmit="return false" action="{{ route('posts', ['id'=>$product->id])}}" method="post" id="posts-form" class="mb-4">
+        
+            <div class="mb-4">
+                <label for="" class="sr-only">body</label>
+                <textarea name="body" id="body" cols="30" rows="4" class="bg-gray-100 border-2 w-full p-4 rounded-lg @error('body') border-red-500 @enderror" placeholder="Ecrire ici..."></textarea>
+
+                @error('body')
+                        <div class="text-red-500 mt-2 text-sm">
+                            {{ $message }}
+                        </div>
+                @enderror
+            </div>
+            <input type="hidden" name="_token" id="token-input" value="{{ csrf_token() }}" />
+
+            <div>
+                <button type="submit" form="posts-form" class="bg-blue-500 text-white px-4 py-2 rounded font-medium">Valider</button>
+            </div>
+        </form>
+    @endauth
+
+        <input type="text" name="searchInput" id="search-input" class="text-black" maxlength="99" placeholder="Rechercher un article...">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    <div id="search-result-div" class="py-8">
+    </div>
+
+
+
+
+    
+
+</div>
+
+<script>
+
+const form = document.getElementById('posts-form');
+
+form.addEventListener('submit', function(e) {
+   e.preventDefault();
+
+   const url = this.getAttribute('action');
+   const searchValue = document.getElementById('search-input').value;
+   const token = document.getElementById('token-input').value;
+      
+  if(searchValue !== '') {
+      fetch(url, {
+          headers: {
+              'Content-Type': 'application/json',
+              'X-CSRF-TOKEN': token
+          },
+          method: 'post',
+          body: JSON.stringify({
+              searchValueForController: searchValue
+          })
+      }).then(response => {
+          // console.log(response);
+          response.json().then(data => {
+              // console.log(Object.entries(data));
+
+              const searchResultDiv = document.getElementById('search-result-div');
+              searchResultDiv.innerHTML = '';
+
+              Object.entries(data)[0][1].forEach(element => {
+                  searchResultDiv.innerHTML += `<a href="http://projet5sas/product/${element.id}/${element.slug}" class='block p-2 border border-solid border-gray-400 max-w-max rounded-lg bg-white text-black hover:bg-blue-500 hover:text-white'>${element.title}</a>`
+              });
+          })
+      }).catch(error => {
+          console.log(error);
+      })
+  }
+
+})
+</script> --}}
+
 @endsection
 
 

@@ -76,8 +76,8 @@ class ProductsController extends Controller
 
 
         //Second method:
-        $product = Product::with('products_image')->find($request->id);
-
+        $product = Product::with(['products_image', 'posts'])->find($request->id);
+        
         return view('products.single_product', [
             'product' => $product]);
 

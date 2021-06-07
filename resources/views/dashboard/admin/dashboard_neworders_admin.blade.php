@@ -6,7 +6,7 @@
 <div class="min-h-screen bg-outer-space-700 p-0 md:p-12 text-white">
 
       <form onsubmit="return false" id="search-form" action="{{route ('products.search')}}" method="POST">
-          <input type="text" name="searchInput" id="search-input" class="text-black">
+          <input type="text" name="searchInput" id="search-input" class="text-black" maxlength="99" placeholder="Rechercher un article...">
           <input type="hidden" name="_token" id="token-input" value="{{ csrf_token() }}" />
           {{-- <button type="submit" class="ml-8 px-4 border rounded-lg"> Rechercher </button> --}}
       </form>

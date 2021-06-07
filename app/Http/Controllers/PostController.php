@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Http\JsonResponse;
 
 class PostController extends Controller
 {
@@ -25,12 +27,47 @@ class PostController extends Controller
    }
    
    public function store(Request $request){
-      $this->validate($request, ['body' => 'required']);
+		// dd(auth()->user()->id);
+		// dd($request);
+		$this->validate($request, ['body' => 'required']);
 
-      auth()->user()->posts()->create($request->only('body'));
+	
+		DB::table('posts')->insert(
+			['user_id' => auth()->user()->id,
+			'body' => $request->body,
+			'product_id' => $request->id,
+			'created_at' => date(now()),
+			'updated_at' => date(now()),
+			]
+		);
 
-      return back();
+		//auth()->user()->posts()->create($request->only('body'));
+
+		//return back();
+		return redirect()->to(url()->previous() . '#comments-form');
    }
+
+
+//    public function commentsWithAjax(Request $request): JsonResponse
+//     {
+//         // $r = $request->input('value');
+
+//         // DB::table('posts')->insert(
+//         //     ['user_id' => auth()->user()->id,
+//         //     'body' => $request->body,
+//         //     'product_id' => $request->id,
+//         //     'created_at' => date(now()),
+//         //     'updated_at' => date(now()),
+//         //     ]
+//       	// );
+
+// 		$posts = Post::where('products_id', $request->id)->paginate(5)->get();
+
+//         return response()->json([
+//             'posts' => $posts 
+//         ]);
+//     }
+
 
    public function destroy(Post $post) {
 
