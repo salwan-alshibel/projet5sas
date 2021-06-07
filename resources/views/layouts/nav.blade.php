@@ -108,7 +108,7 @@
             @foreach ($categories as $categorie)
                 <li class="px-5">
                     <a href="{{ route('viewByCategory', ['id'=>$categorie->id]) }}" class=""><img src="{{ asset('images/categories_images/'. $categorie->image) }}" alt= {{$categorie->name}} />
-                    <span class="nav_link_text">{{$categorie->name}}</span></a>
+                    <span class="hidden">{{$categorie->name}}</span></a>
                 </li>
             @endforeach
         </ul>

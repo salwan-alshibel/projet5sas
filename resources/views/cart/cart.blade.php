@@ -47,15 +47,13 @@
                                         @csrf
                                         <label for="quantity">Quantité : </label>
                                         <select id="quantity" class="text-black text-lg text-center rounded" name="quantity">
-                                            @for ($i = 1; $i < 11; $i++) @if ($i==$product['qty']) <option value="{{$i}}" selected>
-                                                {{$i}}
-                                                </option>
-                                                @else
-                                                <option value="{{$i}}">
-                                                    {{$i}}
-                                                </option>
+                                            @for ($i = 1; $i < 11; $i++)
+                                                @if ($i==$product['qty'])
+                                                    <option value="{{$i}}" selected>{{$i}}</option>
+                                                @elseif ($i <= $product['product']['quantity'] )
+                                                    <option value="{{$i}}">{{$i}}</option>
                                                 @endif
-                                                @endfor
+                                            @endfor
                                         </select>
                                     </form>
                                 

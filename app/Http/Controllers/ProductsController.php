@@ -8,6 +8,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Classes\Pagination;
+use App\Models\Post;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -76,10 +77,14 @@ class ProductsController extends Controller
 
 
         //Second method:
-        $product = Product::with(['products_image', 'posts'])->find($request->id);
-        
+        // $product = Product::with(['products_image', 'posts'])->find($request->id);
+        $product = Product::with(['products_image'])->find($request->id);
+
+        $posts = Post::orderBy('created_at', 'asc')->with(['user', 'likes'])->where('product_id', $request->id)->paginate(3);
+        //$posts->setPath('#test');
+        //dd($posts);
         return view('products.single_product', [
-            'product' => $product]);
+            'product' => $product, 'posts' => $posts]);
 
     }
 

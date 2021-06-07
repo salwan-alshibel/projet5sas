@@ -35,28 +35,36 @@
                 <!-- product price and addToCart button -->
                 <div>
                     <p class="pb-3 text-3xl">{{ $product->prixTTC() }} € </p>
-
-                    <form id="formCart"  class="pb-5" action="{{route('addToCart', ['id'=>$product->id])}}" method="POST">
-                        @csrf
-                        <label for="quantity">Quantité : </label>
-                        <select id="quantity" class="text-black text-xl text-center" name="quantity">
-                            @for ($i = 1; $i < 11; $i++) <option value="{{$i}}">{{$i}}</option>
+                    @if ($product->quantity < 5 && $product->quantity > 0)
+                        <p>Plus que {{$product->quantity}} unité(s) disponible(s)</p>
+                    @elseif($product->quantity == 0)
+                        <p class="p-4 max-w-max rounded bg-red-600">Produit épuisé !</p>
+                    @else
+                        <form id="formCart"  class="pb-5" action="{{route('addToCart', ['id'=>$product->id])}}" method="POST">
+                            @csrf
+                            <label for="quantity">Quantité : </label>
+                            <select id="quantity" class="text-black text-xl text-center" name="quantity">
+                                @for ($i = 1; $i < 11; $i++)
+                                    @if ($i <= $product->quantity )
+                                        <option value="{{$i}}">{{$i}}</option>
+                                    @endif
                                 @endfor
-                        </select>
-                    </form>
+                            </select>
+                        </form>
 
-                    <div class="flex flex-row">
-                        <button type="submit" form="formCart"
-                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                            Ajouter au panier
-                        </button>
+                        <div class="flex flex-row">
+                            <button type="submit" form="formCart"
+                                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                Ajouter au panier
+                            </button>
 
-                        @if (session('message'))
-                            <div class="bg-green-400 font-bold rounded ml-2 py-2 px-4 text-white text-center w-max">
-                                <i class="text-xl fas fa-check"></i> {{ session('message') }}
-                            </div>
-                        @endif
-                    </div>
+                            @if (session('message'))
+                                <div class="bg-green-400 font-bold rounded ml-2 py-2 px-4 text-white text-center w-max">
+                                    <i class="text-xl fas fa-check"></i> {{ session('message') }}
+                                </div>
+                            @endif
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>
@@ -103,15 +111,26 @@
             </form>
         @endauth
 
-        @if ($product->posts->count())
+        @if ($posts->count())
+        @foreach ($posts as $post)
+            <x-post :post="$post" />
+        @endforeach
+        {{ $posts->fragment('comments-form')->links() }}
+
+        @else
+        <p>Il n'y pas de commentaires.</p>
+        @endif
+
+
+
+
+        {{-- @if ($product->posts->count())
             @foreach ($product->posts as $post)
                 <x-post :post="$post" />
             @endforeach
-
-            {{-- {{ $posts->links() }} --}}
         @else
             <p>Il n'y pas de commentaires.</p>
-        @endif
+        @endif --}}
     </div>
 </div>
 
