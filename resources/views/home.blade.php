@@ -17,9 +17,14 @@
                 @foreach ($allTagsWithProducts as $oneTagWithProducts)
                     @if ($oneTagWithProducts->name == '#Carrousel')
                         @foreach ($oneTagWithProducts->products as $product)
-                            <li class="slide showing">
-                                <a href="{{ route('product', [$product->id, $product->slug]) }}" class=""><img class="h-72 w-full md:w-48 object-contain" src="{{ asset('images/products_images/'. $product->products_image->first_img) }}" alt={{ $product->products_image->first_img }}/>
-                                    <span class="nav_link_text">{{$product->title}}</span>
+                            <li class="slide showing bg-white">
+                                <a href="{{ route('product', [$product->id, $product->slug]) }}" class="">
+                                    <img class="h-72 w-9/12 md:w-48 object-contain bg-white" src="{{ asset('images/products_images/'. $product->products_image->first_img) }}" alt={{ $product->products_image->first_img }}/>
+                                    
+                                    <div class="absolute bottom-4 text-white right-28 text-lg border border-solid p-4 rounded-xl max-w-xs overflow-hidden max-h-72 bg-indigo-700">
+                                    <p>{{$product->title}}</p>
+                                    <p class="text-right pt-1">{{$product->price}} €</p>
+                                    </div>
                                 </a>
                             </li>
                         @endforeach
@@ -44,7 +49,7 @@
                     {{-- <span class="visually-hidden">Précédent</span> --}}
                 </button>
 
-                <button class="carousel-control-pause absolute bottom-10 left-1/2 z-20">
+                <button class="carousel-control-pause absolute -bottom-16 z-20 p-4 rounded-3xl rounded-t-none">
                     <span class="carousel-control-pause-icon"><i class="pause fas fa-pause-circle"></i><i class="hidden play fas fa-play"></i></span>
                     {{-- <span class="visually-hidden">Pause</span> --}}
                 </button>

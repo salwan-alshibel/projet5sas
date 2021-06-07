@@ -173,9 +173,9 @@ input:checked+.slider:before {
     transform: scale(1.02);
 } */
 
-.nav_link_text {
+/* .nav_link_text {
     display: none;
-}
+} */
 /*Fin A vérifier*/
 
 
@@ -235,7 +235,7 @@ input:checked+.slider:before {
 
     font-size: 40px;
     box-sizing: border-box;
-    background: #333;
+    background: white;
     color: #fff;
 
     -webkit-transition: opacity 1s;
@@ -251,9 +251,8 @@ input:checked+.slider:before {
 }
 
 #slides img {
-    width: 100%;
+    width: 75%;
     height: 100%;
-    object-fit: cover;
     box-sizing: border-box;
 }
 
@@ -279,6 +278,11 @@ input:checked+.slider:before {
     background: rgba(191, 175, 175, 0.29);
     /* padding: 50px 0px;
     margin: 50px 0px; */
+}
+
+.carousel-control-pause {
+    background: rgba(191, 175, 175, 0.29);
+    left: 45%;
 }
 
 .carousel-control-next-icon, .carousel-control-prev-icon {
