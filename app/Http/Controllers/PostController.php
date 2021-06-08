@@ -29,6 +29,9 @@ class PostController extends Controller
    public function store(Request $request){
 		// dd(auth()->user()->id);
 		// dd($request);
+
+      $request->body = htmlspecialchars($request->body);
+
 		$this->validate($request, ['body' => 'required']);
 
 	

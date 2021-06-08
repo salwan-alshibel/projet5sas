@@ -20,6 +20,9 @@ class LoginController extends Controller
 
     public function store(Request $request){
 
+        $request->email = htmlspecialchars($request->email);
+        $request->password = htmlspecialchars($request->password);
+        
         //Form validation:
         $this->validate($request, [
             'email' => 'required|email',

@@ -20,8 +20,10 @@
                             @foreach ($posts as $post)
                                 <div class="border-white border-solid border-t">
                                     <x-post :post="$post" />
+                                    {{dd($post->product->first_img)}}
                                 </div>
                             @endforeach
+                            {{ $posts->links() }}
                         @endif
                     </div>
                 </div>

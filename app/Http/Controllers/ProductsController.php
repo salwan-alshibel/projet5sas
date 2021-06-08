@@ -120,6 +120,7 @@ class ProductsController extends Controller
 
     public function search(Request $request): JsonResponse
     {
+        
         $r = $request->input('searchValueForController');
 
         $searchProducts = Product::where('title', 'like', '%' . $r . '%')->limit(10)->get();

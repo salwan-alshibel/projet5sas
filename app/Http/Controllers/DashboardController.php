@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use App\Models\Product;
 use App\Models\Products_image;
 use Illuminate\Http\Request;
@@ -22,6 +23,10 @@ class DashboardController extends Controller
 
     public function updateProfile(Request $request) {
         if($request->id) {
+
+            $request->name = htmlspecialchars($request->name);
+            $request->username = htmlspecialchars($request->username);
+            $request->email = htmlspecialchars($request->email);
 
             //Form validation:
             $this->validate($request, [
@@ -55,7 +60,9 @@ class DashboardController extends Controller
 
     public function updatePassword(Request $request) {
         if($request->id) {
-            
+
+            $request->new_password = htmlspecialchars($request->new_password);
+
             if(Hash::check($request->old_password, auth()->user()->password)){
              
             //Form validation:
@@ -75,9 +82,14 @@ class DashboardController extends Controller
     }
 
     public function myPosts() {
-        return view('dashboard.dashboard_posts')->with([
-            'posts'=>auth()->user()->posts
-        ]);
+        
+        $posts = Post::where('user_id', auth()->user()->id)->orderBy('created_at', 'asc')->with(['user', 'likes', 'product'])->paginate(3);
+        
+        return view('dashboard.dashboard_posts', ['posts' => $posts]); 
+
+        // return view('dashboard.dashboard_posts')->with([
+        //     'posts'=>auth()->user()->posts
+        // ]);
     }
 
     public function myActualOrders() {
@@ -92,6 +104,17 @@ class DashboardController extends Controller
     public function addProduct(Request $request){
         
         if($request->id) {
+
+            $request->title = htmlspecialchars($request->title);
+            $request->content = htmlspecialchars($request->content);
+            $request->summary = htmlspecialchars($request->summary);
+            $request->slug = htmlspecialchars($request->slug);
+            $request->quantity = htmlspecialchars($request->quantity);
+            $request->price = htmlspecialchars($request->price);
+            $request->shop = htmlspecialchars($request->shop);
+            $request->category_id = htmlspecialchars($request->category_id);
+            $request->tag_id = htmlspecialchars($request->tag_id);
+
             //Form validation:
             $this->validate($request, [
                 'title' => 'required|unique:products|max:255',

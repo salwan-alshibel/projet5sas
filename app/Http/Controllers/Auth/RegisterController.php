@@ -24,6 +24,11 @@ class RegisterController extends Controller
         //Die Dump for test:
         //dd($request->email);
 
+        $request->name = htmlspecialchars($request->name);
+        $request->username = htmlspecialchars($request->username);
+        $request->email = htmlspecialchars($request->email);
+        $request->password = htmlspecialchars($request->password);
+
         //Form validation:
         $this->validate($request, [
             'name' => 'required|max:255',
