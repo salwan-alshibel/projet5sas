@@ -20,7 +20,8 @@
                             @foreach ($posts as $post)
                                 <div class="border-white border-solid border-t">
                                     <x-post :post="$post" />
-                                    {{dd($post->product->first_img)}}
+                                    {{-- {{dd($post->product)}} --}}
+                                    <a href="{{ route('product', [$post->product->id, $post->product->slug]) }}">Voir l'article</a>
                                 </div>
                             @endforeach
                             {{ $posts->links() }}
