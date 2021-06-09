@@ -58,6 +58,11 @@
                         connecter</button>
                 </div>
             </form>
+            <div class="p-4">Vous n'avez pas encore de compte ?
+                
+                <a class="underline text-blue-500 hover:text-blue-400 hover:underline py-2 px-4" href="{{ route('register') }}"><i class="fas fa-arrow-right transform scale-75"></i>S'enregister
+                </a>
+            </div>
         </div>
     </div>
 </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
 {
@@ -35,6 +36,14 @@ class LoginController extends Controller
         }
 
         //Redirect:
-        return redirect()->route('dashboard');
+        if(Session::has('oldUrl')) {
+            
+            $oldUrl = Session::get('oldUrl');
+            Session::forget('oldUrl');
+            
+            return redirect()->to($oldUrl);
+        }
+        
+        return redirect()->route('dashboard'); 
     }
 }

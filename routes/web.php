@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\PostLikeController;
@@ -120,6 +121,10 @@ Route::post('panier/add/{id}', [CartController::class, 'addToCart'])->name('addT
 Route::post('panier/update/{id}', [CartController::class, 'updateCart'])->name('cart.update');
 Route::post('panier/remove/{id}', [CartController::class, 'removeProductFromCart'])->name('cart.remove');
 // Route::get('panier/empty', [CartController::class, 'empty'])->name('cart.empty');
+
+//Checkout
+Route::get('paiement', [CheckoutController::class, 'index'])->name('checkout.index');
+
 
 
 //SALES CONDITIONS

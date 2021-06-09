@@ -11,117 +11,109 @@
         <div class="lessDarkable mx-auto mt-20 mb-12 bg-gray-100 shadow-lg rounded-lg md:max-w-5xl">
             <div class="w-full p-2 sm:p-8 flex flex-col">
                 
-                <h1 class="text-2xl text-center md:text-left font-medium ">Panier</h1>
+                <h1 class="text-2xl text-center md:text-left font-medium ">Paiement</h1>
 
-                @if(Session::has('cart'))
-                    @foreach ($products as $product)
-                        <div class="flex flex-col md:flex-row justify-between items-center mt-6 pt-6 pb-4 border-b">
-                            <!-- Image -->
-                            <a href="{{ route('product', [$product['product']['id'], $product['product']['slug']]) }}">
-                                <figure>
-                                    <img class="w-80 md:w-40 m-auto" src="{{ asset('images/products_images/'. $product['product']['products_image']['first_img']) }}"
-                                    alt={{ $product['product']['products_image']['first_img'] }}>
-                                </figure>
-                            </a>
-                                <!-- Title -->
-                                <a href="{{ route('product', [$product['product']['id'], $product['product']['slug']]) }}">
-                                <div class="p-8 pl-0 md:p-8 w-full  md:w-52 text-3xl md:text-base hover:underline">
-                                    {{ $product['product']['title']}}
-                                </div>
-                                </a>
-
-
-                                <div class="flex flex-col lg:flex-row w-full md:w-80 text-center items-start">
-
-                                <!-- Price -->
-                                <div class="md:w-32 md:px-4 mb-5 md:mb-0">
-                                    Prix TTC/U : 
-                                    <span class="text-xl">{{ $product['product']['price'] }}€</span>
-                                </div>
-
-
-                                <!-- Change quantity -->
-                                <div class="flex flex-row mb-5 md:mb-0">
-                                    <form id="{{$product['product']['id']}}" class="w-32 self-center"
-                                        action="{{route('cart.update', ['id'=>$product['product']['id']])}}" method="POST">
-                                        @csrf
-                                        <label for="quantity">Quantité : </label>
-                                        <select id="quantity" class="text-black text-lg text-center rounded" name="quantity">
-                                            @for ($i = 1; $i < 11; $i++)
-                                                @if ($i==$product['qty'])
-                                                    <option value="{{$i}}" selected>{{$i}}</option>
-                                                @elseif ($i <= $product['product']['quantity'] )
-                                                    <option value="{{$i}}">{{$i}}</option>
-                                                @endif
-                                            @endfor
-                                        </select>
-                                    </form>
-                                
-                                    <!-- Refresh button -->
-                                    <div class="transform scale-75 text-center self-center">
-                                        <button type="submit" title='Mettre à jour' form="{{$product['product']['id']}}"
-                                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                                            <i class="fas fa-sync-alt"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <div class="flex flex-row w-full md:w-80 text-center items-center justify-end">
-                                <!-- Sub total -->
-                                <div class="w-40 md:px-6 text-right">
-                                    Sous total : 
-                                    <span class="text-xl">{{$product['priceXqty']}}€</span>
-                                </div>
-
-                                <!-- Remove product button -->
-                                <form id="remove_{{$product['product']['id']}}" class="pb-5" action="{{route('cart.remove', ['id'=>$product['product']['id']])}}" method="POST">
-                                    @csrf
-                                </form>
-
-                                <div class="flex flex-row pl-4">
-                                    <button type="submit" title='Retirer du panier' form="remove_{{$product['product']['id']}}"
-                                        class="bg-red-500 hover:bg-red-900 text-white font-bold py-2 px-4 rounded">
-                                        <i class="fas fa-times"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-
-                <div class="flex flex-col">
-                    <div class="flex justify-end items-center mt-6 py-6">
-                        <span class="text-lg font-medium mr-1">
-                            TOTAL :
-                        </span>
-                        <span class="text-xl font-bold">
-                            {{$totalPrice}} €
-                        </span>
+                <form id="payment-form" class="my-4" data-secret="{{$clientSecret}}">
+                    <div id="card-element">
+                      <!-- Elements will create input elements here -->
                     </div>
+                  
+                    <!-- We'll put the error messages in this element -->
+                    <div id="card-errors" role="alert"></div>
+                  
+                    <button id="card-button" class="p-2 my-4 rounded-lg bg-blue-500">Payer</button>
 
-                    <a href="{{Route('checkout.index')}}" class="flex justify-center items-center h-12 w-52 m-auto font-bold bg-blue-500 rounded focus:outline-none text-white hover:bg-blue-600">
-                        Etape suivante
-                    </a>
-                    
-                    @if (auth()->user())
-                    <a href="{{Route('checkout.index')}}" class="flex justify-center items-center h-12 w-52 m-auto font-bold bg-blue-500 rounded focus:outline-none text-white hover:bg-blue-600">
-                        Etape suivante
-                    </a>
-                    @else
-                    <a href="{{ route('login') }}" class="flex justify-center items-center h-12 w-52 m-auto font-bold bg-blue-500 rounded focus:outline-none text-white hover:bg-blue-600">
-                        Appuyer ici pour vous connecter
-                    </a>
-                    @endif
-                </div>
+                    <div class="italic text-xs"> PaymentIntent code for testing purpose only : 
+                        <ul>
+                            <li>PaymentIntent Ok : 4242424242424242</li>
+                            <li>Insufficient funds: 4000002500003155</li>
+                            <li>Insufficient funds : 4000000000009995</li>
+                        </ul>
+                    </div>
+                </form>
 
-                @else
-                <div class="text-center p-4 sm:p-16 text-2xl">Votre panier est vide.</div>
-                @endif
+                
+
             </div>
         </div>
     </div>
 </div>
+
+
+<script src="https://js.stripe.com/v3/"></script>
+
+<script>
+    var stripe = Stripe(
+
+    'pk_test_51IztmeCx26jqgTC1KyDXKLY5J1p4cT5zTT9oDRSbOwAxL3OO2jAI4bI6t8HqWuIdjxWIPaRw4TGAfymPzeQ49yZ300JA98FQwL'
+    );
+    var elements = stripe.elements();
+    var style = {
+        base: {
+            color: "#4d8aff",
+            fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+            fontSmoothing: "antialiased",
+            fontSize: "16px",
+            "::placeholder": {
+                color: "#3cca28"
+            }
+        },
+        invalid: {
+            color: "#fa755a",
+            iconColor: "#fa755a"
+        }
+    };
+
+    var card = elements.create("card", { style: style });
+    card.mount("#card-element");
+
+
+    card.on('change', ({error}) => {
+        let displayError = document.getElementById('card-errors');
+        if (error) {
+            displayError.textContent = error.message;
+        } else {
+            displayError.textContent = '';
+        }
+    });
+
+
+    var form = document.getElementById('payment-form');
+
+    form.addEventListener('submit', function (ev) {
+        ev.preventDefault();
+        // If the client secret was rendered server-side as a data-secret attribute
+        // on the <form> element, you can retrieve it here by calling `form.dataset.secret`
+        stripe.confirmCardPayment("{{$clientSecret}}", {
+            payment_method: {
+                card: card,
+                // billing_details: {
+                //     name: 'Jenny Rosen'
+                // }
+            }
+        }).then(function (result) {
+            if (result.error) {
+                // Show error to your customer (e.g., insufficient funds)
+                console.log(result.error.message);
+            } else {
+                // The payment has been processed!
+                if (result.paymentIntent.status === 'succeeded') {
+                    // Show a success message to your customer
+                    // There's a risk of the customer closing the window before callback
+                    // execution. Set up a webhook or plugin to listen for the
+                    // payment_intent.succeeded event that handles any business critical
+                    // post-payment actions.
+                    console.log(result.paymentIntent);
+                }
+            }
+        });
+    });
+
+
+
+</script>
+
+
 
 
 

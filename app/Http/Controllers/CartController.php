@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Session;
 class CartController extends Controller
 {
     public function index() {
-
+        
         if (Session::has('cart')) {
             $cart = Session::get('cart');
             //dd(Session::get('cart'));
