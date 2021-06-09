@@ -124,6 +124,9 @@ Route::post('panier/remove/{id}', [CartController::class, 'removeProductFromCart
 
 //Checkout
 Route::get('paiement', [CheckoutController::class, 'index'])->name('checkout.index');
+Route::post('paiement', [CheckoutController::class, 'store'])->name('checkout.store');
+Route::get('paiement-ok', [CheckoutController::class, 'paiement_ok']);
+
 
 
 
