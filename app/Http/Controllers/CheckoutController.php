@@ -6,8 +6,7 @@ use App\Classes\Cart;
 use App\Models\Order;
 use DateTime;
 use Illuminate\Http\Request;
-use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Stripe\PaymentIntent;
 use Stripe\Stripe;
 use Illuminate\Support\Facades\Session;
@@ -25,6 +24,7 @@ class CheckoutController extends Controller
     }
 
     public function index() {
+
         $oldCart = Session::has(('cart')) ? Session::get('cart') : null;
         $cart = new Cart($oldCart);
         $total = $cart->totalPrice;
@@ -65,14 +65,28 @@ class CheckoutController extends Controller
         $order = new Order();
 
         $order->payment_intent_id = $data['paymentIntent']['id'];
-        $order->payment_total = $data['paymentIntent']['amount'];
-        $order->created_at = (new DateTime())->setTimestamp($data['paymentIntent']['created']);
-        $order->updated_at = (new DateTime())->setTimestamp($data['paymentIntent']['created']);
+        $order->payment_total_in_cents = $data['paymentIntent']['amount'];
+        $order->created_at = date(now());
+        $order->updated_at = date(now());
         $order->cart = serialize(Session::get('cart'));
-
         $order->user_id = Auth()->user()->id;
 
         $order->save();
+
+
+        //Update quantity of item in products table:
+        $cart = Session::get('cart');
+
+        foreach($cart->products as $product) {
+            $productID = $product['product']['id'];
+            $productQty = $product['product']['quantity'];
+            $saleQty =  $product['qty'];
+            $remainingQty = $productQty - $saleQty;
+
+            DB::table('products')
+                    ->where('id', $productID)
+                    ->update(['quantity'=> $remainingQty]);
+        }
 
         if($data['paymentIntent']['status'] === 'succeeded') {
             Session::forget('cart');

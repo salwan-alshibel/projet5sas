@@ -18,7 +18,7 @@ class CreateOrdersTable extends Migration
             $table->foreignId('user_id')->constrained('users');
             $table->text('cart');
             $table->string('payment_intent_id')->unique();
-            $table->integer('payment_total');
+            $table->integer('payment_total_in_cents');
             $table->smallInteger('shipping')->default(0);
             $table->timestamps();
         });
