@@ -46,7 +46,7 @@
                                         action="{{route('cart.update', ['id'=>$product['product']['id']])}}" method="POST">
                                         @csrf
                                         <label for="quantity">Quantité : </label>
-                                        <select id="quantity" class="text-black text-lg text-center rounded" name="quantity">
+                                        <select id="quantity" class="text-black text-lg text-center rounded" name="quantity" onchange="this.form.submit()">
                                             @for ($i = 1; $i < 11; $i++)
                                                 @if ($i==$product['qty'])
                                                     <option value="{{$i}}" selected>{{$i}}</option>

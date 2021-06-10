@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use App\Models\Post;
 use App\Models\Product;
 use App\Models\Products_image;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
@@ -94,7 +96,14 @@ class DashboardController extends Controller
     }
 
     public function myActualOrders() {
-        return view('dashboard.dashboard_myactualorders');
+        $orders = Auth::user()->orders;
+
+        $orders->transform(function($order, $key) {
+            $order->cart = unserialize($order->cart);
+            return $order;
+        });
+
+        return view('dashboard.dashboard_myactualorders', ['orders' => $orders]);
     }
 
     public function myOldOrders() {
@@ -223,7 +232,15 @@ class DashboardController extends Controller
 
 
     public function newOrders() {
-        return view('dashboard.admin.dashboard_neworders_admin');
+        $orders = Order::orderBy('created_at', 'desc')->where('shipping', 0)->paginate(4);
+
+        $orders->transform(function($order, $key) {
+            $order->cart = unserialize($order->cart);
+            return $order;
+        });
+
+        return view('dashboard.admin.dashboard_neworders_admin', ['orders' => $orders]);
+
     }
 
 

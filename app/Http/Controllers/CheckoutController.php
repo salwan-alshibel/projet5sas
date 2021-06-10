@@ -95,9 +95,6 @@ class CheckoutController extends Controller
         } else {
             return response()->json(['error' => 'Payment Intent Not Succeeded']);
         }
-
-        //return $data['paymentIntent'];
-
         
     }
 
