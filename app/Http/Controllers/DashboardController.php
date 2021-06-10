@@ -64,18 +64,19 @@ class DashboardController extends Controller
             $request->new_password = htmlspecialchars($request->new_password);
 
             if(Hash::check($request->old_password, auth()->user()->password)){
-             
-            //Form validation:
-            $this->validate($request, [
-                'new_password' => 'required|confirmed',
-                'new_password_confirmation' => 'same:new_password',
-            ]);
+                
+                //Form validation:
+                $this->validate($request, [
+                    'new_password' => 'required|confirmed',
+                    'new_password_confirmation' => 'same:new_password',
+                ]);
 
-            DB::table('users')
-                ->where('id', $request->id)
-                ->update(['password'=> Hash::make($request->new_password)]);
-            return back()->with('new_pwd_succes', 'Mot de passe changé avec succes !');
+                DB::table('users')
+                    ->where('id', $request->id)
+                    ->update(['password'=> Hash::make($request->new_password)]);
+                return back()->with('new_pwd_succes', 'Mot de passe changé avec succes !');
             }
+
             return back()->with('old_pwd_error', 'Le mot de passe est incorrect.');
         }
         return view('dashboard.dashboard_password');

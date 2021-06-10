@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Classes\Cart;
+use App\Models\Order;
+use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Auth;
 use Stripe\PaymentIntent;
 use Stripe\Stripe;
 use Illuminate\Support\Facades\Session;
@@ -22,7 +25,6 @@ class CheckoutController extends Controller
     }
 
     public function index() {
-
         $oldCart = Session::has(('cart')) ? Session::get('cart') : null;
         $cart = new Cart($oldCart);
         $total = $cart->totalPrice;
@@ -57,14 +59,40 @@ class CheckoutController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request) {
-        Session::forget('cart');
+        
         $data = $request->json()->all();
 
-        return $data['payementIntent'];
+        $order = new Order();
+
+        $order->payment_intent_id = $data['paymentIntent']['id'];
+        $order->payment_total = $data['paymentIntent']['amount'];
+        $order->created_at = (new DateTime())->setTimestamp($data['paymentIntent']['created']);
+        $order->updated_at = (new DateTime())->setTimestamp($data['paymentIntent']['created']);
+        $order->cart = serialize(Session::get('cart'));
+
+        $order->user_id = Auth()->user()->id;
+
+        $order->save();
+
+        if($data['paymentIntent']['status'] === 'succeeded') {
+            Session::forget('cart');
+            Session::flash('success', 'Votre commande a été traité avec succès !');
+            return response()->json(['success' => 'Payment Intent Succeeded']);
+        } else {
+            return response()->json(['error' => 'Payment Intent Not Succeeded']);
+        }
+
+        //return $data['paymentIntent'];
+
+        
     }
 
+
+
+
     public function paiement_ok() {
-        return view('checkout.paiement_ok');
+
+        return Session::has('success') ? view('checkout.paiement_ok') : redirect()->route('cart');
     }
 
 }

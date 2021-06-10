@@ -104,11 +104,11 @@
             } else {
                 // The payment has been processed!
                 if (result.paymentIntent.status === 'succeeded') {
-                    var payementIntent = result.paymentIntent;
+                    var paymentIntent = result.paymentIntent;
                     var url = form.action;
                     var redirect = 'paiement-ok';
                     const token = document.getElementById('token-input').value;
-                    console.log('payement succeeded');
+                    console.log('payment succeeded');
 
                     fetch(
                         url,
@@ -121,7 +121,7 @@
                             },
                             method: 'post',
                             body: JSON.stringify({
-                                payementIntent: payementIntent
+                                paymentIntent: paymentIntent
                             })
                         }
                     ).then((data) => {
