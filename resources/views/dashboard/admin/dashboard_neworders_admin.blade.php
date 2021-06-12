@@ -66,12 +66,11 @@
  const form = document.getElementById('search-form');
 
  form.addEventListener('keyup', function(e) {
-     e.preventDefault();
+    e.preventDefault();
 
-     //const token = document.querySelector('meta[name="csrf-token"]').content;
-     const url = this.getAttribute('action');
-     const searchValue = document.getElementById('search-input').value;
-     const token = document.getElementById('token-input').value;
+    const url = this.getAttribute('action');
+    const searchValue = document.getElementById('search-input').value;
+    const token = document.getElementById('token-input').value;
         
     if(searchValue !== '') {
         fetch(url, {

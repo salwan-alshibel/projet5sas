@@ -1,7 +1,7 @@
 @props(['post' => $post])
 
 
-<div class="mb-4">
+<div class="mb-4 bg-white text-black rounded-lg p-4 w-full sm:w-4/5">
     <a href="{{ route('users.posts', $post->user) }}" class="font-bold">{{ $post->user->name }}</a> <span class="text-grey-600 text-sm">{{ $post->created_at->diffForHumans() }}</span>
 
     <p class="mb-2">{{ $post->body }}</p>
@@ -32,6 +32,6 @@
             @endif
         @endauth
 
-        <span>{{ $post->likes->count() }} {{ Str::plural('like', $post->likes->count()) }}</span>
+        <span class="inline-flex items-center justify-center px-2 py-1 uppercase tracking-wide text-xs font-semibold text-indigo-100 bg-blue-700 rounded">{{ $post->likes->count() }} {{ Str::plural('like', $post->likes->count()) }}</span>
     </div>
 </div>

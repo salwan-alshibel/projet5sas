@@ -19,7 +19,6 @@ class DashboardController extends Controller
     }
     
     public function index() {
-        //dd(auth()->user()->posts);
         return view('dashboard.dashboard_home');
     }
 
@@ -88,11 +87,7 @@ class DashboardController extends Controller
         
         $posts = Post::where('user_id', auth()->user()->id)->orderBy('created_at', 'asc')->with(['user', 'likes', 'product'])->paginate(3);
         
-        return view('dashboard.dashboard_posts', ['posts' => $posts]); 
-
-        // return view('dashboard.dashboard_posts')->with([
-        //     'posts'=>auth()->user()->posts
-        // ]);
+        return view('dashboard.dashboard_posts', ['posts' => $posts]);
     }
 
     public function myActualOrders() {
@@ -173,9 +168,6 @@ class DashboardController extends Controller
                 $newImageName6 = NULL;
             }
             
-            // $newImageName1 = str_replace(' ', '_', $request->title) . '_' . '01' . '.' . $request->first_img->extension();
-
-            // $request->first_img->move(public_path('images\products_images'), $newImageName1);
     
             DB::table('products')->insert(
                 ['title' => $request->title,
@@ -216,9 +208,6 @@ class DashboardController extends Controller
                 );
             }
             
-
-
-      
             return back();
         }
 

@@ -12,19 +12,9 @@ class HomeController extends Controller
 {
     public function index(){
 
-        //Take all products with categories and images using eager loading:
-        // $products = Product::with(['category', 'products_image'])->get();
-        // dd($products);
-        // return view('home', ['products' => $products]);
-
-
-        // $productsForHomePage = Tag::where('name', '#Nouveauté')->with(['products'])->get();
+        //Take all products with a tag:
         $allTagsWithProducts = Tag::with(['products'])->get();
-        // dd($allTagsWithProducts);
-        // foreach ($productsForHomePage as $productForHomePage) {
-        //     dd($productForHomePage);
-        // }
-
+        
         return view('home', ['allTagsWithProducts' => $allTagsWithProducts]);
     }
 }

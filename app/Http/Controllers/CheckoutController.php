@@ -40,10 +40,8 @@ class CheckoutController extends Controller
             'metadata' => ['integration_check' => 'accept_a_payment'],
             ]);
             
-            //$clientSecret = Arr::get($intent, 'client_secret');
             $clientSecret = $intent->client_secret;
 
-            //dd($clientSecret);
 
             return view('checkout.index', ['clientSecret' => $clientSecret]);
         } else {

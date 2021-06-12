@@ -3,7 +3,7 @@
 
 @section('content')
 <div class="darkable relative min-h-screen bg-dusty-gray-200">
-    <div class="flex justify-center absolute w-full top-52 ">
+    <div class="flex justify-center absolute w-full top-20 ">
         
         <div class="lessDarkable w-full md:bg-white p-6 md:rounded-lg max-w-lg">
 

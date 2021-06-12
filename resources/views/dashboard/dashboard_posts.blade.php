@@ -8,7 +8,6 @@
             <div class="flex justify-center">
                 <div class="w-8/12">
                     <div class="p-6">
-                        {{-- <h1 class="text-2xl font-medium mb-1">{{  auth()->user()->name }}</h1> --}}
                         <p> Vous avez écrit {{ auth()->user()->posts->count() }}
                             {{ Str::plural('commentaire', auth()->user()->posts->count()) }} et reçu
                             {{ auth()->user()->receivedLikes->count() }}
@@ -20,7 +19,6 @@
                             @foreach ($posts as $post)
                                 <div class="border-white border-solid border-t">
                                     <x-post :post="$post" />
-                                    {{-- {{dd($post->product)}} --}}
                                     <a href="{{ route('product', [$post->product->id, $post->product->slug]) }}">Voir l'article</a>
                                 </div>
                             @endforeach

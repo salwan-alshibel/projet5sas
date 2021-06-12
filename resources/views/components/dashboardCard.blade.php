@@ -1,11 +1,3 @@
-{{-- @props(['link' => $link, 'title' => $title, 'content' => $content, 'icon' => '$icon']) --}}
-
-{{-- @if($other == TRUE)
-    true {{$other}}
-@else 
-    false {{$other = ''}} 
-@endif --}}
-
 <div class="lessDarkable h-36 lg:h-40 max-h-44 mx-auto md:max-w-md bg-white border-0 shadow-lg md:rounded-3xl relative w-full">
     <a href=" {{ route('dashboard' . $link) }}" class="block hover:underline">
         <div class="flex">

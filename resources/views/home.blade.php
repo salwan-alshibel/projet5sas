@@ -1,10 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-
-
-
-    <section id="carousel_section" class="bg-dusty-gray-100 dark:bg-01DP pb-20 darkable">
+<section id="carousel_section" class="bg-dusty-gray-100 dark:bg-01DP pb-20 darkable">
         <div class="flex justify-center">
             <div class="w-full p-6 pt-12 rounded-lg dark:text-white text-center text-2xl">
                 A la une
@@ -21,7 +18,9 @@
                                 <a href="{{ route('product', [$product->id, $product->slug]) }}" class="">
                                     <img class="h-72 w-9/12 md:w-48 object-contain bg-white" src="{{ asset('images/products_images/'. $product->products_image->first_img) }}" alt={{ $product->products_image->first_img }}/>
                                     
-                                    <div class="absolute bottom-4 text-white right-28 text-lg border border-solid p-4 rounded-xl max-w-xs overflow-hidden max-h-72 bg-indigo-700">
+                                    <div class="text-sm left-12 sm:left-auto w-3/4 -bottom-4 sm:w-auto border-none
+                                    absolute sm:bottom-4 text-black right-28 sm:text-lg border-l-2 sm:border-solid p-4  sm:max-w-xs overflow-hidden max-h-72 ">
+                                    <p class="pb-1"> Nouveaux arrivages : </p>
                                     <p>{{$product->title}}</p>
                                     <p class="text-right pt-1">{{$product->price}} €</p>
                                     </div>
@@ -30,18 +29,8 @@
                         @endforeach
                     @endif
                 @endforeach
-
-
-
-                {{-- @foreach ($products as $product)
-                <li class="slide showing">
-                    <a href="{{ route('product', [$product->id, $product->slug]) }}" class=""><img class="h-72 w-full md:w-48 object-contain" src="{{ asset('images/products_images/'. $product->products_image->first_img) }}" alt={{ $product->products_image->first_img }}/>
-                    <span class="nav_link_text">{{$product->title}}</span></a>
-                </li>
-                @endforeach --}}
-
-
             </ul>
+            
             <!-- Carousel buttons -->
             <div class="slider-controls absolute top-0 left-0 w-full h-full" id="controls-list">
                 <button class="carousel-control-previous z-20">
@@ -78,16 +67,27 @@
 
     <section id="presentations" class="">
         <div class="bg-white">
-            <div class="md:flex">
-                <div class="flex flex-row items-center md:flex-shrink-0 bg-04DP">
+            <div class="lg:flex">
+                <div class="flex flex-row items-center justify-center lg:flex-shrink-0 bg-04DP">
                     <img class="m-8" src="{{url('/images/logo2.png')}}" alt="Nouveauté en magasin">
                 </div>
-                <div class="md:px-20 md:py-16">
-                    <div class="uppercase tracking-wide text-2xl text-black font-semibold pb-5 border-b ">Figurines&Co</div>
-                    <div class="block mt-1 text-lg leading-tight font-medium text-black pb-4 pt-4 italic">Le lieu idéal pour trouver vos figurines warhammer !</div>
-                    <p class="mt-2 p-4 sm:p-0 text-black text-justify break-words">Présentation.Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima tenetur quas, maxime corporis expedita quo, doloremque dignissimos, ad eum cupiditate tempore soluta dolore doloribus officia amet. Tenetur obcaecati similique placeat. 
-                    Présentation.Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima tenetur quas, maxime corporis expedita quo, doloremque dignissimos, ad eum cupiditate tempore soluta dolore doloribus officia amet. Tenetur obcaecati similique placeat.
+                <div class="p-4 md:px-16 md:py-16">
+                    <div class="sm:p-4 uppercase tracking-wide text-2xl text-black font-semibold pb-5 border-b ">Figurines&Co</div>
+                    <div class="block p-0 mt-2 sm:p-4 pb-4 pt-4 text-lg leading-tight font-medium text-black italic">Le lieu idéal pour trouver vos figurines warhammer !</div>
+
+                    <div class="p-0 mt-2 sm:p-4 text-black text-justify break-words">
+                    <p>
+                    Figurine&Co est un faux magasin de vente en ligne destiné à un projet de formation en développement web.
+                    Ici vous ne pourrez ni acheter, ni trouver des informations pertinentes concernant les figurines Warhammer.
+
+                    Merci de votre visite !
                     </p>
+
+                    <p class="pt-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima tenetur quas, maxime corporis expedita quo, doloremque dignissimos, ad eum cupiditate tempore soluta dolore doloribus officia amet. Tenetur obcaecati similique placeat. 
+                    Présentation.Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    </p>
+                    <p class="hidden">Site réalisé par Salwan AL SHIBEL</p>
+                    </div>
                 </div>
             </div>
         </div>

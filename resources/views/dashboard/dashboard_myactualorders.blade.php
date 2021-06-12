@@ -2,8 +2,6 @@
 
 @section('dashboard-content')
 
-
-
 <div class="darkable min-h-screen bg-dusty-gray-200 p-0 md:p-12">
     <div class="lessDarkable bg-white rounded-lg  ">
         <div class="mx-auto md:max-w-md px-6 py-12 relative w-full">

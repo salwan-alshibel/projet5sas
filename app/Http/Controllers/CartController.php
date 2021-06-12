@@ -13,8 +13,8 @@ class CartController extends Controller
         
         if (Session::has('cart')) {
             $cart = Session::get('cart');
-            //dd(Session::get('cart'));
-            return view('cart.cart', ['products' => $cart->products, 'totalPrice' => $cart->totalPrice]);
+
+            return view('cart.cart', ['products' => $cart->products, 'totalPrice' => $cart->totalPrice, 'totalPriceTTC' => $cart->totalPriceTTC]);
             
 
         } else {
@@ -36,16 +36,14 @@ class CartController extends Controller
         $cart->add($product, $product->id, $quantity);
 
         $request->session()->put('cart', $cart);
-        //dd($request->session()->get('cart'));
 
-        //dd($_POST, $product, $request->quantity);
         return back()->with('message', 'Ajouté !');
     }
 
     public function updateCart(Request $request){
         $oldCart = Session::has(('cart')) ? Session::get('cart') : null;
         $cart = new Cart($oldCart);
-        //dd($request->id, $request->quantity);
+        
         $cart->updateQty($request->id, $request->quantity);
 
         if (count($cart->products) > 0) {

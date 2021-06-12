@@ -12,12 +12,7 @@ use App\Http\Controllers\PostLikeController;
 use App\Http\Controllers\UserPostController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\InfoController;
-
-
 use Illuminate\Support\Facades\Route;
-// use App\Http\Controllers\MainController;
-// use App\Http\Controllers\UserController;
-// use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,37 +25,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-/*
-Route::get('/', function () {
-    return view('welcome');
-});
-*/
-// Route::get('/', [MainController::class, 'home']);
-
-// Route::get('welcome', function () {
-//     return view('welcome');
-// });
-
-// Route::get('home', [HomeController::class, 'index']);
-
-
-// Route::get('test', function () {
-//     return view('test');
-// });
-
-// Route::get('/user/{id}', [UserController::class, 'show']);
-
 
 //HOME
 Route::get('/', function () {return view('home');})->name('home');
 Route::redirect('/', '/accueil');
 Route::get('accueil', [HomeController::class, 'index'])->name('home');
-//Route::get('accueil', [HomeController::class, 'allProducts']);
-//Route::get('Accueil', [ProductsController::class, 'allProducts']);
+
 
 
 //DASHBOARD USERS
-Route::get('/mon-profil', [DashboardController::class, 'index'])->name('dashboard'); //->middleware('auth');
+Route::get('/mon-profil', [DashboardController::class, 'index'])->name('dashboard');
 
 Route::get('/dashboard/modifier-profil', [DashboardController::class, 'updateProfile'])->name('dashboard.modifier-profil');
 Route::post('/dashboard/modifier-profil', [DashboardController::class, 'updateProfile']);
@@ -74,13 +48,13 @@ Route::get('/dashboard/commandes-en-cours', [DashboardController::class, 'myActu
 
 Route::get('/dashboard/historique-commandes', [DashboardController::class, 'myOldOrders'])->name('dashboard.myOldOrders');
 
+
+
 //DASHBOARD ADMIN
 Route::get('/dashboard/ajouter-un-produit', [DashboardController::class, 'addProduct'])->name('addProduct');
 Route::post('/dashboard/ajouter-un-produit', [DashboardController::class, 'addProduct']);
-
 Route::get('/dashboard/nouvelles-commandes', [DashboardController::class, 'newOrders'])->name('newOrders');
 Route::get('/dashboard/anciennes-commandes', [DashboardController::class, 'oldOrders'])->name('oldOrders');
-
 
 
 
@@ -92,6 +66,7 @@ Route::get('register', [RegisterController::class, 'index'])->name('register');
 Route::post('register', [RegisterController::class, 'store']);
 
 
+
 //POSTS
 Route::get('/posts', [PostController::class, 'index'])->name('posts');
 Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
@@ -101,8 +76,10 @@ Route::post('/posts/{post}/likes', [PostLikeController::class, 'store'])->name('
 Route::delete('/posts/{post}/likes', [PostLikeController::class, 'destroy'])->name('posts.likes');
 
 
+
 //USER POSTS
 Route::get('/users/{user:username}/posts', [UserPostController::class, 'index'])->name('users.posts');
+
 
 
 //SHOP
@@ -120,16 +97,15 @@ Route::get('panier', [CartController::class, 'index'])->name('cart');
 Route::post('panier/add/{id}', [CartController::class, 'addToCart'])->name('addToCart');
 Route::post('panier/update/{id}', [CartController::class, 'updateCart'])->name('cart.update');
 Route::post('panier/remove/{id}', [CartController::class, 'removeProductFromCart'])->name('cart.remove');
-// Route::get('panier/empty', [CartController::class, 'empty'])->name('cart.empty');
 
-//Checkout
+
+
+//CHECKOUT
 Route::get('paiement', [CheckoutController::class, 'index'])->name('checkout.index');
 Route::post('paiement', [CheckoutController::class, 'store'])->name('checkout.store');
 Route::get('paiement-ok', [CheckoutController::class, 'paiement_ok']);
 
 
 
-
 //SALES CONDITIONS
-Route::get('info-paiement-sécurisé', [InfoController::class, 'info_safe_payment'])->name('info_safe_payment');
 Route::get('conditions-de-ventes', [InfoController::class, 'info_sales_conditions'])->name('info_sales_conditions');

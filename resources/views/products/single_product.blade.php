@@ -2,7 +2,7 @@
 
 
 @section('content')
-<div class="darkable flex justify-center bg-dusty-gray-100">
+<div class="darkable pt-12 flex justify-center bg-dusty-gray-100">
 
     <div class="lessDarkable lg:m-16 rounded-xl">
 
@@ -35,11 +35,12 @@
                 <!-- product price and addToCart button -->
                 <div>
                     <p class="pb-3 text-3xl">{{ $product->prixTTC() }} € </p>
-                    @if ($product->quantity < 5 && $product->quantity > 0)
-                        <p>Plus que {{$product->quantity}} unité(s) disponible(s)</p>
-                    @elseif($product->quantity == 0)
+                    @if($product->quantity == 0)
                         <p class="p-4 max-w-max rounded bg-red-600">Produit épuisé !</p>
                     @else
+                        @if ($product->quantity < 5 && $product->quantity > 0)
+                        <p class="py-4 text-red-600">Plus que {{$product->quantity}} unité(s) disponible(s)</p>
+                        @endif
                         <form id="formCart"  class="pb-5" action="{{route('addToCart', ['id'=>$product->id])}}" method="POST">
                             @csrf
                             <label for="quantity">Quantité : </label>
@@ -82,13 +83,15 @@
 
 
 
-
-
-<div class="flex justify-center">
-    <div class="w-8/12 bg-custom-dark text-white p-6 rounded-lg">
+<!-- Commentaries zone -->
+<div class="flex justify-center flex-col items-center">
+    <div class="w-full bg-dusty-gray-200 p-6 rounded-lg darkable">
+        <h1 id="comments-zone" class="text-center text-xl pb-4">Commentaires</h1>
+        <div class="border-b border-white w-9/12 mb-8 m-auto"></div>
        
         @guest
-        <div class="mb-4 text-center">Pour poster un commentaire, veuillez vous connecter.</div>
+        <div class="mb-4 text-center">Pour poster un commentaire, veuillez vous <a class="underline" href="{{ route('login') }}">connecter.</a>
+        </div>
         @endguest
 
        @auth
@@ -112,126 +115,17 @@
         @endauth
 
         @if ($posts->count())
-        @foreach ($posts as $post)
-            <x-post :post="$post" />
-        @endforeach
-        {{ $posts->fragment('comments-form')->links() }}
-
-        @else
-        <p>Il n'y pas de commentaires.</p>
-        @endif
-
-
-
-
-        {{-- @if ($product->posts->count())
-            @foreach ($product->posts as $post)
+        <div class="flex justify-center flex-col items-center">
+            @foreach ($posts as $post)
                 <x-post :post="$post" />
             @endforeach
+            <div class="">{{ $posts->fragment('comments-zone')->links() }}</div>
+        </div>
         @else
-            <p>Il n'y pas de commentaires.</p>
-        @endif --}}
+        <p class="text-center">Il n'y pas de commentaire.</p>
+        @endif
     </div>
 </div>
-
-
-
-
-{{-- 
-
-<div class="min-h-screen bg-outer-space-700 p-0 md:p-12 text-white">
-
-    @guest
-    <div class="mb-4 text-center">Pour poster un commentaire, veuillez vous connecter.</div>
-    @endguest
-
-   @auth
-        <form onsubmit="return false" action="{{ route('posts', ['id'=>$product->id])}}" method="post" id="posts-form" class="mb-4">
-        
-            <div class="mb-4">
-                <label for="" class="sr-only">body</label>
-                <textarea name="body" id="body" cols="30" rows="4" class="bg-gray-100 border-2 w-full p-4 rounded-lg @error('body') border-red-500 @enderror" placeholder="Ecrire ici..."></textarea>
-
-                @error('body')
-                        <div class="text-red-500 mt-2 text-sm">
-                            {{ $message }}
-                        </div>
-                @enderror
-            </div>
-            <input type="hidden" name="_token" id="token-input" value="{{ csrf_token() }}" />
-
-            <div>
-                <button type="submit" form="posts-form" class="bg-blue-500 text-white px-4 py-2 rounded font-medium">Valider</button>
-            </div>
-        </form>
-    @endauth
-
-        <input type="text" name="searchInput" id="search-input" class="text-black" maxlength="99" placeholder="Rechercher un article...">
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
-    <div id="search-result-div" class="py-8">
-    </div>
-
-
-
-
-    
-
-</div>
-
-<script>
-
-const form = document.getElementById('posts-form');
-
-form.addEventListener('submit', function(e) {
-   e.preventDefault();
-
-   const url = this.getAttribute('action');
-   const searchValue = document.getElementById('search-input').value;
-   const token = document.getElementById('token-input').value;
-      
-  if(searchValue !== '') {
-      fetch(url, {
-          headers: {
-              'Content-Type': 'application/json',
-              'X-CSRF-TOKEN': token
-          },
-          method: 'post',
-          body: JSON.stringify({
-              searchValueForController: searchValue
-          })
-      }).then(response => {
-          // console.log(response);
-          response.json().then(data => {
-              // console.log(Object.entries(data));
-
-              const searchResultDiv = document.getElementById('search-result-div');
-              searchResultDiv.innerHTML = '';
-
-              Object.entries(data)[0][1].forEach(element => {
-                  searchResultDiv.innerHTML += `<a href="http://projet5sas/product/${element.id}/${element.slug}" class='block p-2 border border-solid border-gray-400 max-w-max rounded-lg bg-white text-black hover:bg-blue-500 hover:text-white'>${element.title}</a>`
-              });
-          })
-      }).catch(error => {
-          console.log(error);
-      })
-  }
-
-})
-</script> --}}
-
 @endsection
 
 

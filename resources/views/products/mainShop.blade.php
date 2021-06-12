@@ -2,52 +2,75 @@
 
 
 @section('content')
-    <div class="container md:flex pt-20">
-        <div class="w-full md:w-1/5">
-            <div>
-                <input type="search" id="myInput" onkeyup="window.search()" placeholder="Rechercher..." >
-            
-                <ul id="myUL" class="text-white">
-                    {{-- Take categories (parent and childrens) and show names --}}
-                    @if ($category->parent_id !== null)
-                    <a href="{{ route('viewByCategory', ['id'=>$category->parent->id]) }}">{{ $category->parent->name }}</a>
+    <div class="darkable w-full mt-12 sm:mt-0 flex flex-col md:flex-row">
+        <div class="darkable w-full md:w-72 md:pl-4 lg:pl-0">
+            <div class="lessDarkable h-auto md:h-72 lg:h-full m-0 md:mt-12 rounded-lg lg:rounded-3xl  bg-white pb-4 md:pb-2 static md:fixed lg:static">
+                {{-- Search bar for categories(NOT USED): --}}
+                {{-- <input type="search" id="myInput" onkeyup="window.search()" placeholder="Rechercher..." > --}}
 
-                    @foreach ($category->parent->children as $children)
-                        <li><a href="{{ route('viewByCategory', ['id'=>$children->id]) }}">{{ $children->name }}</a></li>
-                    @endforeach
-            
-                    @else 
-                    <a href="{{ route('viewByCategory', ['id'=>$category->id]) }}">{{ $category->name }}</a>
+                <!-- Categories list -->
+                <ul id="myUL" class="w-56 m-auto md:m-0 md:pt-4 lg:fixed">
+                    <div class="pt-4 mb-2 text-center text-2xl underline">Categories</div>
+                    <div class="border-b w-9/12 mb-8 m-auto"></div>
+                    <div class="m-0 lg:m-4 text-sm lg:text-base rounded-lg bg-nenuphar-green-500">
+                        @if ($category->parent_id !== null)
+                        <a class="w-full p-1 lg:pl-4 py-3 inline-block hover:bg-yellow-700 rounded-t-lg" href="{{ route('viewByCategory', ['id'=>$category->parent->id]) }}">{{ $category->parent->name }}</a>
 
-                    @foreach ($category->children as $children)
-                        <li><a href="{{ route('viewByCategory', ['id'=>$children->id]) }}">{{ $children->name }}</a></li>
-                    @endforeach
+                        @foreach ($category->parent->children as $children)
+                            <li><a class="w-full pl-8 pb-1 inline-block hover:bg-blue-500" href="{{ route('viewByCategory', ['id'=>$children->id]) }}"><i class="fas fa-angle-right"></i> {{ $children->name }}</a></li>
+                        @endforeach
+                
+                        @else 
+                        <a class="w-full p-1 lg:pl-4 pb-3 inline-block hover:bg-yellow-700 rounded-t-lg" href="{{ route('viewByCategory', ['id'=>$category->id]) }}">{{ $category->name }}</a>
 
-                    @endif
+                        @foreach ($category->children as $children)
+                            <li><a class="w-full pl-8 inline-block hover:bg-blue-500" href="{{ route('viewByCategory', ['id'=>$children->id]) }}"><i class="fas fa-angle-right"></i> {{ $children->name }}</a></li>
+                        @endforeach
+
+                        @endif
+                    </div>
                 </ul>
             </div>  
         </div>
-        
-        <div class="pl-8 grid grid-cols-1 xl:grid-cols-2 gap-4">
+        <!-- Products -->
+        <div class=" pl-2 pr-2 lg:pl-8 pt-12 grid grid-cols-1 xl:grid-cols-2 gap-4">
             @foreach ($products as $product)
             <a href="{{ route('product', [$product->id, $product->slug]) }}">
-                <div class="max-w-md h-72 mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl hover:underline">
+                <div class="lessDarkable max-w-md md:h-72 mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
                     <div class="md:flex">
                         <div class="md:flex-shrink-0">
-                            {{-- @foreach ($productsImages as $productsImage)
-                                @if ($product->id == $productsImage->product_id)
-                                    <img class="h-72 w-full md:w-48 object-contain" src="{{ asset('images/products_images/'. $productsImage->first_img) }}" alt="product image">
-                                @endif
-                            @endforeach --}}
-                            <img class="h-72 w-full md:w-48 object-contain" src="{{ asset('images/products_images/'. $product->products_image->first_img) }}" alt={{ $product->products_image->first_img }}>
+                            <img class="md:h-72 w-full md:w-48 object-contain bg-white" src="{{ asset('images/products_images/'. $product->products_image->first_img) }}" alt={{ $product->products_image->first_img }}>
                         </div>
-                        <div class="p-8">
-                            <div class="inline-flex items-center justify-center px-2 py-1 uppercase tracking-wide text-xs font-semibold text-indigo-100 bg-indigo-700 rounded">{{ $product->category->name }}</div>
-                            <div class="block mt-1 text-lg leading-tight font-medium text-black">{{$product->title}}</div>
-                            <div class="text-gray-500 ">
-                             <p class="mt-2 max-h-36 text-gray-500 overflow-hidden">{{ $product->content }}</p>
-                             <p> [...] </p>
-                             <div>{{$product->prixTTC()}} €</div>
+
+                        <div class="p-8 relative w-full h-72 md:h-auto py-5">
+                            <div class="absolute right-8 bottom-3 border-solid border rounded px-1 ">{{$product->prixTTC()}} €</div>
+                            <div>
+                                <div class="inline-flex items-center justify-center px-2 py-1 uppercase tracking-wide text-xs font-semibold text-indigo-100 bg-yellow-700 rounded">
+                                    {{ $product->category->parent->name }}
+                                </div>
+                                
+                                <div class="inline-flex items-center justify-center px-2 py-1 uppercase tracking-wide text-xs font-semibold text-indigo-100 bg-indigo-700 rounded">
+                                    {{ $product->category->name }}
+                                </div>
+                                
+                                @foreach ($product->tags as $tag)
+                                    @if ($tag->name == '#Nouveauté')
+                                    <div class="inline-flex items-center justify-center px-2 py-1 uppercase tracking-wide text-xs font-semibold text-indigo-100 bg-green-700 rounded">
+                                        {{ $tag->name }}
+                                    </div>        
+                                @endif
+                                
+                                @endforeach
+                            </div>
+
+                            <div class="hover:underline pt-4">
+                                <div class="block mt-1 text-lg leading-tight font-medium underline">
+                                    {{$product->title}}
+                                </div>
+                                <div>
+                                    <p class="mt-2 max-h-36 overflow-hidden text-justify break-words">{{ $product->content }}</p>
+                                    <p> [...] </p> 
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -57,16 +80,6 @@
             
             <!--Pagination controls-->
             <div class="px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6 col-span-full m-auto">
-                {{-- <div class="flex-1 flex justify-between sm:hidden">
-                    <a href="?page={{$pagination->currentPage - 1}}"
-                        class="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
-                        Précédent
-                    </a>
-                    <a href="?page={{$pagination->currentPage + 1}}"
-                        class="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
-                        Suivant
-                    </a>
-                </div> --}}
                 <div class=" sm:flex-1 sm:flex sm:items-center sm:justify-between">
                     <div>
                         <nav class="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">

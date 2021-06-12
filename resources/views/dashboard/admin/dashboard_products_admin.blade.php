@@ -236,10 +236,6 @@
 					</div>
            		@enderror
 
-
-
-
-
 				<button
 				id="button"
 				type="submit"

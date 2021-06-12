@@ -5,6 +5,8 @@
 //Nav bar button in responsive:
 document.getElementById('nav-toggle').onclick = function () {
   var nav = document.querySelectorAll('.nav-content');
+  var navLower = document.getElementById('lowerNavbar');
+  navLower.classList.toggle('hidden');
 
   for (var i = 0; i < nav.length; i++) {
     nav[i].classList.toggle("hidden");
@@ -66,48 +68,41 @@ window.toggleDark = function () {
   } else {
     window.activateDarkMode();
   }
-};
+}; //<-end dark mode
+
 /* When the user scrolls down, hide the navbar. When the user scrolls up, show the navbar */
-// if (window.matchMedia('(max-width: 600px)').matches) {
-// 	console.log('ksdjfsdjflsjdlfkjsdf');
+// --------> NOT USED CURRENTLY BUT MAYBE IN THE FUTURE
+// let prevScrollpos = window.pageYOffset;
+// window.onscroll = function() {
+//   let currentScrollPos = window.pageYOffset;
+//   if (prevScrollpos > currentScrollPos) {
+//     document.getElementById("lowerNavbar").style.height = "inherit";
+//     document.getElementById("lowerNavbar").style.width = "inherit";
+//   } else {
+// 	document.getElementById("lowerNavbar").style.height = "0";
+// 	document.getElementById("lowerNavbar").style.width = "0";
+//   }
+//   prevScrollpos = currentScrollPos;
+// } 
+// Sidebar search for products pages:
+// --------> NOT USED CURRENTLY BUT MAYBE IN THE FUTURE
+// window.search = function () {
+//     var input, filter, ul, li, a, i, txtValue;
+//     input = document.getElementById('myInput');
+//     filter = input.value.toUpperCase();
+//     ul = document.getElementById('myUL');
+//     li = ul.getElementsByTagName('li');
+//     for (i = 0; i < li.length; i++) {
+//         a = li[i].getElementsByTagName("a")[0];
+//         txtValue = a.textContent || a.innerText;
+//         if (txtValue.toUpperCase().indexOf(filter) > -1) {
+//           li[i].style.display = "";
+//         } else {
+//           li[i].style.display = "none";
+//         }
+//     }
 // }
-
-
-var prevScrollpos = window.pageYOffset;
-
-window.onscroll = function () {
-  var currentScrollPos = window.pageYOffset;
-
-  if (prevScrollpos > currentScrollPos) {
-    document.getElementById("lowerNavbar").style.height = "inherit";
-    document.getElementById("lowerNavbar").style.width = "inherit";
-  } else {
-    document.getElementById("lowerNavbar").style.height = "0";
-    document.getElementById("lowerNavbar").style.width = "0";
-  }
-
-  prevScrollpos = currentScrollPos;
-}; // Sidebar search for products pages:
-
-
-window.search = function () {
-  var input, filter, ul, li, a, i, txtValue;
-  input = document.getElementById('myInput');
-  filter = input.value.toUpperCase();
-  ul = document.getElementById('myUL');
-  li = ul.getElementsByTagName('li');
-
-  for (i = 0; i < li.length; i++) {
-    a = li[i].getElementsByTagName("a")[0];
-    txtValue = a.textContent || a.innerText;
-
-    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-      li[i].style.display = "";
-    } else {
-      li[i].style.display = "none";
-    }
-  }
-}; //Drop down menu in dashboard sidebar:
+//Drop down menu in dashboard sidebar:
 
 
 document.querySelectorAll('.drop').forEach(function (item) {
@@ -128,22 +123,18 @@ document.querySelectorAll('.drop').forEach(function (item) {
 //Drop down menu stay open on current page :
 
 var thisURL = window.location.pathname;
-var lastSegment = thisURL.split("/").pop(); //console.log(thisURL);
-//If last part of the URL match a link in the sidebar,
-//simulate a click to open the corresponding section :
-// if (lastSegment == "modifier-profil" || lastSegment == "changer-mot-de-passe" || lastSegment == "mes-commentaires") {
-// 	document.getElementById('myProfileBtn').click();
-// }
-
+var lastSegment = thisURL.split("/").pop();
 var aElements = document.querySelectorAll('a');
 
 for (var i = 0; i < aElements.length; ++i) {
   if (aElements[i].id == lastSegment) {
-    aElements[i].style.backgroundColor = '#3b82f6';
-    aElements[i].style.color = 'white';
+    // aElements[i].style.backgroundColor = '#3b82f6';
+    // aElements[i].style.color = 'white';
+    aElements[i].style.transform = 'translate(25px, -2px)';
+    aElements[i].style.scale = '1.2';
     var iElement = aElements[i].closest(".parentlist");
     iElement.querySelector(".drop").click();
   }
-} //Filter on search:
+}
 /******/ })()
 ;
