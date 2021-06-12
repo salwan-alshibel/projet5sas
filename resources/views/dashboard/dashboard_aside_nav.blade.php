@@ -95,7 +95,7 @@
                         <li class="sidebar-nav-item">
                             <a href="{{ route('newOrders')}}" id="nouvelles-commandes" class="bg-red-500 sidebar-nav-link transform hover:scale-110">
                                 <i class="fas fa-arrow-right nav-icon"></i>
-                                <p>Commandes en cours</p>
+                                <p>Commandes en attente</p>
                             </a>
                         </li>
                         <li class="sidebar-nav-item">

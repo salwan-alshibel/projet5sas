@@ -88,6 +88,8 @@ Route::get('Warhammer-Age-of-Sigmar', [ProductsController::class, 'waos'])->name
 Route::get('Warhammer-40-000', [ProductsController::class, 'w40k'])->name('w40k');
 Route::get('Peintures', [ProductsController::class, 'paints'])->name('paints');
 Route::get('product/{id}/{slug}', [ProductsController::class, 'product'])->name('product');
+// Route::post('product/{product}', [ProductsController::class, 'hide'])->name('product.hide');
+Route::delete('product/{product}', [ProductsController::class, 'destroy'])->name('product.delete');
 Route::get('categorie/{id}', [ProductsController::class, 'viewByCategory'])->name('viewByCategory');
 Route::post('/search', [ProductsController::class, 'search'])->name('products.search');
 

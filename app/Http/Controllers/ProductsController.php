@@ -81,4 +81,19 @@ class ProductsController extends Controller
             'searchProducts' => $searchProducts
         ]);
     }
+
+    // public function hide(Product $product) {
+
+    //     DB::table('products')->where('id', $product->id)->update(['shop'=> 0]);
+        
+    //     return back();
+    // }
+
+
+    public function destroy(Product $product) {
+
+        DB::table('products')->where('id', $product->id)->delete();
+
+        return redirect()->route('home');
+    }
 }

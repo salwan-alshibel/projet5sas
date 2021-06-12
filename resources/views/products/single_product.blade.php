@@ -4,7 +4,25 @@
 @section('content')
 <div class="darkable pt-12 flex justify-center bg-dusty-gray-100">
 
-    <div class="lessDarkable lg:m-16 rounded-xl">
+    <div class="lessDarkable lg:m-8 rounded-xl">
+        @auth
+            @if (auth()->user()->admin == 1)
+                <div class="lessDarkable bg-white rounded-lg py-6 px-4 mb-6 flex flex-col items-center">
+                    <h1 class="pb-2 text-xl">Choix administrateur :</h1>
+                    <p>Vous pouvez supprimer ce produit définitivement. Attention ce choix est définitif.</p>
+                    <form action="{{ route('product.delete', $product) }}" method="post" class="mr-1">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="text-white bg-red-500 rounded-lg p-2 my-4" onclick="return confirm('Veuillez confirmer la suppression de cet article. Attention ce choix est définitif !')">Effacer definitivement.</button>
+                    </form>
+
+                    {{-- <form action="{{ route('product.hide',$product) }}" method="post" class="mr-1">
+                        @csrf
+                        <button type="submit" class="text-black bg-gray-500 rounded-lg p-2" onclick="return confirm('Veuillez confirmer le retrait de cet article du magasin.')">Retirer de la vente.</button>
+                    </form> --}}
+                </div>
+            @endif
+        @endauth
 
         <div class="flex flex-col lg:flex-row">
             <!-- product images -->
@@ -99,7 +117,7 @@
             @csrf
                 <div class="mb-4">
                     <label for="" class="sr-only">body</label>
-                    <textarea name="body" id="body" cols="30" rows="4" class="bg-gray-100 border-2 w-full p-4 rounded-lg @error('body') border-red-500 @enderror" placeholder="Ecrire ici..."></textarea>
+                    <textarea name="body" id="body" cols="30" rows="4" class="bg-gray-100 text-black border-2 w-full p-4 rounded-lg @error('body') border-red-500 @enderror" placeholder="Ecrire ici..."></textarea>
 
                     @error('body')
                             <div class="text-red-500 mt-2 text-sm">
