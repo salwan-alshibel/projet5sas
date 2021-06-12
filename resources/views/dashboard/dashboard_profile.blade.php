@@ -8,7 +8,7 @@
 <div class="lessDarkable bg-white rounded-lg  ">
 
 	<div class="max-h-96 mx-auto md:max-w-md px-6 py-12 relative w-full">
-		<h1 class="text-2xl font-bold mb-8">Nom</h1>
+		<h1 class="text-2xl font-bold mb-8">Modifer mon Nom</h1>
 		<form id='changeName' action="{{ route('dashboard.modifier-profil', ['id'=>auth()->user()]) }}" class="dashboardForm" method="POST">
 			@csrf
 			<div class="relative z-0 w-full mb-5">
@@ -40,7 +40,7 @@
 		</form>
 	</div>
 		<div class="max-h-96 mx-auto md:max-w-md px-6 py-12 relative w-full">
-		<h1 class="text-2xl font-bold mb-8">Pseudo</h1>
+		<h1 class="text-2xl font-bold mb-8">Modifer mon Pseudo</h1>
 
 		<form id='changeUsername' action="{{ route('dashboard.modifier-profil', ['id'=>auth()->user()]) }}" class="dashboardForm" method="POST">
 			@csrf
@@ -109,7 +109,7 @@
 	</div> --}}
 
 	<div class="max-h-96 mx-auto md:max-w-md px-6 py-12 relative w-full">
-		<h1 class="text-2xl font-bold mb-8">Email</h1>
+		<h1 class="text-2xl font-bold mb-8">Modifer mon Email</h1>
 		<form id='changeEmail' action="{{ route('dashboard.modifier-profil', ['id'=>auth()->user()]) }}" class="dashboardForm" method="POST">
 			@csrf
 			<div class="relative z-0 w-full mb-5">

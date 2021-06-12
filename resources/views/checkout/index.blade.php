@@ -24,10 +24,12 @@
                     
                     <button id="card-button" class="p-2 my-4 rounded-lg bg-blue-500">Payer {{Session::get('cart')->totalPrice}} €</button>
 
+                    <div id="error-message-zone" class="hidden p-2 my-4 text-center rounded-lg bg-red-500"><i class="fas fa-exclamation-triangle"></i> </div>
+
                     <div class="italic text-xs"> PaymentIntent code for testing purpose only : 
                         <ul>
                             <li>PaymentIntent Ok : 4242424242424242</li>
-                            <li>Insufficient funds: 4000002500003155</li>
+                            <li>Authentication needed: 4000002500003155</li>
                             <li>Insufficient funds : 4000000000009995</li>
                         </ul>
                     </div>
@@ -82,12 +84,14 @@
 
 
     var form = document.getElementById('payment-form');
+    var cardBtn = document.getElementById('card-button');
+    var errorMsgZone = document.getElementById('error-message-zone');
 
     form.addEventListener('submit', function (ev) {
         ev.preventDefault();
         // If the client secret was rendered server-side as a data-secret attribute
         // on the <form> element, you can retrieve it here by calling `form.dataset.secret`
-        document.getElementById('card-button').disabled = true;
+        cardBtn.disabled = true;
 
         stripe.confirmCardPayment("{{$clientSecret}}", {
             payment_method: {
@@ -99,7 +103,9 @@
         }).then(function (result) {
             if (result.error) {
                 // Show error to your customer (e.g., insufficient funds)
-                document.getElementById('card-button').disabled = false;
+                cardBtn.disabled = false;
+                errorMsgZone.style.display = 'block';
+                errorMsgZone.innerHTML += result.error.message;
                 console.log(result.error.message);
             } else {
                 // The payment has been processed!

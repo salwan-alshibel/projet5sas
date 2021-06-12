@@ -91,7 +91,7 @@ class DashboardController extends Controller
     }
 
     public function myActualOrders() {
-        $orders = Auth::user()->orders;
+         $orders = Order::where('user_id', auth()->user()->id)->orderBy('created_at', 'asc')->paginate(2);
 
         $orders->transform(function($order, $key) {
             $order->cart = unserialize($order->cart);
@@ -101,9 +101,9 @@ class DashboardController extends Controller
         return view('dashboard.dashboard_myactualorders', ['orders' => $orders]);
     }
 
-    public function myOldOrders() {
-        return view('dashboard.dashboard_myoldorders');
-    }
+    // public function myOldOrders() {
+    //     return view('dashboard.dashboard_myoldorders');
+    // }
 
     //DASHBOARD ADMIN
     public function addProduct(Request $request){
@@ -216,13 +216,20 @@ class DashboardController extends Controller
 
 
     public function oldOrders() {
-        return view('dashboard.admin.dashboard_oldorders_admin');
+        $orders = Order::orderBy('created_at', 'desc')->where('shipping', 1)->with('user')->paginate(2);
+        
+        $orders->transform(function($order, $key) {
+            $order->cart = unserialize($order->cart);
+            return $order;
+        });
+
+        return view('dashboard.admin.dashboard_oldorders_admin', ['orders' => $orders]);
     }
 
 
     public function newOrders() {
-        $orders = Order::orderBy('created_at', 'desc')->where('shipping', 0)->paginate(4);
-
+        $orders = Order::orderBy('created_at', 'desc')->where('shipping', 0)->with('user')->paginate(2);
+        
         $orders->transform(function($order, $key) {
             $order->cart = unserialize($order->cart);
             return $order;
@@ -239,6 +246,14 @@ class DashboardController extends Controller
         $image->move(public_path('images\products_images'), $newImageName);
 
         return $newImageName;
+    }
+
+    public function updateShipping(Request $request) {
+        // dd($request->id);
+
+        DB::table('orders')->where('id', $request->id)->update(['shipping'=> 1]);
+        
+        return back()->with('message', $request->id);
     }
 
 }

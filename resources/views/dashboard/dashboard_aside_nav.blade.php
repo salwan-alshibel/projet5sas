@@ -62,15 +62,15 @@
                         <li class="sidebar-nav-item">
                             <a href="{{ route('dashboard.myActualOrders') }}" id="commandes-en-cours" class="bg-green-500 sidebar-nav-link transform hover:scale-110">
                                 <i class="fas fa-arrow-right nav-icon"></i>
-                                <p>En cours</p>
+                                <p>Voir commandes</p>
                             </a>
                         </li>
-                        <li class="sidebar-nav-item">
+                        {{-- <li class="sidebar-nav-item">
                             <a href="{{ route('dashboard.myOldOrders') }}" id="historique-commandes" class="bg-green-500  sidebar-nav-link transform hover:scale-110">
                                 <i class="fas fa-arrow-right nav-icon"></i>
                                 <p>Historique</p>
                             </a>
-                        </li>
+                        </li> --}}
                     </ul>
                 </li>
 

@@ -54,6 +54,7 @@ Route::get('/dashboard/historique-commandes', [DashboardController::class, 'myOl
 Route::get('/dashboard/ajouter-un-produit', [DashboardController::class, 'addProduct'])->name('addProduct');
 Route::post('/dashboard/ajouter-un-produit', [DashboardController::class, 'addProduct']);
 Route::get('/dashboard/nouvelles-commandes', [DashboardController::class, 'newOrders'])->name('newOrders');
+Route::POST('/dashboard/nouvelles-commandes', [DashboardController::class, 'updateShipping'])->name('update.shipping');
 Route::get('/dashboard/anciennes-commandes', [DashboardController::class, 'oldOrders'])->name('oldOrders');
 
 

@@ -2,122 +2,67 @@
 
 @section('dashboard-content')
 
+<div class="darkable min-h-screen bg-dusty-gray-200 p-0 md:p-12">
+    <div class="lessDarkable bg-white rounded-lg  ">
+        <h1 class="p-8 text-2xl font-bold">Commandes à envoyer :</h1>
+        <div class="border-b border-gray-500 m-auto md:m-0 w-5/6"></div>
+        <div class="p-0 mt-1 md:p-8">
+            
+            @if (session('message'))
+            <div class="bg-green-500 p-4 rounded-lg mb-6 text-center">
+                <i class="fas fa-check"></i>  Commande n°{{ session('message') }} déplacée vers les commandes envoyées.
+            </div>
+            @endif
 
-<div class="min-h-screen bg-outer-space-700 p-0 md:p-12 text-white">
-
-      <form onsubmit="return false" id="search-form" action="{{route ('products.search')}}" method="POST">
-          <input type="text" name="searchInput" id="search-input" class="text-black" maxlength="99" placeholder="Rechercher un article...">
-          <input type="hidden" name="_token" id="token-input" value="{{ csrf_token() }}" />
-          {{-- <button type="submit" class="ml-8 px-4 border rounded-lg"> Rechercher </button> --}}
-      </form>
-
-      <div id="search-result-div" class="py-8">
-      </div>
-
-
-
-      <div class="darkable min-h-screen bg-dusty-gray-200 p-0 md:p-12">
-        <div class="lessDarkable bg-white rounded-lg  ">
-            <div class="mx-auto md:max-w-md px-6 py-12 relative w-full">
-                <div class="flex justify-center">
-                    <div class="w-8/12">
-                        <div class="p-6">
-                            <h1 class="text-2xl font-medium mb-1">Commandes à envoyer</h1>
+            @foreach ($orders as $order)
+                <div class="darkable border-white rounded-lg shadow-lg flex flex-col p-5 mb-4 bg-outer-space-200">
+                    <h2 class="text-lg">Commande du {{($order->created_at)->format('d/m/Y')}}</h2>
+                    <h3 class="text-sm italic pt-1 pb-6">N° de commande : {{$order->id}}</h3>
+                    <div class="text-black border-white border-solid border-t rounded-lg shadow-lg flex flex-col p-5 mb-4 bg-white">
+                        <p class="underline pb-1">Client :</p>
+                        <p>{{$order->user->name}}</p>
+                        <p>{{$order->user->email}}</p>
+                    </div>
+                    @foreach ($order->cart->products as $product)
+                    <div class="text-black border-white border-solid border-t rounded-lg shadow-lg flex flex-col p-5 mb-4 bg-white">
+                            <p class="underline pb-1">Produits :</p>
+                            <p>{{$product['qty'] }} x {{$product['product']['title']}} </p>
+                            <p>{{$product['priceWithTax']}} € / Unité</p>
+                            <p>Sous total = {{$product['subtotalTTC']}} €</p>
                         </div>
-                        @foreach ($orders as $order)
-                            <div class="p-6 rounded-lg">
-                                <ul>
-                                    @foreach ($order->cart->products as $product)
-                                    <li>
-                                        <p>{{$product['product']['title']}} </p>
-                                        <p>{{$product['qty']}} </p>
-                                        <p>{{$product['price']}} €</p></li>
-                                    @endforeach
-                                </ul>
-                                {{-- {{ $posts->links() }} --}}
+                    @endforeach
+                    <div class="text-right text-xl">
+                        Total : {{$order->cart->totalPrice}} €
+                        <p class="inline bg-green-400 p-1 rounded-lg text-sm"><i class="fas fa-check"></i> Paiement validé</p>
+                    </div>
+                    <div class="flex justify-center">
+                        <form id='validate-shipping' action="{{ route('update.shipping', ['id'=>$order->id]) }}" class="dashboardForm" method="POST">
+                            @csrf
+                            <div class="relative z-0 w-full mb-5">
+                                <input
+                                type="hidden"
+                                name="shipping"
+                                placeholder=" "
+                                value="yes"
+                                required
+                                />
                             </div>
-                            <div>
-                                Total : {{$order->cart->totalPrice}} €
-                            </div>
-                        @endforeach
+                            Commande envoyée ?
+                            <button
+                            type="submit"
+                            form="validate-shipping"
+                            class="w-14 px-1 py-1 text-lg text-white transition-all duration-150 ease-linear rounded-lg shadow outline-none bg-blue-500 hover:bg-blue-600 hover:shadow-lg focus:outline-none"
+                            >
+                            Oui
+                            </button>
+                        </form>
                     </div>
                 </div>
-            </div>
+                
+                @endforeach
+                 {{ $orders->links() }}
         </div>
+       
     </div>
-
-      
-
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-<script>
-
- const form = document.getElementById('search-form');
-
- form.addEventListener('keyup', function(e) {
-    e.preventDefault();
-
-    const url = this.getAttribute('action');
-    const searchValue = document.getElementById('search-input').value;
-    const token = document.getElementById('token-input').value;
-        
-    if(searchValue !== '') {
-        fetch(url, {
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': token
-            },
-            method: 'post',
-            body: JSON.stringify({
-                searchValueForController: searchValue
-            })
-        }).then(response => {
-            // console.log(response);
-            response.json().then(data => {
-                // console.log(Object.entries(data));
-
-                const searchResultDiv = document.getElementById('search-result-div');
-                searchResultDiv.innerHTML = '';
-
-                Object.entries(data)[0][1].forEach(element => {
-                    searchResultDiv.innerHTML += `<a href="http://projet5sas/product/${element.id}/${element.slug}" class='block p-2 border border-solid border-gray-400 max-w-max rounded-lg bg-white text-black hover:bg-blue-500 hover:text-white'>${element.title}</a>`
-                });
-            })
-        }).catch(error => {
-            console.log(error);
-        })
-    }
-
- })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</script>
-
-
 @endsection

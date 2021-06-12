@@ -131,7 +131,11 @@ for (var i = 0; i < aElements.length; ++i) {
     // aElements[i].style.backgroundColor = '#3b82f6';
     // aElements[i].style.color = 'white';
     aElements[i].style.transform = 'translate(25px, -2px)';
-    aElements[i].style.scale = '1.2';
+
+    if (window.matchMedia("(min-width: 496px)").matches) {
+      aElements[i].style.scale = '1.2';
+    }
+
     var iElement = aElements[i].closest(".parentlist");
     iElement.querySelector(".drop").click();
   }
