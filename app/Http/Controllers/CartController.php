@@ -24,14 +24,10 @@ class CartController extends Controller
 
     public function addToCart(Request $request) {
 
-        //Récupérer le produit en fonction de son id:
         $product = Product::with('products_image')->find($request->id);
         $quantity = $request->quantity;
 
-        //Ajouter le produit à une session Laravel:
-            //->Vérification de l'existence d'un panier en cours, si oui on le récupère:
         $oldCart = Session::has(('cart')) ? Session::get('cart') : null;
-            //->Instanciation d'un objet Cart:
         $cart = new Cart($oldCart);
         $cart->add($product, $product->id, $quantity);
 
@@ -66,7 +62,6 @@ class CartController extends Controller
             Session::forget('cart');
         }
         
-
         return redirect()->route('cart');
     }
 

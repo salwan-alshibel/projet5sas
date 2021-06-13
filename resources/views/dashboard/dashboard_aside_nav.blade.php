@@ -18,8 +18,6 @@
         <!-- Sidebar Menu -->
         <nav class="sidebar-nav mt-2">
             <ul class="">
-                <!-- Add icons to the links using the .nav-icon class
-                 with font-awesome or any other icon font library -->
                 <li class="sidebar-nav-item parentlist">
                     <a href="#" id="myProfileBtn" class="bg-yellow-600 text-black drop sidebar-nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -65,47 +63,39 @@
                                 <p>Voir commandes</p>
                             </a>
                         </li>
-                        {{-- <li class="sidebar-nav-item">
-                            <a href="{{ route('dashboard.myOldOrders') }}" id="historique-commandes" class="bg-green-500  sidebar-nav-link transform hover:scale-110">
-                                <i class="fas fa-arrow-right nav-icon"></i>
-                                <p>Historique</p>
-                            </a>
-                        </li> --}}
                     </ul>
                 </li>
 
                 @if (auth()->user()->admin === 1)
-
-
-                <li class="sidebar-nav-item parentlist">
-                    <a href="#" id="myAdminDropMenuBtn"  class="bg-red-700 drop sidebar-nav-link">
-                        <i class="fas fa-store nav-icon"></i>
-                        <p>
-                            Espace administration
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="sidebar-nav-treeview">
-                        <li class="sidebar-nav-item">
-                            <a href="{{ route('addProduct')}}" id="ajouter-un-produit" class="bg-red-500 sidebar-nav-link transform hover:scale-110">
-                                <i class="fas fa-arrow-right nav-icon"></i>
-                                <p>Ajouter un produit</p>
-                            </a>
-                        </li>
-                        <li class="sidebar-nav-item">
-                            <a href="{{ route('newOrders')}}" id="nouvelles-commandes" class="bg-red-500 sidebar-nav-link transform hover:scale-110">
-                                <i class="fas fa-arrow-right nav-icon"></i>
-                                <p>Commandes en attente</p>
-                            </a>
-                        </li>
-                        <li class="sidebar-nav-item">
-                            <a href="{{ route('oldOrders')}}" id="anciennes-commandes" class="bg-red-500 sidebar-nav-link transform hover:scale-110">
-                                <i class="fas fa-arrow-right nav-icon"></i>
-                                <p>Commandes envoyées</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
+                    <li class="sidebar-nav-item parentlist">
+                        <a href="#" id="myAdminDropMenuBtn"  class="bg-red-700 drop sidebar-nav-link">
+                            <i class="fas fa-store nav-icon"></i>
+                            <p>
+                                Espace administration
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="sidebar-nav-treeview">
+                            <li class="sidebar-nav-item">
+                                <a href="{{ route('addProduct')}}" id="ajouter-un-produit" class="bg-red-500 sidebar-nav-link transform hover:scale-110">
+                                    <i class="fas fa-arrow-right nav-icon"></i>
+                                    <p>Ajouter un produit</p>
+                                </a>
+                            </li>
+                            <li class="sidebar-nav-item">
+                                <a href="{{ route('newOrders')}}" id="nouvelles-commandes" class="bg-red-500 sidebar-nav-link transform hover:scale-110">
+                                    <i class="fas fa-arrow-right nav-icon"></i>
+                                    <p>Commandes en attente</p>
+                                </a>
+                            </li>
+                            <li class="sidebar-nav-item">
+                                <a href="{{ route('oldOrders')}}" id="anciennes-commandes" class="bg-red-500 sidebar-nav-link transform hover:scale-110">
+                                    <i class="fas fa-arrow-right nav-icon"></i>
+                                    <p>Commandes envoyées</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
                 @endif
             </ul>
         </nav>

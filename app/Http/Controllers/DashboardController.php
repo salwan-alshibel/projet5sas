@@ -101,10 +101,6 @@ class DashboardController extends Controller
         return view('dashboard.dashboard_myactualorders', ['orders' => $orders]);
     }
 
-    // public function myOldOrders() {
-    //     return view('dashboard.dashboard_myoldorders');
-    // }
-
     //DASHBOARD ADMIN
     public function addProduct(Request $request){
         

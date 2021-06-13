@@ -5,7 +5,7 @@
     <div class="darkable w-full mt-12 sm:mt-0 flex flex-col md:flex-row">
         <div class="darkable w-full md:w-72 md:pl-4 lg:pl-0">
             <div class="lessDarkable h-auto md:h-72 lg:h-full m-0 md:mt-12 rounded-lg lg:rounded-3xl  bg-white pb-4 md:pb-2 static md:fixed lg:static">
-                {{-- Search bar for categories(NOT USED): --}}
+                {{-- Search bar for categories(NOT USED NOW): --}}
                 {{-- <input type="search" id="myInput" onkeyup="window.search()" placeholder="Rechercher..." > --}}
 
                 <!-- Categories list -->
@@ -87,7 +87,6 @@
                                 <a href="#"
                                     class="pointer-events-none relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-200 hover:bg-gray-50">
                                     <span class="sr-only">Previous</span>
-                                    <!-- Heroicon name: solid/chevron-left -->
                                     <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
                                         fill="currentColor" aria-hidden="true">
                                         <path fill-rule="evenodd"
@@ -99,7 +98,6 @@
                                 <a href="?page={{$pagination->currentPage - 1}}"
                                     class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
                                     <span class="sr-only">Previous</span>
-                                    <!-- Heroicon name: solid/chevron-left -->
                                     <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
                                         fill="currentColor" aria-hidden="true">
                                         <path fill-rule="evenodd"
@@ -121,7 +119,6 @@
                                 <a href="#"
                                     class="pointer-events-none relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-200 hover:bg-gray-50">
                                     <span class="sr-only">Next</span>
-                                    <!-- Heroicon name: solid/chevron-right -->
                                     <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
                                         fill="currentColor" aria-hidden="true">
                                         <path fill-rule="evenodd"
@@ -133,7 +130,6 @@
                                 <a href="?page={{$pagination->currentPage + 1}}"
                                     class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
                                     <span class="sr-only">Next</span>
-                                    <!-- Heroicon name: solid/chevron-right -->
                                     <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
                                         fill="currentColor" aria-hidden="true">
                                         <path fill-rule="evenodd"
@@ -148,61 +144,4 @@
             </div>
         </div>
     </div>
-
-    <style>
-
-    /* Search bar */
-    #myInput {
-        background-image: url('/images/search-solid.svg'); /* Add a search icon to input */
-        background-position: 10px 12px; /* Position the search icon */
-        background-size: 7%;
-        background-repeat: no-repeat; /* Do not repeat the icon image */
-        width: 100%; /* Full-width */
-        font-size: 16px; /* Increase font-size */
-        padding: 12px 20px 12px 40px; /* Add some padding */
-        border: 1px solid #ddd; /* Add a grey border */
-        margin-bottom: 12px; /* Add some space below the input */
-    }
-
-    /* Filter search */
-    /* .container {
-    overflow: hidden;
-    } */
-
-    .filterDiv {
-    float: left;
-    background-color: #2196F3;
-    color: #ffffff;
-    width: 100px;
-    line-height: 100px;
-    text-align: center;
-    margin: 2px;
-    display: none; /* Hidden by default */
-    }
-
-    /* The "show" class is added to the filtered elements */
-    .show {
-    display: block;
-    }
-
-    /* Style the buttons */
-    .btn {
-    border: none;
-    outline: none;
-    padding: 12px 16px;
-    background-color: #f1f1f1;
-    cursor: pointer;
-    }
-
-    /* Add a light grey background on mouse-over */
-    .btn:hover {
-    background-color: #ddd;
-    }
-
-    /* Add a dark background to the active button */
-    .btn.active {
-    background-color: #666;
-    color: white;
-    }
-    </style>
 @endsection

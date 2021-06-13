@@ -3,9 +3,6 @@
 
 @section('content')
 
-
-
-
 <div class="darkable flex justify-center bg-gray-300 lg:h-screen">
     <div class="lg:h-screen w-full md:w-11/12">
         <div class="lessDarkable mx-auto mt-20 mb-12 bg-gray-100 shadow-lg rounded-lg md:max-w-5xl">
@@ -43,8 +40,12 @@
 </div>
 
 
+
+{{-- STRIPE RESSOURCES --}}
 <script src="https://js.stripe.com/v3/"></script>
 
+
+{{-- STRIPE PAIEMENT WITH AJAX --}}
 <script>
     var stripe = Stripe(
 

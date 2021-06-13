@@ -16,6 +16,7 @@
                         <button type="submit" class="text-white bg-red-500 rounded-lg p-2 my-4" onclick="return confirm('Veuillez confirmer la suppression de cet article. Attention ce choix est définitif !')">Effacer definitivement.</button>
                     </form>
 
+                    {{-- Hide product from shop. NOT USED NOW. --}}
                     {{-- <form action="{{ route('product.hide',$product) }}" method="post" class="mr-1">
                         @csrf
                         <button type="submit" class="text-black bg-gray-500 rounded-lg p-2" onclick="return confirm('Veuillez confirmer le retrait de cet article du magasin.')">Retirer de la vente.</button>

@@ -22,9 +22,6 @@ class RegisterController extends Controller
 
     public function store(Request $request) {
         
-        //Die Dump for test:
-        //dd($request->email);
-
         $request->name = htmlspecialchars($request->name);
         $request->username = htmlspecialchars($request->username);
         $request->email = htmlspecialchars($request->email);

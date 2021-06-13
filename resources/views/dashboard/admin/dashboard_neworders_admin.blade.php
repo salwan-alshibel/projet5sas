@@ -14,55 +14,59 @@
             </div>
             @endif
 
-            @foreach ($orders as $order)
-                <div class="darkable border-white rounded-lg shadow-lg flex flex-col p-5 mb-4 bg-outer-space-200">
-                    <h2 class="text-lg">Commande du {{($order->created_at)->format('d/m/Y')}}</h2>
-                    <h3 class="text-sm italic pt-1 pb-6">N° de commande : {{$order->id}}</h3>
-                    <div class="text-black border-white border-solid border-t rounded-lg shadow-lg flex flex-col p-5 mb-4 bg-white">
-                        <p class="underline pb-1">Client :</p>
-                        <p>{{$order->user->name}}</p>
-                        <p>{{$order->user->email}}</p>
-                    </div>
-                    @foreach ($order->cart->products as $product)
-                    <div class="text-black border-white border-solid border-t rounded-lg shadow-lg flex flex-col p-5 mb-4 bg-white">
-                            <p class="underline pb-1">Produits :</p>
-                            <p>{{$product['qty'] }} x {{$product['product']['title']}} </p>
-                            <p>{{$product['priceWithTax']}} € / Unité</p>
-                            <p>Sous total = {{$product['subtotalTTC']}} €</p>
+            @if ($orders->count())
+                @foreach ($orders as $order)
+                    <div class="darkable border-white rounded-lg shadow-lg flex flex-col p-5 mb-4 bg-outer-space-200">
+                        <h2 class="text-lg">Commande du {{($order->created_at)->format('d/m/Y')}}</h2>
+                        <h3 class="text-sm italic pt-1 pb-6">N° de commande : {{$order->id}}</h3>
+                        <div class="text-black border-white border-solid border-t rounded-lg shadow-lg flex flex-col p-5 mb-4 bg-white">
+                            <p class="underline pb-1">Client :</p>
+                            <p>{{$order->user->name}}</p>
+                            <p>{{$order->user->email}}</p>
                         </div>
-                    @endforeach
-                    <div class="text-right text-xl">
-                        Total : {{$order->cart->totalPrice}} €
-                        <p class="inline bg-green-400 p-1 rounded-lg text-sm"><i class="fas fa-check"></i> Paiement validé</p>
-                    </div>
-                    <div class="flex justify-center">
-                        <form id='validate-shipping' action="{{ route('update.shipping', ['id'=>$order->id]) }}" class="dashboardForm" method="POST">
-                            @csrf
-                            <div class="relative z-0 w-full mb-5">
-                                <input
-                                type="hidden"
-                                name="shipping"
-                                placeholder=" "
-                                value="yes"
-                                required
-                                />
+                        @foreach ($order->cart->products as $product)
+                        <div class="text-black border-white border-solid border-t rounded-lg shadow-lg flex flex-col p-5 mb-4 bg-white">
+                                <p class="underline pb-1">Produits :</p>
+                                <p>{{$product['qty'] }} x {{$product['product']['title']}} </p>
+                                <p>{{$product['priceWithTax']}} € / Unité</p>
+                                <p>Sous total = {{$product['subtotalTTC']}} €</p>
                             </div>
-                            Commande envoyée ?
-                            <button
-                            type="submit"
-                            form="validate-shipping"
-                            class="w-14 px-1 py-1 text-lg text-white transition-all duration-150 ease-linear rounded-lg shadow outline-none bg-blue-500 hover:bg-blue-600 hover:shadow-lg focus:outline-none"
-                            >
-                            Oui
-                            </button>
-                        </form>
+                        @endforeach
+                        <div class="text-right text-xl">
+                            Total : {{$order->cart->totalPrice}} €
+                            <p class="inline bg-green-400 p-1 rounded-lg text-sm"><i class="fas fa-check"></i> Paiement validé</p>
+                        </div>
+                        <div class="flex justify-center">
+                            <form id='validate-shipping' action="{{ route('update.shipping', ['id'=>$order->id]) }}" class="dashboardForm" method="POST">
+                                @csrf
+                                <div class="relative z-0 w-full mb-5">
+                                    <input
+                                    type="hidden"
+                                    name="shipping"
+                                    placeholder=" "
+                                    value="yes"
+                                    required
+                                    />
+                                </div>
+                                Commande envoyée ?
+                                <button
+                                type="submit"
+                                form="validate-shipping"
+                                class="w-14 px-1 py-1 text-lg text-white transition-all duration-150 ease-linear rounded-lg shadow outline-none bg-blue-500 hover:bg-blue-600 hover:shadow-lg focus:outline-none"
+                                >
+                                Oui
+                                </button>
+                            </form>
+                        </div>
                     </div>
-                </div>
-                
                 @endforeach
-                 {{ $orders->links() }}
+                {{ $orders->links() }}
+            @else
+                <div class="darkable border-white rounded-lg shadow-lg flex flex-col p-5 mb-4 bg-outer-space-200">
+                    <h2 class="text-lg">Aucune commande à envoyer.</h2>
+                </div>
+            @endif
         </div>
-       
     </div>
 </div>
 @endsection

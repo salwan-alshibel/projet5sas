@@ -72,41 +72,6 @@
 		</form>
 		
 	</div>
-	
-	{{-- <div class="max-h-96 mx-auto md:max-w-md px-6 py-12  relative w-full">
-			<h1 class="text-2xl font-bold mb-8">Adresse</h1>
-			<form class="dashboardForm">
-				@csrf
-				<div class="relative z-0 w-full mb-5">
-					<input
-					type="text"
-					name="adress_street"
-					placeholder=" "
-					required
-					class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
-					/>
-					<label for="adress_street" class="absolute duration-300 top-3 -z-1 origin-0">N° et rue</label>
-					<span class="text-sm text-red-600 hidden" id="error">Une adresse est obligatoire</span>
-				</div>
-				<div class="relative z-0 w-full mb-5">
-					<input
-					type="text"
-					name="adress"
-					placeholder=" "
-					required
-					class="pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-200"
-					/>
-					<label for="adress" class="absolute duration-300 top-3 -z-1 origin-0">Code postal et Ville</label>
-					<span class="text-sm text-red-600 hidden" id="error">Une adresse est obligatoire</span>
-				</div>
-				<button
-				type="submit"
-				class="w-full px-6 py-3 mt-3 text-lg text-white transition-all duration-150 ease-linear rounded-lg shadow outline-none bg-blue-500 hover:bg-blue-600 hover:shadow-lg focus:outline-none"
-				>
-				Valider
-				</button>
-			</form>
-	</div> --}}
 
 	<div class="max-h-96 mx-auto md:max-w-md px-6 py-12 relative w-full">
 		<h1 class="text-2xl font-bold mb-8">Modifer mon Email</h1>

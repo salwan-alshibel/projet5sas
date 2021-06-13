@@ -130,8 +130,6 @@
                     <div class="absolute top-4 right-3"> <i class="fa fa-search text-gray-400 z-20 hover:text-gray-500"></i></div>
                 </div>
                 <input type="hidden" name="_token" id="token-input-nav" value="{{ csrf_token() }}" />
-                
-                {{-- <button type="submit" class="ml-8 px-4 border rounded-lg"> Rechercher </button> --}}
             </form>
         
             <div id="search-result-div" class="lessDarkable bg-white">
@@ -141,64 +139,63 @@
 </nav>
 
 <script>
-    //Search bar button toggle display none :
+    //Show and hide search bar :
+    // const navSearchBtn = document.getElementById('nav-search-btn');
+    // const navSearchBar = document.getElementById('nav-search-bar');
 
-    const navSearchBtn = document.getElementById('nav-search-btn');
-    const navSearchBar = document.getElementById('nav-search-bar');
-
-    navSearchBtn.addEventListener('click', (event) => {
-        navSearchBar.classList.toggle('hidden');
+    // navSearchBtn.addEventListener('click', (event) => {
+    //     navSearchBar.classList.toggle('hidden');
         
-    });
-    if (navSearchBar.classList.contains('hidden')) {
-        window.addEventListener('mouseup', function(event){
-            if(event.target.closest("#nav-search-bar") != navSearchBar && event.target.parentNode != navSearchBtn && event.target != navSearchBtn ) {
-                navSearchBar.classList.add('hidden');
-            }    
-    });
-    }
+    // });
+    // if (navSearchBar.classList.contains('hidden')) {
+    //     window.addEventListener('mouseup', function(event){
+    //         if(event.target.closest("#nav-search-bar") != navSearchBar && event.target.parentNode != navSearchBtn && event.target != navSearchBtn ) {
+    //             navSearchBar.classList.add('hidden');
+    //         }    
+    //     });
+    // }
     
 </script>
 
 
 <script>
     //Search products with AJAX :
-    const searchForm = document.getElementById('search-form');
+    // const searchForm = document.getElementById('search-form');
    
-    searchForm.addEventListener('keyup', function(e) {
-       e.preventDefault();
+    // searchForm.addEventListener('keyup', function(e) {
+    //    e.preventDefault();
    
-       const url = this.getAttribute('action');
-       const searchValue = document.getElementById('search-input').value;
-       const tokenNav = document.getElementById('token-input-nav').value;
+    //    const url = this.getAttribute('action');
+    //    const searchValue = document.getElementById('search-input').value;
+    //    const tokenNav = document.getElementById('token-input-nav').value;
            
-       if(searchValue !== '') {
-           fetch(url, {
-               headers: {
-                   'Content-Type': 'application/json',
-                   'X-CSRF-TOKEN': tokenNav
-               },
-               method: 'post',
-               body: JSON.stringify({
-                   searchValueForController: searchValue
-               })
-           }).then(response => {
-               // console.log(response);
-               response.json().then(data => {
-                   // console.log(Object.entries(data));
+    //    if(searchValue !== '') {
+    //        fetch(url, {
+    //            headers: {
+    //                'Content-Type': 'application/json',
+    //                'X-CSRF-TOKEN': tokenNav
+    //            },
+    //            method: 'post',
+    //            body: JSON.stringify({
+    //                searchValueForController: searchValue
+    //            })
+    //        }).then(response => {
+    //            // console.log(response);
+    //            response.json().then(data => {
+    //                // console.log(Object.entries(data));
    
-                   const searchResultDiv = document.getElementById('search-result-div');
-                   searchResultDiv.innerHTML = '';
+    //                const searchResultDiv = document.getElementById('search-result-div');
+    //                searchResultDiv.innerHTML = '';
    
-                   Object.entries(data)[0][1].forEach(element => {
-                       searchResultDiv.innerHTML += `<a href="http://projet5sas/product/${element.id}/${element.slug}" class='rounded-lg block p-2 border border-solid border-gray-400 w-full sm:w-96 bg-white text-black hover:bg-blue-500 hover:text-white'>${element.title}</a>`
-                   });
-               })
-           }).catch(error => {
-               console.log(error);
-           })
-       }
+    //                Object.entries(data)[0][1].forEach(element => {
+    //                    searchResultDiv.innerHTML += `<a href="http://projet5sas/product/${element.id}/${element.slug}" class='rounded-lg block p-2 border border-solid border-gray-400 w-full sm:w-96 bg-white text-black hover:bg-blue-500 hover:text-white'>${element.title}</a>`
+    //                });
+    //            })
+    //        }).catch(error => {
+    //            console.log(error);
+    //        })
+    //    }
    
-    })
+    // })
 </script>
    

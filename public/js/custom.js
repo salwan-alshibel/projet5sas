@@ -11,7 +11,7 @@ document.getElementById('nav-toggle').onclick = function () {
   for (var i = 0; i < nav.length; i++) {
     nav[i].classList.toggle("hidden");
   }
-}; //Dark mode on load and on click:
+}; //Dark mode on window load and on click:
 
 
 window.onload = function checkIfDarkMode() {
@@ -116,11 +116,7 @@ document.querySelectorAll('.drop').forEach(function (item) {
       }
     }
   });
-}); // window.onclick = e => {
-//     console.log(e.target);  // to get the element
-//     console.log(e.target.tagName);  // to get the element tag name alone
-// }
-//Drop down menu stay open on current page :
+}); //Drop down menu stay open on current page :
 
 var thisURL = window.location.pathname;
 var lastSegment = thisURL.split("/").pop();
@@ -128,8 +124,6 @@ var aElements = document.querySelectorAll('a');
 
 for (var i = 0; i < aElements.length; ++i) {
   if (aElements[i].id == lastSegment) {
-    // aElements[i].style.backgroundColor = '#3b82f6';
-    // aElements[i].style.color = 'white';
     aElements[i].style.transform = 'translate(25px, -2px)';
 
     if (window.matchMedia("(min-width: 496px)").matches) {
@@ -139,6 +133,25 @@ for (var i = 0; i < aElements.length; ++i) {
     var iElement = aElements[i].closest(".parentlist");
     iElement.querySelector(".drop").click();
   }
-}
+} //Show and hide search bar :
+
+
+var navSearchBtn = document.getElementById('nav-search-btn');
+var navSearchBar = document.getElementById('nav-search-bar');
+navSearchBtn.addEventListener('click', function (event) {
+  navSearchBar.classList.toggle('hidden');
+});
+
+if (navSearchBar.classList.contains('hidden')) {
+  window.addEventListener('mouseup', function (event) {
+    if (event.target.closest("#nav-search-bar") != navSearchBar && event.target.parentNode != navSearchBtn && event.target != navSearchBtn) {
+      navSearchBar.classList.add('hidden');
+    }
+  });
+} // For test:
+// window.onclick = e => {
+//     console.log(e.target);  // to get the element
+//     console.log(e.target.tagName);  // to get the element tag name alone
+// }
 /******/ })()
 ;

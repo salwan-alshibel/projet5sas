@@ -17,9 +17,10 @@ class PostController extends Controller
 
 
    public function index(){
-      $posts = Post::orderBy('created_at', 'desc')->with(['user', 'likes'])->paginate(3);
+      // $posts = Post::orderBy('created_at', 'desc')->with(['user', 'likes'])->paginate(3);
 
-      return view('posts.index', ['posts' => $posts]); 
+      // return view('posts.index', ['posts' => $posts]);
+      return redirect()->route('home');
    }
 
 

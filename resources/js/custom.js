@@ -12,7 +12,7 @@ document.getElementById('nav-toggle').onclick = function(){
 
 
 
-//Dark mode on load and on click:
+//Dark mode on window load and on click:
 window.onload = function checkIfDarkMode() {
 	if (sessionStorage.getItem('darkMode') == 'active') {
 		window.activateDarkMode();
@@ -20,7 +20,6 @@ window.onload = function checkIfDarkMode() {
 		window.removeDarkMode();
 	}
 }
-
 window.activateDarkMode = function () {
 	sessionStorage.setItem('darkMode', 'active');
 	const darkableElements = document.querySelectorAll('.darkable');
@@ -40,7 +39,6 @@ window.activateDarkMode = function () {
 
 	document.getElementById('darkModBtn').checked = true;
 }
-
 window.removeDarkMode = function () {
 	sessionStorage.setItem('darkMode', 'inactive');
 	const darkableElements = document.querySelectorAll('.darkable');
@@ -60,9 +58,7 @@ window.removeDarkMode = function () {
 
 	document.getElementById('darkModBtn').checked = false;
 }
-
 window.toggleDark = function () {
-
 	if (sessionStorage.getItem('darkMode') == 'active') {
 		window.removeDarkMode();
 	} else { 
@@ -70,6 +66,8 @@ window.toggleDark = function () {
 	}
 }
 //<-end dark mode
+
+
 
 
 /* When the user scrolls down, hide the navbar. When the user scrolls up, show the navbar */
@@ -131,13 +129,6 @@ document.querySelectorAll('.drop').forEach(item => {
 })
 
 
-// window.onclick = e => {
-//     console.log(e.target);  // to get the element
-//     console.log(e.target.tagName);  // to get the element tag name alone
-// }
-
-
-
 //Drop down menu stay open on current page :
 const thisURL = window.location.pathname;
 const lastSegment = thisURL.split("/").pop();
@@ -145,8 +136,6 @@ const aElements = document.querySelectorAll('a');
 
 for (let i = 0; i < aElements.length; ++i) {
 	if (aElements[i].id == lastSegment ) {
-		// aElements[i].style.backgroundColor = '#3b82f6';
-		// aElements[i].style.color = 'white';
 		aElements[i].style.transform = 'translate(25px, -2px)';
 		if (window.matchMedia("(min-width: 496px)").matches){
 			aElements[i].style.scale = '1.2';	
@@ -156,3 +145,27 @@ for (let i = 0; i < aElements.length; ++i) {
 		iElement.querySelector(".drop").click();
 	}
 }
+
+
+
+//Show and hide search bar :
+const navSearchBtn = document.getElementById('nav-search-btn');
+const navSearchBar = document.getElementById('nav-search-bar');
+
+navSearchBtn.addEventListener('click', (event) => {
+	navSearchBar.classList.toggle('hidden');
+	
+});
+if (navSearchBar.classList.contains('hidden')) {
+	window.addEventListener('mouseup', function(event){
+		if(event.target.closest("#nav-search-bar") != navSearchBar && event.target.parentNode != navSearchBtn && event.target != navSearchBtn ) {
+			navSearchBar.classList.add('hidden');
+		}    
+	});
+}
+
+// For test:
+// window.onclick = e => {
+//     console.log(e.target);  // to get the element
+//     console.log(e.target.tagName);  // to get the element tag name alone
+// }

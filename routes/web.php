@@ -46,8 +46,6 @@ Route::get('/dashboard/mes-commentaires', [DashboardController::class, 'myPosts'
 
 Route::get('/dashboard/commandes-en-cours', [DashboardController::class, 'myActualOrders'])->name('dashboard.myActualOrders');
 
-Route::get('/dashboard/historique-commandes', [DashboardController::class, 'myOldOrders'])->name('dashboard.myOldOrders');
-
 
 
 //DASHBOARD ADMIN
@@ -84,9 +82,6 @@ Route::get('/users/{user:username}/posts', [UserPostController::class, 'index'])
 
 
 //SHOP
-Route::get('Warhammer-Age-of-Sigmar', [ProductsController::class, 'waos'])->name('waos');
-Route::get('Warhammer-40-000', [ProductsController::class, 'w40k'])->name('w40k');
-Route::get('Peintures', [ProductsController::class, 'paints'])->name('paints');
 Route::get('product/{id}/{slug}', [ProductsController::class, 'product'])->name('product');
 // Route::post('product/{product}', [ProductsController::class, 'hide'])->name('product.hide');
 Route::delete('product/{product}', [ProductsController::class, 'destroy'])->name('product.delete');
@@ -107,7 +102,6 @@ Route::post('panier/remove/{id}', [CartController::class, 'removeProductFromCart
 Route::get('paiement', [CheckoutController::class, 'index'])->name('checkout.index');
 Route::post('paiement', [CheckoutController::class, 'store'])->name('checkout.store');
 Route::get('paiement-ok', [CheckoutController::class, 'paiement_ok']);
-
 
 
 //SALES CONDITIONS
