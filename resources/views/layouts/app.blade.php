@@ -20,6 +20,7 @@
             @include('layouts.nav')
 
             <section id="main-content" class="pt-16 sm:pt-32 md:pt-36">
+                <h1 class="hidden">Figurines Warhammer et peintures</h1>
                 @yield('content')
             </section>
 

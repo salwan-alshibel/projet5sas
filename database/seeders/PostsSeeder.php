@@ -24,14 +24,14 @@ class PostsSeeder extends Seeder
             ],
             [
             'product_id' => 1,
-            'user_id' => 3,
+            'user_id' => 2,
             'body' => "Un peu trop cher !",
             'created_at' => date(now()),
             'updated_at' => date(now()),
             ],
             [
             'product_id' => 1,
-            'user_id' => 1,
+            'user_id' => 3,
             'body' => "Au contraire ! C'est le juste prix !",
             'created_at' => date(now()),
             'updated_at' => date(now()),

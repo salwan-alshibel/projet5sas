@@ -9,27 +9,27 @@
                 {{-- <input type="search" id="myInput" onkeyup="window.search()" placeholder="Rechercher..." > --}}
 
                 <!-- Categories list -->
-                <ul id="myUL" class="w-auto m-auto md:m-0 md:pt-4 lg:fixed">
+                <div id="myUL" class="w-auto m-auto md:m-0 md:pt-4 lg:fixed">
                     <div class="pt-4 mb-2 text-center text-2xl underline">Categories</div>
                     <div class="border-b w-9/12 mb-8 m-auto"></div>
                     <div class="m-0 lg:m-4 text-sm lg:text-base rounded-lg bg-nenuphar-green-500 p-4">
                         @if ($category->parent_id !== null)
                         <a class="w-full p-1 lg:pl-4 py-3 inline-block hover:bg-yellow-700 underline" href="{{ route('viewByCategory', ['id'=>$category->parent->id]) }}">{{ $category->parent->name }}</a>
-
+                        <ul>
                         @foreach ($category->parent->children as $children)
                             <li><a class="w-full pl-8 pb-1 inline-block hover:bg-blue-500" href="{{ route('viewByCategory', ['id'=>$children->id]) }}"><i class="fas fa-angle-right"></i> {{ $children->name }}</a></li>
                         @endforeach
-                
+                        </ul>
                         @else 
                         <a class="w-full p-1 lg:pl-4 pb-3 inline-block hover:bg-yellow-700 underline" href="{{ route('viewByCategory', ['id'=>$category->id]) }}">{{ $category->name }}</a>
-
+                        <ul>
                         @foreach ($category->children as $children)
                             <li><a class="w-full pl-8 inline-block hover:bg-blue-500" href="{{ route('viewByCategory', ['id'=>$children->id]) }}"><i class="fas fa-angle-right"></i> {{ $children->name }}</a></li>
                         @endforeach
-
+                        </ul>
                         @endif
                     </div>
-                </ul>
+                </div>
             </div>  
         </div>
         <!-- Products -->

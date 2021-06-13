@@ -3,9 +3,9 @@
 @section('content')
 <section id="carousel_section" class="bg-dusty-gray-100 dark:bg-01DP pb-20 darkable">
         <div class="flex justify-center">
-            <div class="w-full p-6 pt-12 rounded-lg dark:text-white text-center text-2xl">
+            <h2 class="w-full p-6 pt-12 rounded-lg dark:text-white text-center text-2xl">
                 A la une
-            </div>
+            </h2>
         </div>
 
         <div id="carousel" class="relative">
@@ -54,9 +54,9 @@
 
     <section id="new-products" class="bg-dusty-gray-200 flex flex-col items-center justify-center pt-10 pb-16 darkable">
         <div class="flex justify-center">
-            <div class="w-full p-6 dark:text-white rounded-lg text-center text-2xl">
+            <h2 class="w-full p-6 dark:text-white rounded-lg text-center text-2xl">
                 Nouveautés
-            </div>
+            </h2>
         </div>
 
         <div class="grid grid-cols-1 xl:grid-cols-2 gap-4">
@@ -72,7 +72,7 @@
                     <img class="m-8" src="{{url('/images/logo2.png')}}" alt="Nouveauté en magasin">
                 </div>
                 <div class="p-4 md:px-16 md:py-16">
-                    <div class="sm:p-4 uppercase tracking-wide text-2xl text-black font-semibold pb-5 border-b ">Figurines&Co</div>
+                    <h3 class="sm:p-4 uppercase tracking-wide text-2xl text-black font-semibold pb-5 border-b ">Figurines&Co</h3>
                     <div class="block p-0 mt-2 sm:p-4 pb-4 pt-4 text-lg leading-tight font-medium text-black italic">Le lieu idéal pour trouver vos figurines warhammer !</div>
 
                     <div class="p-0 mt-2 sm:p-4 text-black text-justify break-words">
