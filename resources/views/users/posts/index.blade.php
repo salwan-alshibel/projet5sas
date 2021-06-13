@@ -13,7 +13,7 @@
         </div>
 
         <div class="p-0 mt-1 md:p-8">
-            @if (auth()->user()->posts->count())
+            @if ($posts->count())
                 @foreach ($posts as $post)
                     <div class="darkable border-white rounded-lg shadow-lg flex flex-col p-5 mb-4 items-center">
                         <x-post :post="$post" />

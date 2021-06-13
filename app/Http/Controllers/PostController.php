@@ -17,6 +17,7 @@ class PostController extends Controller
 
 
    public function index(){
+      //Posts page not used now:
       // $posts = Post::orderBy('created_at', 'desc')->with(['user', 'likes'])->paginate(3);
 
       // return view('posts.index', ['posts' => $posts]);

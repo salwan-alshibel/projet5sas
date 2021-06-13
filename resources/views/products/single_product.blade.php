@@ -25,7 +25,7 @@
             @endif
         @endauth
 
-        <div class="flex flex-col lg:flex-row">
+        <div class="flex flex-col justify-center lg:flex-row">
             <!-- product images -->
             <div class="bg-white rounded-lg">
                 <img class="w-9/12 m-auto"

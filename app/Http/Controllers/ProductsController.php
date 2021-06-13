@@ -11,11 +11,13 @@ use App\Classes\Pagination;
 use App\Models\Post;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Resources\Json\JsonResource;
+use PhpParser\Node\Stmt\TryCatch;
 
 class ProductsController extends Controller
 {
-    public function viewByCategory(Request $request) {;
-        $category = Category::find($request->id);
+    public function viewByCategory(Request $request) {
+
+        $category = Category::findOrFail($request->id);
         $products = $category->productsViaAll();
 
         //Take all products with pagination and create a pagination object
@@ -32,7 +34,12 @@ class ProductsController extends Controller
     //One product page:
     public function product(Request $request) {
 
-        $product = Product::with(['products_image'])->find($request->id);
+        try {
+            $product = Product::with(['products_image'])->findOrFail($request->id);
+        } catch (\Exception $exception) {
+            return view('errors.product_not_found');
+        }
+        
 
         $posts = Post::orderBy('created_at', 'asc')->with(['user', 'likes'])->where('product_id', $request->id)->paginate(3);
 

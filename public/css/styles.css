@@ -108,7 +108,6 @@
     right: 0;
     bottom: 0;
     background-color: #ccc;
-    -webkit-transition: .4s;
     transition: .4s;
 }
 
@@ -121,7 +120,6 @@
     top: 8%;
     bottom: 4px;
     background-color: white;
-    -webkit-transition: .4s;
     transition: .4s;
 }
 
@@ -134,8 +132,6 @@ input:focus+.slider {
 }
 
 input:checked+.slider:before {
-    -webkit-transform: translateX(11px);
-    -ms-transform: translateX(11px);
     transform: translateX(11px);
 }
 
@@ -215,10 +211,7 @@ input:checked+.slider:before {
     box-sizing: border-box;
     background: white;
     color: #fff;
-
-    -webkit-transition: opacity 1s;
-    -moz-transition: opacity 1s;
-    -o-transition: opacity 1s;
+    
     transition: opacity 1s;
 }
 
@@ -384,14 +377,14 @@ input:checked+.slider:before {
     transform-origin: 0%;
 }
 
-.dashboardForm input:focus ~ label,
+/* .dashboardForm input:focus ~ label,
 .dashboardForm input:not(:placeholder-shown) ~ label,
 .dashboardForm textarea:focus ~ label,
 .dashboardForm textarea:not(:placeholder-shown) ~ label,
 .dashboardForm select:focus ~ label,
-.dashboardForm select:not([value='']):valid ~ label {
+.dashboardForm select:not([value='']):valid ~ label { */
     /* @apply transform; scale-75; -translate-y-6; */
-    --tw-translate-x: 0;
+    /* --tw-translate-x: 0;
     --tw-translate-y: 0;
     --tw-rotate: 0;
     --tw-skew-x: 0;
@@ -400,5 +393,19 @@ input:checked+.slider:before {
     skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
     --tw-scale-x: 0.75;
     --tw-scale-y: 0.75;
-    --tw-translate-y: -1.5rem;
+    --tw-translate-y: -1.5rem; */
+/* } */
+
+.dashboardForm input:focus ~ label,
+.dashboardForm input:not(:placeholder-shown) ~ label,
+.dashboardForm textarea:focus ~ label,
+.dashboardForm textarea:not(:placeholder-shown) ~ label,
+.dashboardForm select:focus ~ label,
+.dashboardForm select:not([value='']):valid ~ label {
+    transform: translateX(0) translateY(0) rotate(0)
+    skewX(0) skewY(0) scaleX(0.75) scaleY(0.75);
+}
+
+.dashboardForm input:focus ~ label {
+    transform: translateY(-1.5rem);
 }

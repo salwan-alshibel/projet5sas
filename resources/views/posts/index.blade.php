@@ -6,7 +6,7 @@
         <div class="w-8/12 bg-custom-dark text-white p-6 rounded-lg">
            
             @guest
-            <div class="mb-4 text-center">fgdfgdfgdfPour poster un commentaire, veuillez vous connecter.</div>
+            <div class="mb-4 text-center">Pour poster un commentaire, veuillez vous connecter.</div>
             @endguest
 
            @auth

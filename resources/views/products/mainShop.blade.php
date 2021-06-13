@@ -3,25 +3,25 @@
 
 @section('content')
     <div class="darkable w-full mt-12 sm:mt-0 flex flex-col md:flex-row">
-        <div class="darkable w-full md:w-72 md:pl-4 lg:pl-0">
+        <div class="darkable w-full md:w-72 md:pl-4 lg:pl-0 md:ml-12">
             <div class="lessDarkable h-auto md:h-72 lg:h-full m-0 md:mt-12 rounded-lg lg:rounded-3xl  bg-white pb-4 md:pb-2 static md:fixed lg:static">
                 {{-- Search bar for categories(NOT USED NOW): --}}
                 {{-- <input type="search" id="myInput" onkeyup="window.search()" placeholder="Rechercher..." > --}}
 
                 <!-- Categories list -->
-                <ul id="myUL" class="w-56 m-auto md:m-0 md:pt-4 lg:fixed">
+                <ul id="myUL" class="w-auto m-auto md:m-0 md:pt-4 lg:fixed">
                     <div class="pt-4 mb-2 text-center text-2xl underline">Categories</div>
                     <div class="border-b w-9/12 mb-8 m-auto"></div>
-                    <div class="m-0 lg:m-4 text-sm lg:text-base rounded-lg bg-nenuphar-green-500">
+                    <div class="m-0 lg:m-4 text-sm lg:text-base rounded-lg bg-nenuphar-green-500 p-4">
                         @if ($category->parent_id !== null)
-                        <a class="w-full p-1 lg:pl-4 py-3 inline-block hover:bg-yellow-700 rounded-t-lg" href="{{ route('viewByCategory', ['id'=>$category->parent->id]) }}">{{ $category->parent->name }}</a>
+                        <a class="w-full p-1 lg:pl-4 py-3 inline-block hover:bg-yellow-700 underline" href="{{ route('viewByCategory', ['id'=>$category->parent->id]) }}">{{ $category->parent->name }}</a>
 
                         @foreach ($category->parent->children as $children)
                             <li><a class="w-full pl-8 pb-1 inline-block hover:bg-blue-500" href="{{ route('viewByCategory', ['id'=>$children->id]) }}"><i class="fas fa-angle-right"></i> {{ $children->name }}</a></li>
                         @endforeach
                 
                         @else 
-                        <a class="w-full p-1 lg:pl-4 pb-3 inline-block hover:bg-yellow-700 rounded-t-lg" href="{{ route('viewByCategory', ['id'=>$category->id]) }}">{{ $category->name }}</a>
+                        <a class="w-full p-1 lg:pl-4 pb-3 inline-block hover:bg-yellow-700 underline" href="{{ route('viewByCategory', ['id'=>$category->id]) }}">{{ $category->name }}</a>
 
                         @foreach ($category->children as $children)
                             <li><a class="w-full pl-8 inline-block hover:bg-blue-500" href="{{ route('viewByCategory', ['id'=>$children->id]) }}"><i class="fas fa-angle-right"></i> {{ $children->name }}</a></li>
@@ -33,7 +33,7 @@
             </div>  
         </div>
         <!-- Products -->
-        <div class=" pl-2 pr-2 lg:pl-8 pt-12 grid grid-cols-1 xl:grid-cols-2 gap-4">
+        <div class=" pl-2 pr-2 lg:pl-8 pt-12 grid grid-cols-1 xl:grid-cols-2 gap-4 m-auto">
             @foreach ($products as $product)
             <a href="{{ route('product', [$product->id, $product->slug]) }}">
                 <div class="lessDarkable max-w-md md:h-72 mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
