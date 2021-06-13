@@ -9,7 +9,7 @@
         <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Figurine & Co</title>
-        <link rel="shortcut icon" type="image/jpg" href="favicon.ico"/>
+        <link rel="shortcut icon" type="image/jpg" href="{{ asset('images/favicon.ico') }}"/>
         <link href="https://fonts.googleapis.com/css?family=Work+Sans:200,400&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet">
     </head>
