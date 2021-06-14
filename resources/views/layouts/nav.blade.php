@@ -37,9 +37,9 @@
         <div class="order-2 md:flex-grow transform scale-75 -translate-x-5 lg:translate-x-0 lg:scale-100">
             <ul class="flex items-center">
                 <li>
-                    <a class="inline-block relative -top-4 no-underline hover:text-red-500 p-3" href="{{ route('home') }}">
+                    <a class="inline-block relative -top-4 no-underline hover:text-red-500" href="{{ route('home') }}">
                         <img id="logo-img" src="{{url('/images/sword.png')}}" width="50" alt="Logo" class="mr-2 absolute -top-10 left-16">
-                        <span class="antiqueQuestSt font-size left-4 -top-3 relative">|Figurines&Co|</span>
+                        <span class="antiqueQuestSt font-size left-8 top-0 relative">|Figurines&Co|</span>
                         <span class="logoand">&</span>
                         <span class="logosubtxt">Figurines et peintures</span>
                     </a>
