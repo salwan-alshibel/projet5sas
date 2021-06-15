@@ -7,7 +7,7 @@ Projet OpenClassrooms n°5 du parcours Developpeur web junior
 ## A propos
 
 Ce projet est un projet libre dans lequel j'ai décidé de créer une application E-commerce.
-Ce projet integre Stripe.
+Ce projet utilise Laravel, MySQL et integre Stripe.
 
 
 ## Détail des compétences demandées
