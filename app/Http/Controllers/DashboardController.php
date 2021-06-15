@@ -25,16 +25,18 @@ class DashboardController extends Controller
     public function updateProfile(Request $request) {
         if($request->id) {
 
-            $request->name = htmlspecialchars($request->name);
-            $request->username = htmlspecialchars($request->username);
-            $request->email = htmlspecialchars($request->email);
-
             //Form validation:
             $this->validate($request, [
                 'name' => 'unique:users|max:255',
                 'username' => 'unique:users|max:255',
                 'email' => 'unique:users|email|confirmed',
             ]);
+
+            $request->name = htmlspecialchars($request->name);
+            $request->username = htmlspecialchars($request->username);
+            $request->email = htmlspecialchars($request->email);
+
+           
 
             $param = [
                 ['name' => $request->name],
@@ -45,7 +47,8 @@ class DashboardController extends Controller
 
             foreach ($param as $key => $value) {
                 foreach ($value as $key => $value) {
-                    if (isset($value)) {
+                    
+                    if ($value != "") {
                         DB::table('users')
                         ->where('id', $request->id)
                         ->update([
@@ -105,9 +108,9 @@ class DashboardController extends Controller
     public function addProduct(Request $request){
         
         if($request->id) {
-
+            
             $request->title = htmlspecialchars($request->title);
-            $request->content = htmlspecialchars($request->content);
+            // $request->content = htmlspecialchars($request->content);
             $request->summary = htmlspecialchars($request->summary);
             $request->slug = htmlspecialchars($request->slug);
             $request->quantity = htmlspecialchars($request->quantity);
@@ -115,24 +118,24 @@ class DashboardController extends Controller
             $request->shop = htmlspecialchars($request->shop);
             $request->category_id = htmlspecialchars($request->category_id);
             $request->tag_id = htmlspecialchars($request->tag_id);
-
+            
             //Form validation:
             $this->validate($request, [
                 'title' => 'required|unique:products|max:255',
-                'content' => 'required',
+                // 'content' => 'required',
                 'summary' => 'required',
                 'slug' => 'required|unique:products|max:255',
                 'quantity' => 'required|integer|min:0|max:999',
                 'price' => 'required',
                 'shop' => 'required',
                 'category_id' => 'required',
-                'tag_id' => 'integer',
-                'first_img' => 'required|mimes:jpg, png, jpeg, webp|max:5048|unique:products_images',
-                'second_img' => 'mimes:jpg, png, jpeg, webp|max:5048|unique:products_images',
-                'third_img' => 'mimes:jpg, png, jpeg, webp|max:5048|unique:products_images',
-                'fourth_img' => 'mimes:jpg, png, jpeg, webp|max:5048|unique:products_images',
-                'fifth_img' => 'mimes:jpg, png, jpeg, webp|max:5048|unique:products_images',
-                'sixth_img' => 'mimes:jpg, png, jpeg, webp|max:5048|unique:products_images',
+                // 'tag_id' => 'integer',
+                'first_img' => 'required|mimes:jpg,png,webp|max:5048|unique:products_images',
+                // 'second_img' => 'mimes:jpg,png,jpeg,webp|max:5048|unique:products_images',
+                // 'third_img' => 'mimes:jpg,png,jpeg,webp|max:5048|unique:products_images',
+                // 'fourth_img' => 'mimes:jpg,png,jpeg,webp|max:5048|unique:products_images',
+                // 'fifth_img' => 'mimes:jpg,png,jpeg,webp|max:5048|unique:products_images',
+                // 'sixth_img' => 'mimes:jpg,png,jpeg,webp|max:5048|unique:products_images'
             ]);
 
             
@@ -164,7 +167,10 @@ class DashboardController extends Controller
                 $newImageName6 = NULL;
             }
             
-    
+
+            DB::beginTransaction();
+            try {
+
             DB::table('products')->insert(
                 ['title' => $request->title,
                 'metaTitle' => $request->title,
@@ -195,7 +201,8 @@ class DashboardController extends Controller
                 ]
             );
 
-            if(isset($request->tag_id)) {
+            
+            if($request->tag_id != NULL) {
                 DB::table('product_tag')->insert(
                     [
                     'tag_id' => $request->tag_id,
@@ -203,8 +210,16 @@ class DashboardController extends Controller
                     ]
                 );
             }
+
+            DB::commit();
+
+            } catch (\Exception $exception) {
+                DB::rollback();
+                // throw $exception;
+                return back()->with('uploadNotSuccess', 'Le serveur à rencontré un problème. Veuillez contacter un administrateur.');
+            }
             
-            return back();
+            return back()->with('uploadSuccess', 'Le produit a bien été ajouté');
         }
 
             return view('dashboard.admin.dashboard_products_admin');

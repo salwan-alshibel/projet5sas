@@ -8,6 +8,20 @@
 	<div class="lessDarkable bg-white rounded-lg  ">
 		<div class="mx-auto md:max-w-md px-6 py-12 relative w-full">
 			<h1 class="text-2xl font-bold mb-8">Ajouter un produit</h1>
+
+			@if (session('uploadSuccess'))
+            <div class="bg-green-500 p-4 rounded-lg mb-6 text-center">
+                <i class="fas fa-check"></i>{{ session('uploadSuccess') }}
+            </div>
+            @endif
+			
+			@if (session('uploadNotSuccess'))
+            <div class="bg-red-500 p-4 rounded-lg mb-6 text-center">
+                <i class="fas fa-exclamation-triangle"></i>{{ session('uploadNotSuccess') }}
+            </div>
+            @endif
+
+
 			<form id='addProduct' action="{{ route('addProduct', ['id'=>auth()->user()]) }}" class="dashboardForm" method="POST" enctype="multipart/form-data">
 				@csrf
 				<div class="relative z-0 w-full mb-5">
