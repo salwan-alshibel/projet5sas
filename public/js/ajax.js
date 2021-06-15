@@ -2,7 +2,7 @@
 /*!******************************!*\
   !*** ./resources/js/ajax.js ***!
   \******************************/
-//Search products with AJAX (in nav search bar):
+//Search products with AJAX (in nav bar):
 var searchForm = document.getElementById('search-form');
 searchForm.addEventListener('keyup', function (e) {
   e.preventDefault();

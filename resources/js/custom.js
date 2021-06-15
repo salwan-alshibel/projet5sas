@@ -164,6 +164,47 @@ if (navSearchBar.classList.contains('hidden')) {
 	});
 }
 
+
+//Login FORM inputs check:
+document.getElementById('login-form').addEventListener('submit', function(e) {
+	var error;
+	var email = document.getElementById('email');
+	var password = document.getElementById('password');
+
+	if (!password.value) {
+		error = "Veuillez renseignez un mot de passe.";
+	}
+
+	if (!email.value) {
+		error = "Veuillez renseignez un email.";
+	}
+
+	
+
+	if(error) {
+		e.preventDefault();
+		document.getElementById('error-login').innerHTML = error;
+		return false;
+	}
+
+
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // For test:
 // window.onclick = e => {
 //     console.log(e.target);  // to get the element

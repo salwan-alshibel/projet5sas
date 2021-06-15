@@ -17,7 +17,7 @@
                 Veuillez vous identifier :
             </div>
 
-            <form action="{{ route('login') }}" method="POST">
+            <form action="{{ route('login') }}" method="POST" id="login-form">
                 @csrf
                 
                 <div class="mb-4 text-black">
@@ -44,6 +44,10 @@
                         {{ $message }}
                     </div>
                     @enderror
+                </div>
+
+                <div id="error-login" class="text-red-500 mt-2 py-6 text-lg">
+                    
                 </div>
 
                 <div class="mb-4">

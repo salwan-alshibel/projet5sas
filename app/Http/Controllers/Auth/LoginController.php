@@ -24,11 +24,11 @@ class LoginController extends Controller
         $request->email = htmlspecialchars($request->email);
         $request->password = htmlspecialchars($request->password);
         
-        //Form validation:
-        $this->validate($request, [
-            'email' => 'required|email',
-            'password' => 'required',
-        ]);
+        //Form validation. Not use actually, but using Javascript validation:
+        // $this->validate($request, [
+        //     'email' => 'required|email',
+        //     'password' => 'required',
+        // ]);
 
         //Sign in:
         if (!auth()->attempt($request->only('email', 'password'), $request->remember)) {
